@@ -1,0 +1,17 @@
+export const leavesData = [
+  { id: '#1', name: 'Marcia Baker', department: 'Sales', position: 'Sales Executive', startDate: '2025-10-10', endDate: '2025-10-15', duration: '5 days', leaveType: 'Family vacation', approvedBy: 'Richard Ford', status: 'Approved' },
+  { id: '#2', name: 'Carolyn Barnes', department: 'Marketing', position: 'Marketing Manager', startDate: '2025-10-05', endDate: '2025-10-07', duration: '2 days', leaveType: 'Flu', approvedBy: 'Jason Dixon', status: 'Pending' },
+  { id: '#3', name: 'Donna Miller', department: 'IT', position: 'IT Specialist', startDate: '2025-10-08', endDate: '2025-11-10', duration: '30 days', leaveType: 'Childbirth', approvedBy: 'Roy Lewis', status: 'Approved' },
+  { id: '#4', name: 'Fern Green', department: 'Finance', position: 'Financial Analyst', startDate: '2025-01-20', endDate: '2025-01-20', duration: '1 days', leaveType: 'Personal', approvedBy: 'John Willis', status: 'Denied' },
+  { id: '#5', name: 'Rebecca Block', department: 'Operations', position: 'Logistics Supervisor', startDate: '2025-09-28', endDate: '2025-10-10', duration: '12 days', leaveType: 'Surgery recovery', approvedBy: 'Jamie Lieu', status: 'Approved' },
+  { id: '#6', name: 'Genevieve Varela', department: 'HR', position: 'HR Manager', startDate: '2025-10-18', endDate: '2025-11-01', duration: '7 days', leaveType: 'Annual vacation', approvedBy: 'Leo Price', status: 'Approved' },
+  { id: '#7', name: 'Roy Walker', department: 'Marketing', position: 'Content Strategist', startDate: '2025-09-17', endDate: '2025-10-15', duration: '30 days', leaveType: 'Annual vacation', approvedBy: 'Della Rayo', status: 'Approved' },
+  { id: '#8', name: 'Trudy Spicer', department: 'Finance', position: 'Accountant', startDate: '2025-10-25', endDate: '2025-11-10', duration: '7 days', leaveType: 'Annual vacation', approvedBy: 'Jamie Lieu', status: 'Pending' },
+  { id: '#9', name: 'Carol Crawford', department: 'Operations', position: 'Logistics Supervisor', startDate: '2025-11-01', endDate: '2025-11-03', duration: '3 days', leaveType: 'Casual Leave', approvedBy: 'Larry Evans', status: 'Approved' },
+  { id: '#10', name: 'Wade Bash', department: 'HR', position: 'HR Specialist', startDate: '2025-10-15', endDate: '2025-10-15', duration: '1 days', leaveType: 'Personal', approvedBy: 'Carl Jones', status: 'Approved' },
+  { id: '#11', name: 'John Smith', department: 'IT', position: 'Developer', startDate: '2025-11-05', endDate: '2025-11-10', duration: '5 days', leaveType: 'Annual vacation', approvedBy: 'Richard Ford', status: 'Approved' },
+  { id: '#12', name: 'Sarah Johnson', department: 'Sales', position: 'Sales Manager', startDate: '2025-11-12', endDate: '2025-11-14', duration: '2 days', leaveType: 'Personal', approvedBy: 'Jason Dixon', status: 'Pending' },
+  { id: '#13', name: 'Michael Brown', department: 'Finance', position: 'Finance Director', startDate: '2025-11-20', endDate: '2025-11-25', duration: '5 days', leaveType: 'Family vacation', approvedBy: 'Roy Lewis', status: 'Approved' },
+  { id: '#14', name: 'Emily Davis', department: 'Marketing', position: 'Marketing Executive', startDate: '2025-12-01', endDate: '2025-12-03', duration: '2 days', leaveType: 'Sick Leave', approvedBy: 'John Willis', status: 'Approved' },
+  { id: '#15', name: 'David Wilson', department: 'Operations', position: 'Operations Manager', startDate: '2025-12-10', endDate: '2025-12-15', duration: '5 days', leaveType: 'Annual vacation', approvedBy: 'Jamie Lieu', status: 'Pending' },
+];

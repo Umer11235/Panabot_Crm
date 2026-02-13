@@ -1,0 +1,1 @@
+export interface FileUploadProps {  name?: string;  label: string;  multiple?: boolean;  accept?: string;  files: File[];  setFiles: (files: File[]) => void;}

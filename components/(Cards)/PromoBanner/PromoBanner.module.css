@@ -1,0 +1,199 @@
+.bannerContainer {
+  position: relative;
+  background: #ffffff;
+  border-radius: 12px; /* Rounded Border */
+  border: 1px solid #eff2f5;
+  overflow: hidden;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.gridBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 85%;
+  background-image: url('/image_a6bafa.png'); /* Aapki grid image */
+  background-size: cover;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  padding: 60px 50px;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.leftContent {
+  max-width: 500px;
+}
+
+.avatarGroup {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 3px solid white;
+  margin-left: -12px; /* Overlap effect */
+}
+
+.avatar:first-child { margin-left: 0; }
+
+.countBadge {
+  background: #00e396;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #181c32;
+  line-height: 1.2;
+}
+
+.brandText { color: #009ef7; }
+
+.description {
+  color: #5e6278;
+  font-size: 16px;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+/* Right Content - Floating Login Card */
+.loginCard {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 320px;
+  border: 1px solid #f1f1f1;
+}
+
+.bannerFooter {
+  border-top: 1px solid #eff2f5;
+  padding: 20px;
+  text-align: center;
+  background: white;
+  z-index: 2;
+}
+
+.getStartedLink {
+  color: #009ef7;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  border-bottom: 2px dotted #009ef7; /* Dotted underline */
+  cursor: pointer;
+}
+
+
+.bannerContainer {
+  font-family: 'Inter', sans-serif; /* Metronic default */
+  position: relative;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #eff2f5;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 24px; /* Pehle bada tha, ab exact hai */
+  font-weight: 700;
+  color: #181c32;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+  margin-top: 15px;
+}
+
+.brandText {
+  color: #009ef7;
+}
+
+.description {
+  color: #5e6278;
+  font-size: 14px; /* Typography fixed */
+  font-weight: 400;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+/* Avatar Group scaling */
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-left: -8px;
+}
+
+/* Login Card Typography */
+.loginTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #181c32;
+  text-align: center;
+}
+
+.loginSub {
+  font-size: 12px;
+  color: #a1a5b7;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.loginSub a { color: #009ef7; text-decoration: none; }
+
+.formGroup label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #181c32;
+  margin-bottom: 6px;
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #f1f1f4;
+  background-color: #f9f9f9;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.signInBtn {
+  width: 100%;
+  background: #009ef7;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+/* Footer Link with Dotted Underline */
+.getStartedLink {
+  font-size: 14px;
+  font-weight: 600;
+  color: #009ef7;
+  border-bottom: 1px dashed #009ef7;
+  background: none;
+  border-top: none; border-left: none; border-right: none;
+}

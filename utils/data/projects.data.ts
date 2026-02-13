@@ -1,0 +1,22 @@
+export const projectsData = [
+  { id: '#951', name: 'Hotel management system', start: '15 Nov, 2025', end: '15 Dec, 2025', manager: 'Walter Frazier', budget: '5,250.00', progress: 100, status: 'Completed' },
+  { id: '#547', name: 'Product development', start: '14 Nov, 2025', end: '14 Dec, 2025', manager: 'Kimberly Anderson', budget: '4,870.00', progress: 85, status: 'In Progress' },
+  { id: '#658', name: 'Python upgrade', start: '13 Nov, 2025', end: '13 Dec, 2025', manager: 'Roscoe Guerrero', budget: '3,500.00', progress: 100, status: 'Completed' },
+  { id: '#367', name: 'Project monitoring', start: '12 Nov, 2025', end: '12 Dec, 2025', manager: 'Robert Heinemann', budget: '7,550.00', progress: 5, status: 'Not Started' },
+  { id: '#789', name: 'Mobile app development', start: '11 Nov, 2025', end: '11 Dec, 2025', manager: 'Jessica Lee', budget: '6,200.00', progress: 60, status: 'In Progress' },
+  { id: '#432', name: 'Website redesign', start: '10 Nov, 2025', end: '10 Dec, 2025', manager: 'Michael Brown', budget: '4,000.00', progress: 100, status: 'Completed' },
+  { id: '#123', name: 'Data migration', start: '09 Nov, 2025', end: '09 Dec, 2025', manager: 'Emily Davis', budget: '3,750.00', progress: 20, status: 'In Progress' },
+  { id: '#654', name: 'Cloud infrastructure setup', start: '08 Nov, 2025', end: '08 Dec, 2025', manager: 'David Wilson', budget: '8,300.00', progress: 0, status: 'Not Started' },
+  { id: '#321', name: 'Security audit', start: '07 Nov, 2025', end: '07 Dec, 2025', manager: 'Sarah Johnson', budget: '2,500.00', progress: 50, status: 'In Progress' },
+  { id: '#987', name: 'API development', start: '06 Nov, 2025', end: '06 Dec, 2025', manager: 'James Smith', budget: '5,800.00', progress: 75, status: 'In Progress' },
+  { id: '#246', name: 'Database optimization', start: '05 Nov, 2025', end: '05 Dec, 2025', manager: 'Laura Martinez', budget: '4,200.00', progress: 100, status: 'Completed' },
+  { id: '#135', name: 'User interface overhaul', start: '04 Nov, 2025', end: '04 Dec, 2025', manager: 'Kevin Anderson', budget: '6,500.00', progress: 30, status: 'In Progress' },
+  { id: '#864', name: 'Performance testing', start: '03 Nov, 2025', end: '03 Dec, 2025', manager: 'Jessica Lee', budget: '3,900.00', progress: 10, status: 'Not Started' },
+  { id: '#753', name: 'Content management system', start: '02 Nov, 2025', end: '02 Dec, 2025', manager: 'Michael Brown', budget: '7,000.00', progress: 80, status: 'In Progress' },
+  { id: '#159', name: 'Customer support portal', start: '01 Nov, 2025', end: '01 Dec, 2025', manager: 'Emily Davis', budget: '4,500.00', progress: 100, status: 'Completed' },
+  { id: '#753', name: 'E-commerce platform', start: '31 Oct, 2025', end: '30 Nov, 2025', manager: 'David Wilson', budget: '9,000.00', progress: 15, status: 'In Progress' },
+  { id: '#852', name: 'Social media integration', start: '30 Oct, 2025', end: '29 Nov, 2025', manager: 'Sarah Johnson', budget: '3,300.00', progress: 0, status: 'Not Started' },
+  { id: '#951', name: 'Email marketing campaign', start: '29 Oct, 2025', end: '28 Nov, 2025', manager: 'James Smith', budget: '2,800.00', progress: 100, status: 'Completed' },
+  { id: '#357', name: 'SEO optimization', start: '28 Oct, 2025', end: '27 Nov, 2025', manager: 'Laura Martinez', budget: '4,600.00', progress: 50, status: 'In Progress' },
+  { id: '#258', name: 'Video production', start: '27 Oct, 2025', end: '26 Nov, 2025', manager: 'Kevin Anderson', budget: '5,400.00', progress: 70, status: 'In Progress' }
+];

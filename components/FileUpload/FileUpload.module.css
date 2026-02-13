@@ -1,0 +1,98 @@
+.uploadCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.uploadCard p {
+  font: var(--md-sys-typescale-body-medium);
+  color: var(--md-sys-color-on-surface-variant);
+  margin-bottom: 8px;
+}
+
+.dropzone {
+  border: 1px dashed var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-medium);
+  padding: 50px 20px;
+  text-align: center;
+  background-color: var(--md-sys-color-surface-variant);
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+.dropzone:hover {
+  border-color: var(--md-sys-color-primary);
+}
+
+.uploadIcon {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: var(--md-sys-color-primary);
+}
+
+.dropzone p {
+  font: var(--md-sys-typescale-body-small);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.dropzone span {
+  color: var(--md-sys-color-primary);
+  font-weight: 600;
+}
+
+.hiddenInput {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.filePreviewItem {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color: var(--md-sys-color-surface-variant);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-small);
+  animation: slideIn 0.3s ease;
+}
+
+.fileName {
+  font: var(--md-sys-typescale-body-small);
+  color: var(--md-sys-color-on-surface-variant);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80%;
+}
+
+.viewBtn {
+  background: none;
+  border: none;
+  color: var(--md-sys-color-primary);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.viewBtn:hover {
+  transform: scale(1.2);
+}
+
+.fileList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

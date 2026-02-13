@@ -1,0 +1,45 @@
+.page {
+  width: 100%;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  font: var(--md-sys-typescale-headline-medium);
+  color: var(--md-sys-color-on-surface);
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.notFound {
+  font: var(--md-sys-typescale-headline-small);
+  color: var(--md-sys-color-on-surface-variant);
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  color: var(--md-sys-color-primary);
+  font: var(--md-sys-typescale-title-small);
+  text-decoration: none;
+  border-radius: var(--md-sys-shape-corner-medium);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.back:hover {
+  background-color: var(--md-sys-state-hover);
+}

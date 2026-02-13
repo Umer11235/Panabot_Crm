@@ -1,0 +1,247 @@
+/* TicketList.module.css - Updated */
+
+/* --- General Structure & Container --- */
+.dashboardContainer {
+  /* padding: 20px; */
+  background-color: white;
+  width: 100%; /* Thodi width limit ki */
+  margin: 0 auto;
+}
+
+/* --- 1. Search Bar Styling --- */
+.searchBar {
+  display: flex;
+  align-items: center;
+flex-wrap: wrap;
+gap: 20px;
+  background-color: white;
+  padding: 15px 15px;
+  justify-content: space-between;
+}
+
+.searchIcon {
+  margin-right: 8px;
+  color: #6c757d;
+  font-size: 1.1em;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  flex-grow: 1;
+  font-size: 1em;
+  padding: 2px 0;
+}
+
+/* --- 2. Control Header Styling (Selection & Delete) --- */
+.controlHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  margin-bottom: 5px;
+}
+
+.selectionCount {
+  display: flex;
+  align-items: center;
+  background-color: #e2f0ff; /* Light blue background for selection info */
+  color: #007bff;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.iconBlue {
+    font-size: 1em;
+    margin-right: 5px;
+}
+
+.countText {
+    font-weight: 600;
+    font-size: 0.85em;
+}
+
+.deleteButton {
+  background: none;
+  border: 1px solid #E3E8EF;
+ padding: 12px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+
+
+/* --- 3. Main List Styling (Previous styles updated) --- */
+
+/* UL Element: List Reset */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid #dee2e6;
+  overflow: hidden;
+}
+
+/* LI Element: Individual Ticket Row */
+.listItem {
+  border-bottom: 1px solid #dee2e6;
+  background-color: #ffffff;
+}
+
+.listItem:last-child {
+  border-bottom: none;
+}
+
+/* Highlighted/Selected Ticket Row */
+.highlighted {
+  background-color: #E3F2FD; /* Light blue background for selected rows */
+  padding-left: 0; 
+}
+
+/* Inner Content Layout (Flexbox for alignment) */
+.ticketContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+      flex-wrap: wrap;
+}
+
+/* Left Section: Checkbox, Title, Requester */
+.leftSection {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* .checkbox {
+  width: 18px;
+  height: 18px;
+} */
+
+
+/* Card.module.css */
+
+/* Hide default checkbox */
+
+
+
+/* Checkbox */
+.checkbox {
+  margin-right: 15px;
+
+  appearance: none;
+  -webkit-appearance: none;
+     min-width: 18px;
+         max-width: 30px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  background-color: white;
+}
+
+/* Checked state */
+.checkbox:checked {
+  background-color: #2196F3;
+  border-color: #2196F3;
+}
+
+/* Minus sign */
+.checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;       /* Width of the minus */
+  height: 2px;       /* Thickness */
+  background-color: white;
+  transform: translate(-50%, -50%);
+  border-radius: 1px; /* Rounded edges for minus */
+}
+
+
+.title {
+  margin: 0 0 2px 0;
+  color: #343a40;
+}
+
+.requester {
+  font-size: 0.85em;
+  color: #6c757d;
+  margin: 0;
+}
+
+/* Right Section: Metadata/Details */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+  font-size: 14px;
+}
+
+
+.open { color: #428A4D; }
+.high { color: #FF0004; }
+
+/* Ticket ID Button */
+.ticketId {
+
+    color: #2196F3;
+    border: 1px solid #2196F3;
+    border-radius: 15px;
+    padding: 6px 40px;
+    font-weight: 500;
+}
+
+
+
+
+/* --- 4. Pagination Footer Styling --- */
+.paginationFooter {
+  display: flex;
+  justify-content: flex-end; /* Pagination ko right side mein rakha */
+  align-items: center;
+  padding: 10px 15px;
+  margin-top: 15px;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.paginationLeft {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.rowsPerPageSelect {
+    margin-left: 8px;
+    padding: 4px 6px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+}
+
+.pageButton {
+  background: none;
+  border: 1px solid #dee2e6;
+  color: #6c757d;
+  padding: 5px 10px;
+  margin-left: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+
+/* Card.module.css or TicketList.module.css */
+.deleteButton:disabled {
+  border-color: #ccc;
+  color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}

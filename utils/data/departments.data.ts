@@ -1,0 +1,16 @@
+export const departmentsData = [
+  { id: '#ARP-001', department: 'Sales', head: 'Marcia Baker', email: 'marcia@example.com', phone: '(929) 558-6655', employees: 290, budget: '$500,000' },
+  { id: '#ARP-002', department: 'Marketing', head: 'Carolyn Barnes', email: 'barnes@example.com', phone: '(555) 332-5598', employees: 185, budget: '$350,000' },
+  { id: '#ARP-003', department: 'IT', head: 'Donna Miller', email: 'donna@example.com', phone: '(222) 989-7728', employees: 75, budget: '$450,000' },
+  { id: '#ARP-004', department: 'Finance', head: 'Barbara Cross', email: 'cross@example.com', phone: '(455) 775-4499', employees: 20, budget: '$400,000' },
+  { id: '#ARP-005', department: 'HR', head: 'Rebecca Block', email: 'block@example.com', phone: '(332) 6684-9807', employees: 10, budget: '$600,000' },
+  { id: '#ARP-006', department: 'Operations', head: 'Fern Green', email: 'fern@example.com', phone: '(929) 587-3696', employees: 350, budget: '$200,000' },
+  { id: '#ARP-007', department: 'Customer Support', head: 'Genevieve Varela', email: 'varela@example.com', phone: '(555) 951-1599', employees: 50, budget: '$300,000' },
+  { id: '#ARP-008', department: 'Research', head: 'Roy Walker', email: 'roy@example.com', phone: '(222) 545-8585', employees: 25, budget: '$250,000' },
+  { id: '#ARP-009', department: 'Public Relations', head: 'Carol Crawford', email: 'carol@example.com', phone: '(244) 225-6699', employees: 50, budget: '$100,000' },
+  { id: '#ARP-010', department: 'Web Development', head: 'Wade Bash', email: 'wade@example.com', phone: '(332) 8852-0145', employees: 35, budget: '$350,000' },
+  { id: '#ARP-011', department: 'Quality Assurance', head: 'John Smith', email: 'john@example.com', phone: '(555) 123-4567', employees: 40, budget: '$280,000' },
+  { id: '#ARP-012', department: 'Legal', head: 'Sarah Johnson', email: 'sarah@example.com', phone: '(444) 987-6543', employees: 15, budget: '$320,000' },
+  { id: '#ARP-013', department: 'Product Management', head: 'Michael Brown', email: 'michael@example.com', phone: '(333) 456-7890', employees: 30, budget: '$400,000' },
+  { id: '#ARP-014', department: 'Design', head: 'Emily Davis', email: 'emily@example.com', phone: '(666) 789-0123', employees: 45, budget: '$290,000' },
+];

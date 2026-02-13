@@ -1,0 +1,16 @@
+:global(.ql-toolbar.ql-snow) {
+  border: 1px solid var(--md-sys-color-outline) !important;
+  border-radius: var(--md-sys-shape-corner-small) var(--md-sys-shape-corner-small) 0 0;
+  background-color: var(--md-sys-color-surface-variant) !important;
+}
+:global(.ql-container.ql-snow) {
+  border: 1px solid var(--md-sys-color-outline) !important;
+  border-radius: 0 0 var(--md-sys-shape-corner-small) var(--md-sys-shape-corner-small);
+  min-height: 200px;
+  background-color: var(--md-sys-color-surface) !important;
+  color: var(--md-sys-color-on-surface) !important;
+}
+:global(.ql-editor.ql-blank::before) {
+  color: var(--md-sys-color-on-surface-variant) !important;
+  opacity: 0.6;
+}

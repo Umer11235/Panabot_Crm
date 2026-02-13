@@ -1,0 +1,1 @@
+export interface MenuItem {  title: string;  icon: string;  isSoon?: boolean;  path?: string;  children?: { title: string; path: string }[];}export interface Section {  label: string;  items: MenuItem[];}

@@ -1,0 +1,385 @@
+/* ========================================
+   MATERIAL DESIGN 3 - MASTER CSS TEMPLATE
+   Apply these patterns to ALL component CSS files
+   ======================================== */
+
+/* PAGE CONTAINERS */
+.container, .page, .pageWrapper {
+  padding: 24px;
+  min-height: 100vh;
+  background-color: var(--md-sys-color-background);
+}
+
+/* HEADERS */
+.header {
+  margin-bottom: 24px;
+}
+
+.title {
+  font: var(--md-sys-typescale-headline-medium);
+  color: var(--md-sys-color-on-surface);
+  margin: 0;
+}
+
+.subtitle {
+  font: var(--md-sys-typescale-body-large);
+  color: var(--md-sys-color-on-surface-variant);
+  margin: 8px 0 0 0;
+}
+
+/* SEARCH & FILTER BARS */
+.searchBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 250px;
+  height: 56px;
+  padding: 0 16px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-small);
+  font: var(--md-sys-typescale-body-large);
+  outline: none;
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.searchInput:focus {
+  border-color: var(--md-sys-color-primary);
+  box-shadow: 0 0 0 1px var(--md-sys-color-primary);
+}
+
+.filterSelect {
+  height: 56px;
+  padding: 0 16px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-small);
+  font: var(--md-sys-typescale-body-large);
+  outline: none;
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  cursor: pointer;
+  min-width: 150px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filterSelect:focus {
+  border-color: var(--md-sys-color-primary);
+  box-shadow: 0 0 0 1px var(--md-sys-color-primary);
+}
+
+/* BUTTONS */
+.addButton, .submitBtn, .primaryBtn {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--md-sys-shape-corner-large);
+  font: var(--md-sys-typescale-title-small);
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--md-sys-elevation-1);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addButton:hover, .submitBtn:hover, .primaryBtn:hover {
+  background-color: color-mix(in srgb, var(--md-sys-color-primary) 92%, black);
+  box-shadow: var(--md-sys-elevation-2);
+}
+
+.cancelBtn, .secondaryBtn {
+  background-color: transparent;
+  color: var(--md-sys-color-primary);
+  padding: 12px 24px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-large);
+  font: var(--md-sys-typescale-title-small);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cancelBtn:hover, .secondaryBtn:hover {
+  background-color: color-mix(in srgb, var(--md-sys-color-primary) 8%, transparent);
+  border-color: var(--md-sys-color-primary);
+}
+
+/* CARDS */
+.card {
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  border-radius: var(--md-sys-shape-corner-large);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  padding: 20px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  box-shadow: var(--md-sys-elevation-2);
+  border-color: var(--md-sys-color-outline);
+}
+
+/* MODALS */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--md-sys-color-scrim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  background-color: var(--md-sys-color-surface);
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  padding: 24px;
+  width: 100%;
+  max-width: 560px;
+  box-shadow: var(--md-sys-elevation-3);
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.modalHeader h2 {
+  font: var(--md-sys-typescale-headline-small);
+  color: var(--md-sys-color-on-surface);
+  margin: 0;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--md-sys-color-on-surface-variant);
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--md-sys-shape-corner-large);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.closeBtn:hover {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 8%, transparent);
+}
+
+/* FORMS */
+.modalForm, .form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field, .fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label, .fieldGroup label {
+  font: var(--md-sys-typescale-body-large);
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface);
+}
+
+.field input,
+.field select,
+.field textarea,
+.fieldGroup input,
+.fieldGroup select,
+.fieldGroup textarea {
+  min-height: 56px;
+  padding: 16px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-small);
+  font: var(--md-sys-typescale-body-large);
+  outline: none;
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus,
+.fieldGroup input:focus,
+.fieldGroup select:focus,
+.fieldGroup textarea:focus {
+  border-color: var(--md-sys-color-primary);
+  box-shadow: 0 0 0 1px var(--md-sys-color-primary);
+}
+
+.field textarea,
+.fieldGroup textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.modalActions, .actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  justify-content: flex-end;
+}
+
+/* TABLES */
+.tableWrapper {
+  overflow-x: auto;
+  background-color: var(--md-sys-color-surface);
+  border-radius: var(--md-sys-shape-corner-large);
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  padding: 16px 24px;
+  background-color: var(--md-sys-color-surface-variant);
+  color: var(--md-sys-color-on-surface-variant);
+  font: var(--md-sys-typescale-title-small);
+  font-weight: 500;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.table td {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  font: var(--md-sys-typescale-body-medium);
+  color: var(--md-sys-color-on-surface);
+}
+
+.table tbody tr {
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.table tbody tr:hover {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 4%, transparent);
+}
+
+/* PAGINATION */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 16px 24px;
+  background-color: var(--md-sys-color-surface);
+  border-radius: var(--md-sys-shape-corner-large);
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.footer p {
+  font: var(--md-sys-typescale-body-medium);
+  color: var(--md-sys-color-on-surface-variant);
+  margin: 0;
+}
+
+.pagination {
+  display: flex;
+  gap: 4px;
+}
+
+.pageBtn, .arrowBtn {
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  border-radius: var(--md-sys-shape-corner-medium);
+  cursor: pointer;
+  font: var(--md-sys-typescale-body-medium);
+  color: var(--md-sys-color-on-surface);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pageBtn.active {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  font-weight: 500;
+}
+
+.arrowBtn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.pageBtn:hover:not(.active), .arrowBtn:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 8%, transparent);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .container, .page, .pageWrapper {
+    padding: 16px;
+  }
+
+  .searchBar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .searchInput, .filterSelect, .addButton {
+    width: 100%;
+  }
+
+  .modalActions, .actions {
+    flex-direction: column;
+  }
+
+  .modalActions button, .actions button {
+    width: 100%;
+  }
+}
+
+/* ========================================
+   COPY THESE PATTERNS TO YOUR CSS FILES
+   Replace hardcoded colors with CSS variables
+   ======================================== */

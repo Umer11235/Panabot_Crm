@@ -1,0 +1,214 @@
+.sidebar {
+  height: 100vh;
+  background-color: var(--md-sys-color-surface);
+  border-right: 1px solid var(--md-sys-color-outline-variant);
+  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.expanded {
+  width: 280px;
+}
+
+.collapsed {
+  width: 80px;
+}
+
+.header {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  height: 64px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--md-sys-color-primary);
+  letter-spacing: -0.5px;
+}
+
+.toggleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  cursor: pointer;
+  color: var(--md-sys-color-on-surface-variant);
+  position: absolute;
+  right: -16px;
+  z-index: 10;
+  transition: background-color 0.2s ease;
+}
+
+.toggleBtn:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-primary);
+}
+
+.iconWrapper {
+  display: inline-flex;
+  transition: transform 0.3s ease;
+}
+
+.rotate180 {
+  transform: rotate(180deg);
+}
+
+.menuContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.menuContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+.menuContainer::-webkit-scrollbar-thumb {
+  background: var(--md-sys-color-outline);
+  border-radius: 4px;
+}
+
+.sectionLabel {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--md-sys-color-on-surface-variant);
+  padding: 0 16px;
+  margin: 24px 0 8px 0;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-bottom: 4px;
+  min-height: 48px;
+}
+
+.menuItem:hover {
+  background-color: var(--md-sys-state-hover);
+}
+
+.activeSub {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+.activeSub .iconWrapper,
+.activeSub .label {
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+.iconWrapper {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--md-sys-color-on-surface-variant);
+  flex-shrink: 0;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface);
+  white-space: nowrap;
+  flex: 1;
+  margin: 0 12px;
+}
+
+.soonBadge {
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--md-sys-color-primary);
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.submenuWrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+  overflow: hidden;
+  margin-left: 24px;
+  border-left: 2px solid var(--md-sys-color-outline-variant);
+}
+
+.submenuOpen {
+  grid-template-rows: 1fr;
+}
+
+.submenuContent {
+  min-height: 0;
+  padding-left: 16px;
+}
+
+.subItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: var(--md-sys-color-on-surface-variant);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  position: relative;
+  margin-bottom: 2px;
+  min-height: 40px;
+}
+
+.subItem:hover {
+  background-color: var(--md-sys-state-hover);
+  color: var(--md-sys-color-on-surface);
+}
+
+.activeSub.subItem {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+.bulletDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--md-sys-color-outline);
+  margin-right: 12px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.activeSub .bulletDot {
+  background-color: var(--md-sys-color-primary);
+  transform: scale(1.3);
+}
+
+.subItem:hover .bulletDot {
+  background-color: var(--md-sys-color-on-surface-variant);
+}

@@ -1,0 +1,60 @@
+.card {
+  background-color: var(--md-sys-color-surface);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.card:hover {
+  border-color: var(--md-sys-color-outline);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.platform {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.followers {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.growth {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.positive {
+  color: #10b981;
+}
+
+.negative {
+  color: var(--md-sys-color-error);
+}

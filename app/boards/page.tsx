@@ -1,0 +1,1 @@
+"use client";import BoardsPage from "@/components/Kanban/BoardsPage";export default function BoardsListPage() {  return <BoardsPage />;}

@@ -1,0 +1,156 @@
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font: var(--md-sys-typescale-title-small);
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  outline: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--md-sys-color-primary);
+  outline-offset: 2px;
+}
+
+/* Filled Button (Primary) */
+.filled {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  border-radius: var(--md-sys-shape-corner-large);
+}
+
+.filled:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--md-sys-color-primary) 92%, black);
+}
+
+.filled:active:not(:disabled) {
+  background-color: color-mix(in srgb, var(--md-sys-color-primary) 88%, black);
+}
+
+/* Outlined Button */
+.outlined {
+  background-color: transparent;
+  color: var(--md-sys-color-primary);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-large);
+}
+
+.outlined:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--md-sys-color-primary) 8%, transparent);
+  border-color: var(--md-sys-color-primary);
+}
+
+.outlined:active:not(:disabled) {
+  background-color: color-mix(in srgb, var(--md-sys-color-primary) 12%, transparent);
+}
+
+/* Text Button */
+.text {
+  background-color: transparent;
+  color: var(--md-sys-color-primary);
+  border-radius: var(--md-sys-shape-corner-large);
+}
+
+.text:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--md-sys-color-primary) 8%, transparent);
+}
+
+.text:active:not(:disabled) {
+  background-color: color-mix(in srgb, var(--md-sys-color-primary) 12%, transparent);
+}
+
+/* Tonal Button */
+.tonal {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  border-radius: var(--md-sys-shape-corner-large);
+}
+
+.tonal:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--md-sys-color-secondary-container) 92%, black);
+}
+
+/* Elevated Button */
+.elevated {
+  background-color: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-primary);
+  border-radius: var(--md-sys-shape-corner-large);
+}
+
+.elevated:hover:not(:disabled) {
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+/* Danger/Error Button */
+.danger {
+  background-color: var(--md-sys-color-error);
+  color: var(--md-sys-color-on-error);
+  border-radius: var(--md-sys-shape-corner-large);
+}
+
+.danger:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--md-sys-color-error) 92%, black);
+}
+
+/* Sizes */
+.sm {
+  height: 32px;
+  padding: 0 16px;
+  font-size: 13px;
+}
+
+.md {
+  height: 40px;
+  padding: 0 24px;
+  font-size: 14px;
+}
+
+.lg {
+  height: 48px;
+  padding: 0 32px;
+  font-size: 15px;
+}
+
+/* Full Width */
+.fullWidth {
+  width: 100%;
+}
+
+/* Disabled State */
+.btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+/* Loading State */
+.loading {
+  pointer-events: none;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Icon Support */
+.btn svg {
+  width: 18px;
+  height: 18px;
+}

@@ -1,0 +1,85 @@
+.formContainer {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.formTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #334155;
+}
+
+.gridForm {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.fullWidth { grid-column: span 2; }
+.halfWidth { grid-column: span 1; }
+
+.label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #64748b;
+}
+
+.input, .select, .textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.input:focus, .select:focus, .textarea:focus {
+  border-color: #3b82f6;
+}
+
+.textarea { height: 120px; resize: none; }
+
+.fileUpload {
+  border: 2px dashed #e2e8f0;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.fileLabel { font-size: 13px; color: #94a3b8; cursor: pointer; }
+.fileLabel span { color: #3b82f6; font-weight: 600; }
+.fileInput { display: none; }
+
+.buttonGroup {
+  grid-column: span 2;
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.submitBtn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancelBtn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}

@@ -1,0 +1,134 @@
+:root[data-theme="light"] {
+  --md-sys-color-primary: #1a73e8;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #d3e3fd;
+  --md-sys-color-on-primary-container: #001c3a;
+  --md-sys-color-secondary: #5f6368;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #e8eaed;
+  --md-sys-color-on-secondary-container: #1a1c1e;
+  --md-sys-color-surface: #ffffff;
+  --md-sys-color-surface-variant: #f8f9fa;
+  --md-sys-color-surface-container: #f1f3f4;
+  --md-sys-color-surface-container-high: #e8eaed;
+  --md-sys-color-surface-container-highest: #dadce0;
+  --md-sys-color-on-surface: #202124;
+  --md-sys-color-on-surface-variant: #5f6368;
+  --md-sys-color-background: #ffffff;
+  --md-sys-color-on-background: #202124;
+  --md-sys-color-error: #d93025;
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-error-container: #fce8e6;
+  --md-sys-color-on-error-container: #410002;
+  --md-sys-color-outline: #dadce0;
+  --md-sys-color-outline-variant: #e8eaed;
+  --md-sys-color-shadow: rgba(0, 0, 0, 0.12);
+  --md-sys-color-scrim: rgba(0, 0, 0, 0.32);
+  
+  --md-sys-state-hover: rgba(0, 0, 0, 0.08);
+  --md-sys-state-focus: rgba(0, 0, 0, 0.12);
+  --md-sys-state-pressed: rgba(0, 0, 0, 0.12);
+  --md-sys-primary-hover: #1557b0;
+  
+  --calendar-icon-invert: 0;
+  
+  --md-sys-elevation-1: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  --md-sys-elevation-2: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+  --md-sys-elevation-3: 0 4px 8px 3px rgba(60, 64, 67, 0.15), 0 1px 3px rgba(60, 64, 67, 0.3);
+  
+  --md-sys-shape-corner-small: 8px;
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-extra-large: 28px;
+  
+  --md-sys-typescale-display-large: 400 57px/64px 'Google Sans', 'Roboto', sans-serif;
+  --md-sys-typescale-display-medium: 400 45px/52px 'Google Sans', 'Roboto', sans-serif;
+  --md-sys-typescale-display-small: 400 36px/44px 'Google Sans', 'Roboto', sans-serif;
+  --md-sys-typescale-headline-large: 400 32px/40px 'Google Sans', 'Roboto', sans-serif;
+  --md-sys-typescale-headline-medium: 400 28px/36px 'Google Sans', 'Roboto', sans-serif;
+  --md-sys-typescale-headline-small: 400 24px/32px 'Google Sans', 'Roboto', sans-serif;
+  --md-sys-typescale-title-large: 500 22px/28px 'Roboto', sans-serif;
+  --md-sys-typescale-title-medium: 500 16px/24px 'Roboto', sans-serif;
+  --md-sys-typescale-title-small: 500 14px/20px 'Roboto', sans-serif;
+  --md-sys-typescale-body-large: 400 16px/24px 'Roboto', sans-serif;
+  --md-sys-typescale-body-medium: 400 14px/20px 'Roboto', sans-serif;
+  --md-sys-typescale-body-small: 400 12px/16px 'Roboto', sans-serif;
+  --md-sys-typescale-label-large: 500 14px/20px 'Roboto', sans-serif;
+  --md-sys-typescale-label-medium: 500 12px/16px 'Roboto', sans-serif;
+  --md-sys-typescale-label-small: 500 11px/16px 'Roboto', sans-serif;
+}
+
+:root[data-theme="dark"] {
+  --md-sys-color-primary: #8ab4f8;
+  --md-sys-color-on-primary: #003258;
+  --md-sys-color-primary-container: #004a77;
+  --md-sys-color-on-primary-container: #d3e3fd;
+  --md-sys-color-secondary: #bdc1c6;
+  --md-sys-color-on-secondary: #2d3134;
+  --md-sys-color-secondary-container: #43474b;
+  --md-sys-color-on-secondary-container: #e8eaed;
+  --md-sys-color-surface: #202124;
+  --md-sys-color-surface-variant: #292a2d;
+  --md-sys-color-surface-container: #2d2e30;
+  --md-sys-color-surface-container-high: #35363a;
+  --md-sys-color-surface-container-highest: #3c4043;
+  --md-sys-color-on-surface: #e8eaed;
+  --md-sys-color-on-surface-variant: #9aa0a6;
+  --md-sys-color-background: #202124;
+  --md-sys-color-on-background: #e8eaed;
+  --md-sys-color-error: #f28b82;
+  --md-sys-color-on-error: #601410;
+  --md-sys-color-error-container: #8c1d18;
+  --md-sys-color-on-error-container: #fce8e6;
+  --md-sys-color-outline: #5f6368;
+  --md-sys-color-outline-variant: #3c4043;
+  --md-sys-color-shadow: rgba(0, 0, 0, 0.3);
+  --md-sys-color-scrim: rgba(0, 0, 0, 0.6);
+  
+  --md-sys-state-hover: rgba(255, 255, 255, 0.08);
+  --md-sys-state-focus: rgba(255, 255, 255, 0.12);
+  --md-sys-state-pressed: rgba(255, 255, 255, 0.12);
+  --md-sys-primary-hover: #669df6;
+  
+  --calendar-icon-invert: 1;
+  
+  --md-sys-elevation-1: 0 1px 3px 1px rgba(0, 0, 0, 0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --md-sys-elevation-2: 0 2px 6px 2px rgba(0, 0, 0, 0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --md-sys-elevation-3: 0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.3);
+  
+  --md-sys-shape-corner-small: 8px;
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-extra-large: 28px;
+  
+  --md-sys-typescale-display-large: 400 57px/64px 'Google Sans', 'Roboto', sans-serif;
+  --md-sys-typescale-display-medium: 400 45px/52px 'Google Sans', 'Roboto', sans-serif;
+  --md-sys-typescale-display-small: 400 36px/44px 'Google Sans', 'Roboto', sans-serif;
+  --md-sys-typescale-headline-large: 400 32px/40px 'Google Sans', 'Roboto', sans-serif;
+  --md-sys-typescale-headline-medium: 400 28px/36px 'Google Sans', 'Roboto', sans-serif;
+  --md-sys-typescale-headline-small: 400 24px/32px 'Google Sans', 'Roboto', sans-serif;
+  --md-sys-typescale-title-large: 500 22px/28px 'Roboto', sans-serif;
+  --md-sys-typescale-title-medium: 500 16px/24px 'Roboto', sans-serif;
+  --md-sys-typescale-title-small: 500 14px/20px 'Roboto', sans-serif;
+  --md-sys-typescale-body-large: 400 16px/24px 'Roboto', sans-serif;
+  --md-sys-typescale-body-medium: 400 14px/20px 'Roboto', sans-serif;
+  --md-sys-typescale-body-small: 400 12px/16px 'Roboto', sans-serif;
+  --md-sys-typescale-label-large: 500 14px/20px 'Roboto', sans-serif;
+  --md-sys-typescale-label-medium: 500 12px/16px 'Roboto', sans-serif;
+  --md-sys-typescale-label-small: 500 11px/16px 'Roboto', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

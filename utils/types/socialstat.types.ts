@@ -1,0 +1,1 @@
+export interface SocialStatCardProps {  platform: string;  icon: string;  followers: string;  growth: string;  isPositive?: boolean;}

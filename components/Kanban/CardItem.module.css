@@ -1,0 +1,48 @@
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid rgba(17, 24, 39, 0.10);
+  cursor: grab;
+  transition: filter 0.2s ease;
+}
+
+.card:hover {
+  filter: brightness(0.98);
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cardTitle {
+  font-weight: 800;
+  color: #1f2a37;
+  font-size: 14px;
+}
+
+.desc {
+  margin-top: 6px;
+  color: #7a8795;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+.overlay {
+  cursor: grabbing;
+}

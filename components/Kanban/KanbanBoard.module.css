@@ -1,0 +1,10 @@
+.shell {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.columns {
+  display: flex;
+  gap: 16px;
+  min-height: 500px;
+}
