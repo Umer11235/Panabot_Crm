@@ -5,6 +5,9 @@ import styles from './CreateProject.module.css';
 import RichTextEditor from '@/components/RichTextEditor/RichTextEditor';
 import FileUpload from '@/components/FileUpload/FileUpload';
 import Button from '@/components/(Inputs)/Button/Button';
+import ClientSelector from './ClientSelector';
+import TeamSelector from './TeamSelector';
+import MilestoneManager from './MilestoneManager';
 import { handleFormChange } from './functions';
 
 export default function CreateProjectPage() {
@@ -18,11 +21,17 @@ export default function CreateProjectPage() {
     priority: '',
     category: '',
     manager: '',
+    client: '',
     team: '',
     tags: ''
   });
   const [previewImage, setPreviewImage] = useState<File | null>(null);
   const [attachedFiles, setAttachedFiles] = useState<File[]>([]);
+  const [showClientModal, setShowClientModal] = useState(false);
+  const [showTeamModal, setShowTeamModal] = useState(false);
+  const [selectedClient, setSelectedClient] = useState<any>(null);
+  const [selectedTeam, setSelectedTeam] = useState<any[]>([]);
+  const [milestones, setMilestones] = useState<any[]>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -152,6 +161,20 @@ export default function CreateProjectPage() {
             />
           </div>
         </form>
+
+        <ClientSelector
+          isOpen={showClientModal}
+          onClose={() => setShowClientModal(false)}
+          onSelect={setSelectedClient}
+          selected={selectedClient}
+        />
+
+        <TeamSelector
+          isOpen={showTeamModal}
+          onClose={() => setShowTeamModal(false)}
+          onSelect={setSelectedTeam}
+          selected={selectedTeam}
+        />
       </div>
     </div>
   );

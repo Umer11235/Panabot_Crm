@@ -6,7 +6,7 @@
 
 .label {
   font: var(--md-sys-typescale-body-medium);
-  color: #5f6368;
+  color: var(--md-sys-color-on-surface-variant);
 }
 
 .select {

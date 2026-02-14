@@ -52,7 +52,7 @@
 }
 
 .positive {
-  color: #10b981;
+  color: var(--md-sys-color-tertiary);
 }
 
 .negative {
