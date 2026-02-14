@@ -3,8 +3,8 @@
 /* --- General Structure & Container --- */
 .dashboardContainer {
   /* padding: 20px; */
-  background-color: white;
-  width: 100%; /* Thodi width limit ki */
+  background-color: var(--md-sys-color-surface);
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -14,14 +14,14 @@
   align-items: center;
 flex-wrap: wrap;
 gap: 20px;
-  background-color: white;
+  background-color: var(--md-sys-color-surface);
   padding: 15px 15px;
   justify-content: space-between;
 }
 
 .searchIcon {
   margin-right: 8px;
-  color: #6c757d;
+  color: var(--md-sys-color-on-surface-variant);
   font-size: 1.1em;
 }
 
@@ -31,6 +31,8 @@ gap: 20px;
   flex-grow: 1;
   font-size: 1em;
   padding: 2px 0;
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
 }
 
 /* --- 2. Control Header Styling (Selection & Delete) --- */
@@ -45,8 +47,8 @@ gap: 20px;
 .selectionCount {
   display: flex;
   align-items: center;
-  background-color: #e2f0ff; /* Light blue background for selection info */
-  color: #007bff;
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
   padding: 5px 10px;
   border-radius: 4px;
 }
@@ -63,12 +65,13 @@ gap: 20px;
 
 .deleteButton {
   background: none;
-  border: 1px solid #E3E8EF;
+  border: 1px solid var(--md-sys-color-outline);
  padding: 12px 14px;
   border-radius: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
+  color: var(--md-sys-color-on-surface);
 }
 
 
@@ -80,14 +83,14 @@ gap: 20px;
   list-style: none;
   padding: 0;
   margin: 0;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
   overflow: hidden;
 }
 
 /* LI Element: Individual Ticket Row */
 .listItem {
-  border-bottom: 1px solid #dee2e6;
-  background-color: #ffffff;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  background-color: var(--md-sys-color-surface);
 }
 
 .listItem:last-child {
@@ -96,7 +99,7 @@ gap: 20px;
 
 /* Highlighted/Selected Ticket Row */
 .highlighted {
-  background-color: #E3F2FD; /* Light blue background for selected rows */
+  background-color: var(--md-sys-color-secondary-container);
   padding-left: 0; 
 }
 
@@ -131,48 +134,45 @@ gap: 20px;
 /* Checkbox */
 .checkbox {
   margin-right: 15px;
-
   appearance: none;
   -webkit-appearance: none;
-     min-width: 18px;
-         max-width: 30px;
+  min-width: 18px;
+  max-width: 30px;
   height: 18px;
-  border: 2px solid #ccc;
+  border: 2px solid var(--md-sys-color-outline);
   border-radius: 4px;
   position: relative;
   cursor: pointer;
   outline: none;
-  background-color: white;
+  background-color: var(--md-sys-color-surface);
 }
 
-/* Checked state */
 .checkbox:checked {
-  background-color: #2196F3;
-  border-color: #2196F3;
+  background-color: var(--md-sys-color-primary);
+  border-color: var(--md-sys-color-primary);
 }
 
-/* Minus sign */
 .checkbox:checked::after {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 12px;       /* Width of the minus */
-  height: 2px;       /* Thickness */
-  background-color: white;
+  width: 12px;
+  height: 2px;
+  background-color: var(--md-sys-color-on-primary);
   transform: translate(-50%, -50%);
-  border-radius: 1px; /* Rounded edges for minus */
+  border-radius: 1px;
 }
 
 
 .title {
   margin: 0 0 2px 0;
-  color: #343a40;
+  color: var(--md-sys-color-on-surface);
 }
 
 .requester {
   font-size: 0.85em;
-  color: #6c757d;
+  color: var(--md-sys-color-on-surface-variant);
   margin: 0;
 }
 
@@ -185,14 +185,13 @@ gap: 20px;
 }
 
 
-.open { color: #428A4D; }
-.high { color: #FF0004; }
+.open { color: var(--md-sys-color-tertiary); }
+.high { color: var(--md-sys-color-error); }
 
 /* Ticket ID Button */
 .ticketId {
-
-    color: #2196F3;
-    border: 1px solid #2196F3;
+    color: var(--md-sys-color-primary);
+    border: 1px solid var(--md-sys-color-primary);
     border-radius: 15px;
     padding: 6px 40px;
     font-weight: 500;
@@ -204,11 +203,11 @@ gap: 20px;
 /* --- 4. Pagination Footer Styling --- */
 .paginationFooter {
   display: flex;
-  justify-content: flex-end; /* Pagination ko right side mein rakha */
+  justify-content: flex-end;
   align-items: center;
   padding: 10px 15px;
   margin-top: 15px;
-  color: #6c757d;
+  color: var(--md-sys-color-on-surface-variant);
   font-size: 14px;
 }
 
@@ -221,14 +220,16 @@ gap: 20px;
 .rowsPerPageSelect {
     margin-left: 8px;
     padding: 4px 6px;
-    border: 1px solid #dee2e6;
+    border: 1px solid var(--md-sys-color-outline);
     border-radius: 4px;
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
 }
 
 .pageButton {
   background: none;
-  border: 1px solid #dee2e6;
-  color: #6c757d;
+  border: 1px solid var(--md-sys-color-outline);
+  color: var(--md-sys-color-on-surface-variant);
   padding: 5px 10px;
   margin-left: 8px;
   border-radius: 4px;
@@ -240,8 +241,8 @@ gap: 20px;
 
 /* Card.module.css or TicketList.module.css */
 .deleteButton:disabled {
-  border-color: #ccc;
-  color: #ccc;
+  border-color: var(--md-sys-color-outline-variant);
+  color: var(--md-sys-color-on-surface-variant);
   cursor: not-allowed;
-  opacity: 0.6;
+  opacity: 0.38;
 }

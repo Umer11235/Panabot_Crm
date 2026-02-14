@@ -176,7 +176,7 @@
 
 .progressFill {
   height: 100%;
-  background: #22c55e; /* green fill like image */
+  background: var(--md-sys-color-tertiary);
   border-radius: 999px;
 }
 

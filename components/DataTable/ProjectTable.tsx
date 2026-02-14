@@ -46,7 +46,7 @@ export default function DataTable<T extends { id: string | number }>({
           <option value="pending">Pending</option>
         </select>
         {onAdd && (
-          <Button variant="primary" size="sm" onClick={onAdd}>
+          <Button variant="primary" size="lg" onClick={onAdd}>
             {addButtonText}
           </Button>
         )}

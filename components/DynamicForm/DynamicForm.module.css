@@ -1,15 +1,15 @@
 .formContainer {
-  background: #fff;
+  background: var(--md-sys-color-surface);
   padding: 30px;
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .formTitle {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 25px;
-  color: #334155;
+  color: var(--md-sys-color-on-surface);
 }
 
 .gridForm {
@@ -26,35 +26,37 @@
   font-size: 13px;
   font-weight: 500;
   margin-bottom: 8px;
-  color: #64748b;
+  color: var(--md-sys-color-on-surface-variant);
 }
 
 .input, .select, .textarea {
   width: 100%;
   padding: 10px 14px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--md-sys-color-outline);
   border-radius: 6px;
   font-size: 14px;
   outline: none;
   transition: 0.2s;
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
 }
 
 .input:focus, .select:focus, .textarea:focus {
-  border-color: #3b82f6;
+  border-color: var(--md-sys-color-primary);
 }
 
 .textarea { height: 120px; resize: none; }
 
 .fileUpload {
-  border: 2px dashed #e2e8f0;
+  border: 2px dashed var(--md-sys-color-outline);
   padding: 20px;
   text-align: center;
   border-radius: 8px;
-  background: #f8fafc;
+  background: var(--md-sys-color-surface-variant);
 }
 
-.fileLabel { font-size: 13px; color: #94a3b8; cursor: pointer; }
-.fileLabel span { color: #3b82f6; font-weight: 600; }
+.fileLabel { font-size: 13px; color: var(--md-sys-color-on-surface-variant); cursor: pointer; }
+.fileLabel span { color: var(--md-sys-color-primary); font-weight: 600; }
 .fileInput { display: none; }
 
 .buttonGroup {
@@ -93,8 +95,8 @@
 }
 
 .submitBtn {
-  background: #3b82f6;
-  color: white;
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
   border: none;
   padding: 10px 24px;
   border-radius: 6px;
@@ -103,8 +105,8 @@
 }
 
 .cancelBtn {
-  background: #ef4444;
-  color: white;
+  background: var(--md-sys-color-error);
+  color: var(--md-sys-color-on-error);
   border: none;
   padding: 10px 24px;
   border-radius: 6px;

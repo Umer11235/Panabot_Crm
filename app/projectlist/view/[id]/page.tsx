@@ -58,13 +58,119 @@ export default function ViewProjectPage() {
               <p>${project.budget}</p>
             </div>
             <div className={styles.field}>
+              <label>Priority</label>
+              <p>{project.priority || 'Medium'}</p>
+            </div>
+            <div className={styles.field}>
+              <label>Category</label>
+              <p>{project.category || 'Development'}</p>
+            </div>
+            <div className={styles.field}>
               <label>Progress</label>
-              <p>{project.progress}%</p>
+              <div className={styles.progressBar}>
+                <div className={styles.progressFill} style={{ width: `${project.progress}%` }}></div>
+              </div>
+              <p className={styles.progressText}>{project.progress}%</p>
             </div>
             <div className={styles.field}>
               <label>Status</label>
               <p className={styles[project.status.replace(' ', '')]}>{project.status}</p>
             </div>
+          </div>
+        </div>
+
+        <div className={styles.section}>
+          <div className={styles.sectionHeader}>
+            <h3 className={styles.sectionTitle}>Client Information</h3>
+            <Button variant="outline" size="sm" onClick={() => router.push('/clients')}>
+              View Details
+            </Button>
+          </div>
+          <div className={styles.clientCard}>
+            <div className={styles.clientAvatar}>
+              <img src="/images/client.jpg" alt="Client" />
+            </div>
+            <div className={styles.clientDetails}>
+              <div className={styles.field}>
+                <label>Client Name</label>
+                <p>Acme Corporation</p>
+              </div>
+              <div className={styles.field}>
+                <label>Contact Person</label>
+                <p>John Doe</p>
+              </div>
+              <div className={styles.field}>
+                <label>Email</label>
+                <p>john.doe@acme.com</p>
+              </div>
+              <div className={styles.field}>
+                <label>Phone</label>
+                <p>+1 (555) 123-4567</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.section}>
+          <h3 className={styles.sectionTitle}>Team Members</h3>
+          <div className={styles.teamGrid}>
+            <div className={styles.teamMember}>
+              <div className={styles.memberAvatar}>
+                <img src="/images/users.jpg" alt="Team Member" />
+              </div>
+              <div className={styles.memberInfo}>
+                <p className={styles.memberName}>Sarah Johnson</p>
+                <p className={styles.memberRole}>Lead Developer</p>
+                <p className={styles.memberEmail}>sarah.j@company.com</p>
+              </div>
+            </div>
+            <div className={styles.teamMember}>
+              <div className={styles.memberAvatar}>
+                <img src="/images/users.jpg" alt="Team Member" />
+              </div>
+              <div className={styles.memberInfo}>
+                <p className={styles.memberName}>Michael Chen</p>
+                <p className={styles.memberRole}>Backend Developer</p>
+                <p className={styles.memberEmail}>michael.c@company.com</p>
+              </div>
+            </div>
+            <div className={styles.teamMember}>
+              <div className={styles.memberAvatar}>
+                <img src="/images/users.jpg" alt="Team Member" />
+              </div>
+              <div className={styles.memberInfo}>
+                <p className={styles.memberName}>Emily Davis</p>
+                <p className={styles.memberRole}>UI/UX Designer</p>
+                <p className={styles.memberEmail}>emily.d@company.com</p>
+              </div>
+            </div>
+            <div className={styles.teamMember}>
+              <div className={styles.memberAvatar}>
+                <img src="/images/users.jpg" alt="Team Member" />
+              </div>
+              <div className={styles.memberInfo}>
+                <p className={styles.memberName}>James Wilson</p>
+                <p className={styles.memberRole}>QA Engineer</p>
+                <p className={styles.memberEmail}>james.w@company.com</p>
+              </div>
+            </div>
+            <div className={styles.teamMember}>
+              <div className={styles.memberAvatar}>
+                <img src="/images/users.jpg" alt="Team Member" />
+              </div>
+              <div className={styles.memberInfo}>
+                <p className={styles.memberName}>Lisa Anderson</p>
+                <p className={styles.memberRole}>Frontend Developer</p>
+                <p className={styles.memberEmail}>lisa.a@company.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.section}>
+          <h3 className={styles.sectionTitle}>Description</h3>
+          <div className={styles.description}>
+            <p>{project.description || 'No description available'}</p>
           </div>
         </div>
       </div>
