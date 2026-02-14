@@ -64,6 +64,34 @@
   margin-top: 10px;
 }
 
+@media (max-width: 768px) {
+  .gridForm {
+    grid-template-columns: 1fr;
+  }
+  
+  .fullWidth, .halfWidth {
+    grid-column: span 1;
+  }
+  
+  .formContainer {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .formContainer {
+    padding: 16px;
+  }
+  
+  .buttonGroup {
+    flex-direction: column;
+  }
+  
+  .input, .select, .textarea {
+    font-size: 14px;
+  }
+}
+
 .submitBtn {
   background: #3b82f6;
   color: white;

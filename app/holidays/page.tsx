@@ -64,20 +64,9 @@ export default function HolidaysPage() {
           }} onClick={(e) => e.stopPropagation()}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
               <h2 style={{ font: 'var(--md-sys-typescale-headline-small)', color: 'var(--md-sys-color-on-surface)', margin: 0 }}>Add Holiday</h2>
-              <button onClick={() => setModalOpen(false)} style={{
-                background: 'none',
-                border: 'none',
-                fontSize: '24px',
-                color: 'var(--md-sys-color-on-surface-variant)',
-                cursor: 'pointer',
-                padding: 0,
-                width: '40px',
-                height: '40px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: 'var(--md-sys-shape-corner-large)'
-              }}>✕</button>
+              <Button variant="outline" size="sm" onClick={() => setModalOpen(false)}>
+                ✕
+              </Button>
             </div>
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -164,10 +153,10 @@ export default function HolidaysPage() {
                 </select>
               </div>
               <div style={{ display: 'flex', gap: '12px', marginTop: '8px' }}>
-                <Button variant="primary" type="submit" size="sm">
+                <Button variant="primary" type="submit" size="md">
                   + Add Holiday
                 </Button>
-                <Button variant="danger" type="button" size="sm" onClick={() => setModalOpen(false)}>
+                <Button variant="danger" type="button" size="md" onClick={() => setModalOpen(false)}>
                   Cancel
                 </Button>
               </div>

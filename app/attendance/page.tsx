@@ -53,9 +53,9 @@ export default function AttendancePage() {
             <option value="completed">Completed</option>
             <option value="pending">Pending</option>
           </select>
-          <button onClick={() => setModalOpen(true)} className={styles.addButton}>
+          <Button variant="primary" size="sm" onClick={() => setModalOpen(true)}>
             + Add Attendance
-          </button>
+          </Button>
         </div>
 
         <div className={styles.tableWrapper}>
@@ -126,7 +126,9 @@ export default function AttendancePage() {
             <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
               <div className={styles.modalHeader}>
                 <h2>Add Attendance</h2>
-                <button onClick={() => setModalOpen(false)} className={styles.closeBtn}>✕</button>
+                <Button variant="outline" size="sm" onClick={() => setModalOpen(false)}>
+                  ✕
+                </Button>
               </div>
               <form onSubmit={handleSubmit} className={styles.modalForm}>
                 <div className={styles.field}>
@@ -165,10 +167,10 @@ export default function AttendancePage() {
                   </select>
                 </div>
                 <div className={styles.modalActions}>
-                  <Button variant="primary" type="submit" size="sm">
+                  <Button variant="primary" type="submit" size="md">
                     + Add Attendance
                   </Button>
-                  <Button variant="danger" type="button" size="sm" onClick={() => setModalOpen(false)}>
+                  <Button variant="danger" type="button" size="md" onClick={() => setModalOpen(false)}>
                     Cancel
                   </Button>
                 </div>

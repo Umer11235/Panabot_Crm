@@ -62,7 +62,20 @@
   margin-top: 8px;
 }
 
+@media (max-width: 768px) {
+  .row2 { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 640px) {
   .row2 { grid-template-columns: 1fr; }
   .actions { grid-template-columns: 1fr; }
+  
+  .input, .select, .textarea {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+  
+  .textarea {
+    min-height: 120px;
+  }
 }

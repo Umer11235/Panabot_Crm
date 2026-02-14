@@ -4,7 +4,7 @@ import { ButtonProps } from "@/utils/types/button.types";
 
 export default function Button({
   children,
-  variant = "filled",
+  variant = "primary",
   size = "md",
   fullWidth = false,
   disabled = false,

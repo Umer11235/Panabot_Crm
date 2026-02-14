@@ -73,27 +73,6 @@
   margin: 0;
 }
 
-.addButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  height: 40px;
-  padding: 0 24px;
-  background-color: var(--md-sys-color-primary);
-  color: var(--md-sys-color-on-primary);
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
-  border: none;
-  cursor: pointer;
-}
-
-.addButton:hover {
-  background-color: var(--md-sys-primary-hover);
-}
-
 .tableWrapper {
   overflow-x: auto;
 }
@@ -112,7 +91,7 @@
   text-align: left;
   font-size: 14px;
   font-weight: 500;
-  color: var(--md-sys-color-on-surface-variant);
+  color: #5f6368;
   border-bottom: 1px solid var(--md-sys-color-outline-variant);
   white-space: nowrap;
 }
@@ -120,7 +99,7 @@
 .table td {
   padding: 16px 24px;
   font-size: 14px;
-  color: var(--md-sys-color-on-surface);
+  color: #202124;
   border-bottom: 1px solid var(--md-sys-color-outline-variant);
 }
 
@@ -143,9 +122,7 @@
   gap: 8px;
 }
 
-.viewBtn,
-.editBtn,
-.deleteBtn {
+.iconBtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -156,29 +133,10 @@
   background-color: transparent;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  color: var(--md-sys-color-on-surface-variant);
 }
 
-.viewBtn {
-  color: var(--md-sys-color-primary);
-}
-
-.viewBtn:hover {
-  background-color: var(--md-sys-state-hover);
-}
-
-.editBtn {
-  color: var(--md-sys-color-secondary);
-}
-
-.editBtn:hover {
-  background-color: var(--md-sys-state-hover);
-}
-
-.deleteBtn {
-  color: var(--md-sys-color-error);
-}
-
-.deleteBtn:hover {
+.iconBtn:hover {
   background-color: var(--md-sys-state-hover);
 }
 
@@ -192,7 +150,7 @@
 
 .footer p {
   font-size: 14px;
-  color: var(--md-sys-color-on-surface-variant);
+  color: #5f6368;
   margin: 0;
 }
 
@@ -202,8 +160,7 @@
   gap: 4px;
 }
 
-.arrowBtn,
-.pageBtn {
+.paginationBtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -219,18 +176,17 @@
   transition: background-color 0.2s ease;
 }
 
-.arrowBtn:hover:not(:disabled),
-.pageBtn:hover {
+.paginationBtn:hover:not(:disabled) {
   background-color: var(--md-sys-state-hover);
 }
 
-.pageBtn.active {
+.paginationBtn.active {
   background-color: var(--md-sys-color-secondary-container);
   color: var(--md-sys-color-on-secondary-container);
   font-weight: 500;
 }
 
-.arrowBtn:disabled {
+.paginationBtn:disabled {
   opacity: 0.38;
   cursor: not-allowed;
 }

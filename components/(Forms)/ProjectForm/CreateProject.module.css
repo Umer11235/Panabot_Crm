@@ -13,7 +13,7 @@
 
 .title {
   font: var(--md-sys-typescale-title-large);
-  color: var(--md-sys-color-on-surface);
+  color: #202124;
   margin-bottom: 20px;
 }
 
@@ -34,6 +34,12 @@
   gap: 20px;
 }
 
+@media (max-width: 640px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
 .fieldGroup {
   flex: 1;
   display: flex;
@@ -49,8 +55,7 @@
 
 .fieldGroup label, .fullRow label, .uploadCard label {
   font: var(--md-sys-typescale-body-medium);
-  font-weight: 500;
-  color: var(--md-sys-color-on-surface);
+  color: #5f6368;
   margin-bottom: 4px;
 }
 
@@ -60,7 +65,7 @@
   border-radius: var(--md-sys-shape-corner-small);
   font: var(--md-sys-typescale-body-large);
   background-color: var(--md-sys-color-surface);
-  color: var(--md-sys-color-on-surface);
+  color: #202124;
   outline: none;
   transition: border-color 0.2s ease;
   height: 48px;
@@ -79,8 +84,8 @@
 .fieldGroup input::placeholder,
 .fieldGroup select::placeholder,
 .editorBox textarea::placeholder {
-  color: var(--md-sys-color-on-surface-variant);
-  opacity: 0.6;
+  color: #5f6368 !important;
+  opacity: 1 !important;
 }
 
 .editorBox {
@@ -134,6 +139,12 @@
   margin-top: 24px;
 }
 
+@media (max-width: 640px) {
+  .actions {
+    flex-direction: column;
+  }
+}
+
 .submitBtn {
   background-color: var(--md-sys-color-primary);
   color: var(--md-sys-color-on-primary);
@@ -173,6 +184,27 @@
 @media (max-width: 900px) {
   .formLayout {
     grid-template-columns: 1fr;
+  }
+  
+  .container {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 12px;
+  }
+  
+  .fieldGroup input, .fieldGroup select {
+    height: 44px;
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+  
+  .submitBtn, .cancelBtn {
+    height: 44px;
+    font-size: 14px;
   }
 }
 

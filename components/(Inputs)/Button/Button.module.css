@@ -19,103 +19,69 @@
   outline-offset: 2px;
 }
 
-/* Filled Button (Primary) */
-.filled {
-  background-color: var(--md-sys-color-primary);
-  color: var(--md-sys-color-on-primary);
-  border-radius: var(--md-sys-shape-corner-large);
+/* Primary Button */
+.primary {
+  background-color: #0d6efd;
+  color: #ffffff;
 }
 
-.filled:hover:not(:disabled) {
-  background-color: color-mix(in srgb, var(--md-sys-color-primary) 92%, black);
+.primary:hover:not(:disabled) {
+  background-color: #0a58ca;
 }
 
-.filled:active:not(:disabled) {
-  background-color: color-mix(in srgb, var(--md-sys-color-primary) 88%, black);
+.primary:active:not(:disabled) {
+  background-color: #084298;
 }
 
-/* Outlined Button */
-.outlined {
+/* Outline Button */
+.outline {
   background-color: transparent;
-  color: var(--md-sys-color-primary);
-  border: 1px solid var(--md-sys-color-outline);
-  border-radius: var(--md-sys-shape-corner-large);
+  color: #0d6efd;
+  border: none;
 }
 
-.outlined:hover:not(:disabled) {
-  background-color: color-mix(in srgb, var(--md-sys-color-primary) 8%, transparent);
-  border-color: var(--md-sys-color-primary);
+.outline:hover:not(:disabled) {
+  background-color: rgba(13, 110, 253, 0.08);
 }
 
-.outlined:active:not(:disabled) {
-  background-color: color-mix(in srgb, var(--md-sys-color-primary) 12%, transparent);
+.outline:active:not(:disabled) {
+  background-color: rgba(13, 110, 253, 0.12);
 }
 
-/* Text Button */
-.text {
-  background-color: transparent;
-  color: var(--md-sys-color-primary);
-  border-radius: var(--md-sys-shape-corner-large);
-}
-
-.text:hover:not(:disabled) {
-  background-color: color-mix(in srgb, var(--md-sys-color-primary) 8%, transparent);
-}
-
-.text:active:not(:disabled) {
-  background-color: color-mix(in srgb, var(--md-sys-color-primary) 12%, transparent);
-}
-
-/* Tonal Button */
-.tonal {
-  background-color: var(--md-sys-color-secondary-container);
-  color: var(--md-sys-color-on-secondary-container);
-  border-radius: var(--md-sys-shape-corner-large);
-}
-
-.tonal:hover:not(:disabled) {
-  background-color: color-mix(in srgb, var(--md-sys-color-secondary-container) 92%, black);
-}
-
-/* Elevated Button */
-.elevated {
-  background-color: var(--md-sys-color-surface-container);
-  color: var(--md-sys-color-primary);
-  border-radius: var(--md-sys-shape-corner-large);
-}
-
-.elevated:hover:not(:disabled) {
-  background-color: var(--md-sys-color-surface-container-high);
-}
-
-/* Danger/Error Button */
+/* Danger Button */
 .danger {
-  background-color: var(--md-sys-color-error);
-  color: var(--md-sys-color-on-error);
-  border-radius: var(--md-sys-shape-corner-large);
+  background-color: #e74c3c;
+  color: #ffffff;
 }
 
 .danger:hover:not(:disabled) {
-  background-color: color-mix(in srgb, var(--md-sys-color-error) 92%, black);
+  background-color: rgba(235, 103, 89, 1);
+}
+
+.danger:active:not(:disabled) {
+  background-color: #c0392b;
 }
 
 /* Sizes */
 .sm {
   height: 32px;
-  padding: 0 16px;
+  padding: 0 20px;
   font-size: 13px;
+  border-radius: 4px;
 }
 
 .md {
   height: 40px;
-  padding: 0 24px;
+  padding: 0 28px;
   font-size: 14px;
+  border-radius: 4px;
 }
 
 .lg {
   height: 48px;
-  padding: 0 32px;
+  padding: 0 36px;
   font-size: 15px;
+  border-radius: 4px;
 }
 
 /* Full Width */

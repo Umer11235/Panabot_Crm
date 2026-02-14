@@ -1,43 +1,55 @@
 "use client";
 
 import React, { useState } from 'react';
-import styles from './CreateProject.module.css';
+import { useParams, useRouter } from 'next/navigation';
+import { projectsData } from '@/utils/data/projects.data';
+import styles from './edit.module.css';
 import RichTextEditor from '@/components/RichTextEditor/RichTextEditor';
 import FileUpload from '@/components/FileUpload/FileUpload';
 import Button from '@/components/(Inputs)/Button/Button';
-import { handleFormChange } from './functions';
 
-export default function CreateProjectPage() {
+export default function EditProjectPage() {
+  const params = useParams();
+  const router = useRouter();
+  const decodedId = decodeURIComponent(params.id as string);
+  const project = projectsData.find(p => p.id === decodedId);
+
   const [formData, setFormData] = useState({
-    projectName: '',
-    projectId: '',
-    startDate: '',
-    endDate: '',
+    projectName: project?.name || '',
+    projectId: project?.id || '',
+    startDate: project?.start || '',
+    endDate: project?.end || '',
     description: '',
-    budget: '',
+    budget: project?.budget || '',
     priority: '',
     category: '',
-    manager: '',
+    manager: project?.manager || '',
     team: '',
     tags: ''
   });
   const [previewImage, setPreviewImage] = useState<File | null>(null);
   const [attachedFiles, setAttachedFiles] = useState<File[]>([]);
 
+  if (!project) {
+    return <div>Project not found</div>;
+  }
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    handleFormChange(formData, setFormData, name, value);
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form:", formData, "Image:", previewImage, "Files:", attachedFiles);
+    alert('Project updated successfully!');
+    router.push('/projectlist');
   };
 
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.container}>
-        {/* <h2 className={styles.title}>Create New Project</h2> */}
+        <h2 className={styles.title}>Edit Project</h2>
         <form onSubmit={handleSubmit} className={styles.formLayout}>
           <div className={styles.leftSection}>
             <div className={styles.row}>
@@ -86,10 +98,10 @@ export default function CreateProjectPage() {
             </div>
 
             <div className={styles.actions}>
-              <Button variant="primary" type='submit' size='md' onClick={() => console.log("Submit")}>
-                + Create Project
+              <Button variant="primary" type='submit' size='md'>
+                Update Project
               </Button>
-              <Button variant="danger" type='reset' size='md'>
+              <Button variant="danger" type='button' size='md' onClick={() => router.push('/projectlist')}>
                 Cancel
               </Button>
             </div>
