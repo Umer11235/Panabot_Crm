@@ -1,1 +1,62 @@
-export interface Ticket {  id: string;  title: string;  team: string;  status: string;  priority: string;  assignee: string;  created: string;  isSelected: boolean;}export type Member = {  id: string;  name?: string;  avatarSrc?: string;};export type Action = {  label: string;  onClick: () => void;  loading?: boolean;  disabled?: boolean;};export interface UniversalCardProps {  title: string;  children: React.ReactNode;  actionType?: 'dropdown' | 'radio' | 'select' | 'button';  actionOptions?: { label: string; value: string; icon?: string }[];  onActionChange?: (value: string) => void;}export interface ProjectCardProps {  leaderName: string;  leaderRole?: string;  leaderAvatarSrc?: string | any;  title: string;  members?: Member[];  maxVisibleMembers?: number;  progress?: number;  progressLabel?: string;  onMenuClick?: () => void;  ctaLabel?: string;  onCtaClick?: () => void;  ctaLoading?: boolean;  ctaDisabled?: boolean;  className?: string;}export interface CompanyCardProps {  name: string;  email: string;  contactPerson?: string;  contactPhone?: string;  totalProjects?: number;  logoSrc?: string | any;  logoAlt?: string;  headerRight?: React.ReactNode;  primaryAction?: Action;  secondaryAction?: Action;  className?: string;}
+export interface Ticket {
+  id: string;
+  title: string;
+  team: string;
+  status: string;
+  priority: string;
+  assignee: string;
+  created: string;
+  isSelected: boolean;
+}
+export type Member = {
+  id: string;
+  name?: string;
+  avatarSrc?: string;
+};
+export type Action = {
+  label: string;
+  onClick: () => void;
+  loading?: boolean;
+  disabled?: boolean;
+};
+export interface UniversalCardProps {
+  title: string;
+  children: React.ReactNode;
+  actionType?: 'dropdown' | 'radio' | 'select' | 'button';
+  actionOptions?: { label: string; value: string; icon?: string }[];
+  onActionChange?: (value: string) => void;
+}
+export interface ProjectCardProps {
+  leaderName: string;
+  leaderRole?: string;
+  leaderAvatarSrc?: string | any;
+  title: string;
+  members?: Member[];
+  maxVisibleMembers?: number;
+  progress?: number;
+  progressLabel?: string;
+  onMenuClick?: () => void;
+  /**
+   * Optional custom menu (e.g. Dropdown component). If provided, it will be
+   * rendered instead of the default 3-dot button.
+   */
+  menu?: React.ReactNode;
+  ctaLabel?: string;
+  onCtaClick?: () => void;
+  ctaLoading?: boolean;
+  ctaDisabled?: boolean;
+  className?: string;
+}
+export interface CompanyCardProps {
+  name: string;
+  email: string;
+  contactPerson?: string;
+  contactPhone?: string;
+  totalProjects?: number;
+  logoSrc?: string | any;
+  logoAlt?: string;
+  headerRight?: React.ReactNode;
+  primaryAction?: Action;
+  secondaryAction?: Action;
+  className?: string;
+}

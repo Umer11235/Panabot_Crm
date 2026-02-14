@@ -31,7 +31,7 @@ export default function ViewProjectPage() {
 
       <div className={styles.content}>
         <div className={styles.section}>
-          <h3 className={styles.sectionTitle}>Basic Information</h3>
+          <h3 className={styles.sectionTitle}>Project Information</h3>
           <div className={styles.grid}>
             <div className={styles.field}>
               <label>Project ID</label>
@@ -50,12 +50,28 @@ export default function ViewProjectPage() {
               <p>{project.end}</p>
             </div>
             <div className={styles.field}>
-              <label>Manager</label>
+              <label>Project Manager</label>
               <p>{project.manager}</p>
             </div>
             <div className={styles.field}>
               <label>Budget</label>
               <p>${project.budget}</p>
+            </div>
+            <div className={styles.field}>
+              <label>Priority Status</label>
+              <p>-</p>
+            </div>
+            <div className={styles.field}>
+              <label>Categories</label>
+              <p>-</p>
+            </div>
+            <div className={styles.field}>
+              <label>Add Team Members</label>
+              <p>-</p>
+            </div>
+            <div className={styles.field}>
+              <label>Project Tags</label>
+              <p>-</p>
             </div>
             <div className={styles.field}>
               <label>Progress</label>
@@ -64,6 +80,24 @@ export default function ViewProjectPage() {
             <div className={styles.field}>
               <label>Status</label>
               <p className={styles[project.status.replace(' ', '')]}>{project.status}</p>
+            </div>
+          </div>
+          <div className={styles.fullField}>
+            <label>Description</label>
+            <p>-</p>
+          </div>
+        </div>
+        
+        <div className={styles.section}>
+          <h3 className={styles.sectionTitle}>Attachments</h3>
+          <div className={styles.grid}>
+            <div className={styles.field}>
+              <label>Project Preview Image</label>
+              <p>No image uploaded</p>
+            </div>
+            <div className={styles.field}>
+              <label>Attached Files</label>
+              <p>No files attached</p>
             </div>
           </div>
         </div>

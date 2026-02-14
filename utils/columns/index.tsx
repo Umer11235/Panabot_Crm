@@ -3,3 +3,4 @@ export * from './employee.columns';
 export * from './department.columns';
 export * from './leave.columns';
 export * from './holiday.columns';
+export * from './milestone.columns';

@@ -8,3 +8,5 @@ export * from './leaves.data';
 export * from './projects.data';
 export * from './socialStats.data';
 export * from './tickets.data';
+export * from './teams.data';
+export * from './clients.data';

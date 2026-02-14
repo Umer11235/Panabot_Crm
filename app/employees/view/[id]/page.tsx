@@ -38,8 +38,12 @@ export default function ViewEmployeePage() {
               <p>{employee.id}</p>
             </div>
             <div className={styles.field}>
-              <label>Full Name</label>
-              <p>{employee.name}</p>
+              <label>First Name</label>
+              <p>{employee.name.split(' ')[0]}</p>
+            </div>
+            <div className={styles.field}>
+              <label>Last Name</label>
+              <p>{employee.name.split(' ').slice(1).join(' ')}</p>
             </div>
             <div className={styles.field}>
               <label>Email</label>
@@ -71,6 +75,18 @@ export default function ViewEmployeePage() {
               <label>Status</label>
               <p className={styles[employee.status.replace(' ', '')]}>{employee.status}</p>
             </div>
+            <div className={styles.field}>
+              <label>Salary</label>
+              <p>-</p>
+            </div>
+          </div>
+        </div>
+        
+        <div className={styles.section}>
+          <h3 className={styles.sectionTitle}>Profile Image</h3>
+          <div className={styles.field}>
+            <label>Employee Image</label>
+            <p>No image uploaded</p>
           </div>
         </div>
       </div>

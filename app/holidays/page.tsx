@@ -5,9 +5,12 @@ import { useState } from "react";
 import { holidaysData } from "@/utils/data/holidays.data";
 import { handleDateChange, handleFormSubmit } from "./functions";
 import { holidayColumns } from "@/utils/columns";
+import Modal from '@/components/Modal/Modal';
+import ConfirmModal from '@/components/Modal/ConfirmModal';
 
 export default function HolidaysPage() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [deleteModal, setDeleteModal] = useState({ isOpen: false, item: null as any });
   const [formData, setFormData] = useState({
     holiday: '',
     date: '',
@@ -19,6 +22,16 @@ export default function HolidaysPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     handleFormSubmit(e, formData, setModalOpen, setFormData, initialFormData, 'Holiday added successfully!');
+  };
+
+  const handleDelete = (holiday: any) => {
+    setDeleteModal({ isOpen: true, item: holiday });
+  };
+
+  const confirmDelete = () => {
+    console.log('Deleting holiday:', deleteModal.item);
+    alert(`Holiday ${deleteModal.item.holiday} deleted successfully!`);
+    setDeleteModal({ isOpen: false, item: null });
   };
 
   return (
@@ -34,9 +47,9 @@ export default function HolidaysPage() {
         data={holidaysData}
         columns={holidayColumns}
         onAdd={() => setModalOpen(true)}
-        onView={(holiday) => alert('Viewing ' + holiday.holiday)}
-        onEdit={(holiday) => alert('Editing ' + holiday.holiday)}
-        onDelete={(holiday) => alert('Deleting ' + holiday.holiday)}
+        onView={(holiday) => window.location.href = `/holidays/view/${encodeURIComponent(holiday.id)}`}
+        onEdit={(holiday) => window.location.href = `/holidays/edit/${encodeURIComponent(holiday.id)}`}
+        onDelete={handleDelete}
         currentPage={1}
         pageSize={10}
         totalEntries={holidaysData.length}
@@ -44,31 +57,12 @@ export default function HolidaysPage() {
       />
 
       {modalOpen && (
-        <div style={{
-          position: 'fixed',
-          inset: 0,
-          backgroundColor: 'var(--md-sys-color-scrim)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000,
-          padding: '20px'
-        }} onClick={() => setModalOpen(false)}>
-          <div style={{
-            backgroundColor: 'var(--md-sys-color-surface)',
-            border: '1px solid var(--md-sys-color-outline-variant)',
-            borderRadius: 'var(--md-sys-shape-corner-extra-large)',
-            padding: '24px',
-            width: '100%',
-            maxWidth: '560px'
-          }} onClick={(e) => e.stopPropagation()}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-              <h2 style={{ font: 'var(--md-sys-typescale-headline-small)', color: 'var(--md-sys-color-on-surface)', margin: 0 }}>Add Holiday</h2>
-              <Button variant="outline" size="sm" onClick={() => setModalOpen(false)}>
-                ✕
-              </Button>
-            </div>
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <Modal
+          isOpen={modalOpen}
+          onClose={() => setModalOpen(false)}
+          title="Add Holiday"
+        >
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 <label style={{ font: 'var(--md-sys-typescale-body-large)', fontWeight: 500, color: 'var(--md-sys-color-on-surface)' }}>Holiday Name</label>
                 <input
@@ -161,9 +155,17 @@ export default function HolidaysPage() {
                 </Button>
               </div>
             </form>
-          </div>
-        </div>
-      )}
+          </Modal>
+        )}
+        
+        <ConfirmModal
+          isOpen={deleteModal.isOpen}
+          onClose={() => setDeleteModal({ isOpen: false, item: null })}
+          onConfirm={confirmDelete}
+          title="Delete Holiday"
+          message="Are you sure you want to delete"
+          itemName={deleteModal.item?.holiday}
+        />
     </div>
   );
 }

@@ -81,7 +81,46 @@ export default function CreateProjectPage() {
                   <option value="">Select</option>
                   <option value="high">High</option>
                   <option value="medium">Medium</option>
+                  <option value="low">Low</option>
                 </select>
+              </div>
+            </div>
+
+            <div className={styles.row}>
+              <div className={styles.fieldGroup}>
+                <label>Categories</label>
+                <select name="category" value={formData.category} onChange={handleChange}>
+                  <option value="">Select</option>
+                  <option value="development">Development</option>
+                  <option value="design">Design</option>
+                  <option value="marketing">Marketing</option>
+                  <option value="research">Research</option>
+                </select>
+              </div>
+              <div className={styles.fieldGroup}>
+                <label>Project Manager</label>
+                <select name="manager" value={formData.manager} onChange={handleChange}>
+                  <option value="">Select</option>
+                  <option value="John Doe">John Doe</option>
+                  <option value="Jane Smith">Jane Smith</option>
+                  <option value="Mike Johnson">Mike Johnson</option>
+                </select>
+              </div>
+            </div>
+
+            <div className={styles.row}>
+              <div className={styles.fieldGroup}>
+                <label>Add Team Members</label>
+                <select name="team" value={formData.team} onChange={handleChange}>
+                  <option value="">Select</option>
+                  <option value="Team A">Team A</option>
+                  <option value="Team B">Team B</option>
+                  <option value="Team C">Team C</option>
+                </select>
+              </div>
+              <div className={styles.fieldGroup}>
+                <label>Project Tags</label>
+                <input name="tags" value={formData.tags} onChange={handleChange} placeholder="Enter tags" />
               </div>
             </div>
 

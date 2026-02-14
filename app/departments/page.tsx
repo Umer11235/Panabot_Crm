@@ -5,11 +5,14 @@ import { useState } from "react";
 import { departmentsData } from "@/utils/data/departments.data";
 import { paginateData, handlePageChange, handleFormSubmit, handleInputChange } from "./functions";
 import { departmentColumns } from "@/utils/columns";
+import Modal from '@/components/Modal/Modal';
+import ConfirmModal from '@/components/Modal/ConfirmModal';
 
 export default function DepartmentsPage() {
   const [page, setPage] = useState(1);
   const [pageSize] = useState(10);
   const [modalOpen, setModalOpen] = useState(false);
+  const [deleteModal, setDeleteModal] = useState({ isOpen: false, item: null as any });
   const [formData, setFormData] = useState({
     department: '',
     head: '',
@@ -26,6 +29,16 @@ export default function DepartmentsPage() {
     handleFormSubmit(e, formData, setModalOpen, setFormData, initialFormData, 'Department added successfully!');
   };
 
+  const handleDelete = (dept: any) => {
+    setDeleteModal({ isOpen: true, item: dept });
+  };
+
+  const confirmDelete = () => {
+    console.log('Deleting department:', deleteModal.item);
+    alert(`Department ${deleteModal.item.department} deleted successfully!`);
+    setDeleteModal({ isOpen: false, item: null });
+  };
+
   return (
     <div>
       <h1 style={{
@@ -39,9 +52,9 @@ export default function DepartmentsPage() {
         data={paginatedData}
         columns={departmentColumns}
         onAdd={() => setModalOpen(true)}
-        onView={(dept) => alert('Viewing ' + dept.department)}
-        onEdit={(dept) => alert('Editing ' + dept.department)}
-        onDelete={(dept) => alert('Deleting ' + dept.department)}
+        onView={(dept) => window.location.href = `/departments/view/${encodeURIComponent(dept.id)}`}
+        onEdit={(dept) => window.location.href = `/departments/edit/${encodeURIComponent(dept.id)}`}
+        onDelete={handleDelete}
         currentPage={page}
         pageSize={pageSize}
         totalEntries={departmentsData.length}
@@ -49,31 +62,12 @@ export default function DepartmentsPage() {
       />
 
       {modalOpen && (
-        <div style={{
-          position: 'fixed',
-          inset: 0,
-          backgroundColor: 'var(--md-sys-color-scrim)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000,
-          padding: '20px'
-        }} onClick={() => setModalOpen(false)}>
-          <div style={{
-            backgroundColor: 'var(--md-sys-color-surface)',
-            border: '1px solid var(--md-sys-color-outline-variant)',
-            borderRadius: 'var(--md-sys-shape-corner-extra-large)',
-            padding: '24px',
-            width: '100%',
-            maxWidth: '560px'
-          }} onClick={(e) => e.stopPropagation()}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-              <h2 style={{ font: 'var(--md-sys-typescale-headline-small)', color: 'var(--md-sys-color-on-surface)', margin: 0 }}>Add Department</h2>
-              <Button variant="outline" size="sm" onClick={() => setModalOpen(false)}>
-                ✕
-              </Button>
-            </div>
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <Modal
+          isOpen={modalOpen}
+          onClose={() => setModalOpen(false)}
+          title="Add Department"
+        >
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 <label style={{ font: 'var(--md-sys-typescale-body-large)', fontWeight: 500, color: 'var(--md-sys-color-on-surface)' }}>Department Name</label>
                 <input
@@ -203,9 +197,17 @@ export default function DepartmentsPage() {
                 </Button>
               </div>
             </form>
-          </div>
-        </div>
-      )}
+          </Modal>
+        )}
+        
+        <ConfirmModal
+          isOpen={deleteModal.isOpen}
+          onClose={() => setDeleteModal({ isOpen: false, item: null })}
+          onConfirm={confirmDelete}
+          title="Delete Department"
+          message="Are you sure you want to delete"
+          itemName={deleteModal.item?.department}
+        />
     </div>
   );
 }

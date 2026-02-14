@@ -8,7 +8,7 @@
 
 .title {
   font: var(--md-sys-typescale-headline-medium);
-  color: #202124;
+  color: var(--md-sys-color-on-surface);
   margin: 0;
 }
 
@@ -43,7 +43,7 @@
 
 .field label {
   font: var(--md-sys-typescale-body-medium);
-  color: #5f6368;
+  color: var(--md-sys-color-on-surface-variant);
 }
 
 .field input,
@@ -54,7 +54,7 @@
   border-radius: var(--md-sys-shape-corner-small);
   font: var(--md-sys-typescale-body-large);
   background-color: var(--md-sys-color-surface);
-  color: #202124;
+  color: var(--md-sys-color-on-surface);
   outline: none;
   transition: border-color 0.2s ease;
 }
@@ -65,8 +65,8 @@
 }
 
 .field input::placeholder {
-  color: #5f6368 !important;
-  opacity: 1 !important;
+  color: var(--md-sys-color-on-surface-variant) !important;
+  opacity: 0.7 !important;
 }
 
 .field input[type="date"]::-webkit-calendar-picker-indicator {

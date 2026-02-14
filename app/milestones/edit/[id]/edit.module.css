@@ -1,0 +1,192 @@
+.container {
+  width: 100%;
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.title {
+  font: var(--md-sys-typescale-headline-medium);
+  color: var(--md-sys-color-on-surface);
+  margin: 0;
+}
+
+.form {
+  background-color: var(--md-sys-color-surface);
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: 24px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.section {
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+.sectionTitle {
+  font: var(--md-sys-typescale-title-medium);
+  color: var(--md-sys-color-on-surface);
+  margin: 0 0 20px 0;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fieldFull {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.field label,
+.fieldFull label {
+  font: var(--md-sys-typescale-body-medium);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.field input,
+.field select,
+.fieldFull textarea {
+  height: 48px;
+  padding: 0 16px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-small);
+  font: var(--md-sys-typescale-body-large);
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.fieldFull textarea {
+  height: auto;
+  padding: 12px 16px;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.fieldFull textarea:focus {
+  border-color: var(--md-sys-color-primary);
+}
+
+.field input::placeholder,
+.fieldFull textarea::placeholder {
+  color: var(--md-sys-color-on-surface-variant);
+  opacity: 0.7;
+}
+
+.field select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235f6368' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+}
+
+.calculatedField {
+  margin-top: 20px;
+  padding: 16px;
+  background-color: var(--md-sys-color-surface-variant);
+  border-radius: var(--md-sys-shape-corner-small);
+}
+
+.calculatedField label {
+  font: var(--md-sys-typescale-body-medium);
+  color: var(--md-sys-color-on-surface-variant);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.netAmount {
+  font: var(--md-sys-typescale-headline-small);
+  color: var(--md-sys-color-primary);
+  margin: 0;
+  font-weight: 600;
+}
+
+.deliverableCard {
+  padding: 20px;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-shape-corner-medium);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  margin-bottom: 16px;
+}
+
+.deliverableHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.deliverableNumber {
+  font: var(--md-sys-typescale-title-small);
+  color: var(--md-sys-color-on-surface);
+  font-weight: 500;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  font: var(--md-sys-typescale-label-large);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.removeBtn:hover {
+  background-color: rgba(231, 76, 60, 0.1);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+  .form {
+    padding: 20px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}

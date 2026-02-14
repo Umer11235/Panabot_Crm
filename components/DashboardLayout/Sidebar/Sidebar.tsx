@@ -28,6 +28,7 @@ const SidebarV1 = () => {
           children: [
             { title: 'Project List', path: '/projectlist' },
             { title: 'Create Project', path: '/newproject' },
+            { title: 'Milestones', path: '/milestones' },
             { title: 'Clients', path: '/clients' },
             { title: 'Teams', path: '/teams' }
           ] 

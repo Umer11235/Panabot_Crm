@@ -30,9 +30,9 @@ export default function ConfirmModal({
       confirmText={confirmText}
       confirmVariant="danger"
     >
-      <p style={{ color: '#5f6368', fontSize: '14px', lineHeight: '1.5' }}>
+      <p style={{ color: 'var(--md-sys-color-on-surface-variant)', fontSize: '14px', lineHeight: '1.5' }}>
         {message}
-        {itemName && <strong style={{ color: '#202124' }}> {itemName}</strong>}?
+        {itemName && <strong style={{ color: 'var(--md-sys-color-on-surface)' }}> {itemName}</strong>}?
       </p>
     </Modal>
   );

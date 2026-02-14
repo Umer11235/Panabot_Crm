@@ -55,7 +55,7 @@ export default function CompanyCard({
       </div>
       {(primaryAction || secondaryAction) ? (
         <div className={styles.actions}>
-          {primaryAction ? (
+          {/* {primaryAction ? (
             <Button
               variant="primary"
               size="sm"
@@ -67,7 +67,7 @@ export default function CompanyCard({
             >
               {primaryAction.label}
             </Button>
-          ) : null}
+          ) : null} */}
           {secondaryAction ? (
             <Button
               variant="outline"

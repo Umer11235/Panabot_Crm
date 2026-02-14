@@ -1,1 +1,38 @@
-"use client";import CompanyCard from "@/components/(Cards)/CompanyCard/CompanyCard";import Img1 from '../../public/images/clients.png';const clientData = {  name: "Apox Dynamics",  email: "apox@example.com",  contactPerson: "Freddie C. Wallace",  contactPhone: "+1 555-889-8899",  totalProjects: 7,  logoSrc: Img1,  primaryAction: {    label: "Message",    onClick: () => console.log("Message"),    loading: false,  },  secondaryAction: {    label: "View Project",    onClick: () => console.log("View Project"),  },};export default function ClientsPage() {  return (    <div>      <h1 style={{        font: 'var(--md-sys-typescale-headline-medium)',        color: 'var(--md-sys-color-on-surface)',        marginBottom: '24px'      }}>Clients</h1>      <div style={{        display: 'flex',        flexWrap: 'wrap',        gap: '20px'      }}>        {[...Array(4)].map((_, index) => (          <CompanyCard key={index} {...clientData} />        ))}      </div>    </div>  );}
+"use client";
+
+import CompanyCard from "@/components/(Cards)/CompanyCard/CompanyCard";
+import { clientsData } from '@/utils/data/clients.data';
+import Img1 from '../../public/images/clients.png';
+
+export default function ClientsPage() {
+  return (
+    <div>
+      <h1 style={{
+        font: 'var(--md-sys-typescale-headline-medium)',
+        color: 'var(--md-sys-color-on-surface)',
+        marginBottom: '24px'
+      }}>Clients</h1>
+      <div style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '20px'
+      }}>
+        {clientsData.map((client) => (
+          <CompanyCard
+            key={client.id}
+            name={client.name}
+            email={client.email}
+            contactPerson={client.contactPerson}
+            contactPhone={client.contactPhone}
+            totalProjects={client.totalProjects}
+            logoSrc={Img1}
+            secondaryAction={{
+              label: 'View Details',
+              onClick: () => (window.location.href = `/clients/view/${encodeURIComponent(client.id)}`)
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
