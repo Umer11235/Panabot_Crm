@@ -1,83 +1,82 @@
-.pageWrapper {
-  /* No extra wrapper needed */
-}
-
 .container {
   /* No padding - parent layout provides padding */
+}
+
+.header {
+  margin-bottom: 24px;
 }
 
 .title {
   font-size: 24px;
   font-weight: 400;
   color: var(--md-sys-color-on-surface);
-  margin: 0 0 24px 0;
+  margin: 0;
 }
 
-.formLayout {
+.form {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.section {
+  margin-bottom: 16px;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface);
+  margin-bottom: 12px;
+}
+
+.grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 32px;
-}
-
-.leftSection {
-  display: flex;
-  flex-direction: column;
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
 
-.row {
-  display: flex;
-  gap: 16px;
-}
-
-.fieldGroup {
-  flex: 1;
+.field {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.fullRow {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.fieldGroup label, .fullRow label {
+.field label {
   font-size: 14px;
   font-weight: 500;
   color: var(--md-sys-color-on-surface);
 }
 
-.fieldGroup input, .fieldGroup select {
+.field input,
+.field select,
+.field textarea {
+  height: 40px;
   padding: 0 12px;
   border: 1px solid var(--md-sys-color-outline);
   border-radius: 4px;
   font-size: 14px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
   background-color: var(--md-sys-color-surface);
   color: var(--md-sys-color-on-surface);
   outline: none;
   transition: all 0.2s ease;
-  height: 40px;
-  width: 100%;
-  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
-.fieldGroup input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(var(--calendar-icon-invert, 0));
-  cursor: pointer;
-}
+.field textarea { height: auto; padding: 12px; min-height: 120px; }
 
-.fieldGroup input:hover, .fieldGroup select:hover {
+.field input:hover,
+.field select:hover {
   border-color: var(--md-sys-color-on-surface-variant);
 }
 
-.fieldGroup input:focus, .fieldGroup select:focus {
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
   border-color: #ffd600;
 }
 
-.fieldGroup input::placeholder,
-.fieldGroup select::placeholder {
+.field input::placeholder {
   color: var(--md-sys-color-on-surface-variant);
   opacity: 0.6;
 }
@@ -89,32 +88,20 @@
   border: 1px solid var(--md-sys-color-outline);
   border-radius: 4px;
   font-size: 14px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
   background-color: var(--md-sys-color-surface);
   color: var(--md-sys-color-on-surface);
   display: flex;
   align-items: center;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-family: 'Google Sans', 'Roboto', sans-serif;
 }
 
 .selectBox:hover {
   border-color: var(--md-sys-color-on-surface-variant);
 }
 
-.rightSection {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.priorityDropdown {
+.statusDropdown {
   position: relative;
   width: 100%;
 }
@@ -189,30 +176,17 @@
   background-color: var(--md-sys-state-hover);
 }
 
-@media (max-width: 900px) {
-  .formLayout {
-    grid-template-columns: 1fr;
-  }
-  
-  .rightSection {
-    order: -1;
-  }
-  
-  .title {
-    font-size: 20px;
-  }
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
 }
 
-@media (max-width: 640px) {
-  .row {
-    flex-direction: column;
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
   }
-  
-  .fieldGroup input, .fieldGroup select, .selectBox {
-    height: 36px;
-    font-size: 13px;
-  }
-  
+
   .actions {
     flex-direction: column;
   }

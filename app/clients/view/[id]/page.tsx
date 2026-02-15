@@ -21,12 +21,17 @@ export default function ViewClientPage() {
     p => client.projectIds.includes(p.id) && p.status === 'Completed'
   );
 
+  // Filter pending projects for this client
+  const pendingProjects = projectsData.filter(
+    p => client.projectIds.includes(p.id) && p.status !== 'Completed'
+  );
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <h1 className={styles.title}>Client Details</h1>
         <div className={styles.actions}>
-          <Button variant="outline" size="sm" onClick={() => router.push('/clients')}>
+          <Button variant="outline" size="md" onClick={() => router.push('/clients')}>
             Back to List
           </Button>
         </div>
@@ -81,6 +86,42 @@ export default function ViewClientPage() {
             <label>Contract Period</label>
             <p>{client.contract}</p>
           </div>
+        </div>
+
+        <div className={styles.section}>
+          <h3 className={styles.sectionTitle}>Pending Projects ({pendingProjects.length})</h3>
+          {pendingProjects.length > 0 ? (
+            <div className={styles.projectsTable}>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Project ID</th>
+                    <th>Project Name</th>
+                    <th>Manager</th>
+                    <th>Budget</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pendingProjects.map((project) => (
+                    <tr key={project.id}>
+                      <td>{project.id}</td>
+                      <td>{project.name}</td>
+                      <td>{project.manager}</td>
+                      <td>${project.budget}</td>
+                      <td>{project.start}</td>
+                      <td>{project.end}</td>
+                      <td>{project.status}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p style={{ color: 'var(--md-sys-color-on-surface-variant)' }}>No pending projects.</p>
+          )}
         </div>
 
         <div className={styles.section}>

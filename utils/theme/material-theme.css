@@ -2,14 +2,16 @@
   --md-sys-color-primary: #1a73e8;
   --md-sys-color-on-primary: #ffffff;
   --md-sys-color-primary-container: #d3e3fd;
-  --md-sys-color-on-primary-container: #001c3a;
+  --md-sys-color-on-primary-container: #001a41;
   --md-sys-color-secondary: #5f6368;
   --md-sys-color-on-secondary: #ffffff;
   --md-sys-color-secondary-container: #e8eaed;
-  --md-sys-color-on-secondary-container: #1a1c1e;
+  --md-sys-color-on-secondary-container: #202124;
+  --md-sys-color-tertiary: #188038;
+  --md-sys-color-on-tertiary: #ffffff;
   --md-sys-color-surface: #ffffff;
-  --md-sys-color-surface-variant: #f8f9fa;
-  --md-sys-color-surface-container: #f1f3f4;
+  --md-sys-color-surface-variant: #f1f3f4;
+  --md-sys-color-surface-container: #f8f9fa;
   --md-sys-color-surface-container-high: #e8eaed;
   --md-sys-color-surface-container-highest: #dadce0;
   --md-sys-color-on-surface: #202124;
@@ -22,32 +24,40 @@
   --md-sys-color-on-error-container: #410002;
   --md-sys-color-outline: #dadce0;
   --md-sys-color-outline-variant: #e8eaed;
-  --md-sys-color-shadow: rgba(0, 0, 0, 0.12);
-  --md-sys-color-scrim: rgba(0, 0, 0, 0.32);
+  --md-sys-color-shadow: rgba(0, 0, 0, 0.1);
+  --md-sys-color-scrim: rgba(0, 0, 0, 0.4);
+  --md-sys-color-inverse-surface: #2f3033;
+  --md-sys-color-inverse-on-surface: #f1f0f4;
   
-  --md-sys-state-hover: rgba(0, 0, 0, 0.08);
-  --md-sys-state-focus: rgba(0, 0, 0, 0.12);
-  --md-sys-state-pressed: rgba(0, 0, 0, 0.12);
-  --md-sys-primary-hover: #1557b0;
+  --md-sys-state-hover: rgba(26, 115, 232, 0.04);
+  --md-sys-state-focus: rgba(26, 115, 232, 0.12);
+  --md-sys-state-pressed: rgba(26, 115, 232, 0.16);
+  --md-sys-primary-hover: #1765cc;
   
   --calendar-icon-invert: 0;
   
+  --md-sys-elevation-0: none;
   --md-sys-elevation-1: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
   --md-sys-elevation-2: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
   --md-sys-elevation-3: 0 4px 8px 3px rgba(60, 64, 67, 0.15), 0 1px 3px rgba(60, 64, 67, 0.3);
+  --md-sys-elevation-4: 0 6px 10px 4px rgba(60, 64, 67, 0.15), 0 2px 3px rgba(60, 64, 67, 0.3);
+  --md-sys-elevation-5: 0 8px 12px 6px rgba(60, 64, 67, 0.15), 0 4px 4px rgba(60, 64, 67, 0.3);
   
-  --md-sys-shape-corner-small: 8px;
-  --md-sys-shape-corner-medium: 12px;
-  --md-sys-shape-corner-large: 16px;
-  --md-sys-shape-corner-extra-large: 28px;
+  --md-sys-shape-corner-none: 0px;
+  --md-sys-shape-corner-extra-small: 4px;
+  --md-sys-shape-corner-small: 4px;
+  --md-sys-shape-corner-medium: 8px;
+  --md-sys-shape-corner-large: 8px;
+  --md-sys-shape-corner-extra-large: 24px;
+  --md-sys-shape-corner-full: 9999px;
   
   --md-sys-typescale-display-large: 400 57px/64px 'Google Sans', 'Roboto', sans-serif;
   --md-sys-typescale-display-medium: 400 45px/52px 'Google Sans', 'Roboto', sans-serif;
   --md-sys-typescale-display-small: 400 36px/44px 'Google Sans', 'Roboto', sans-serif;
   --md-sys-typescale-headline-large: 400 32px/40px 'Google Sans', 'Roboto', sans-serif;
-  --md-sys-typescale-headline-medium: 400 28px/36px 'Google Sans', 'Roboto', sans-serif;
-  --md-sys-typescale-headline-small: 400 24px/32px 'Google Sans', 'Roboto', sans-serif;
-  --md-sys-typescale-title-large: 500 22px/28px 'Roboto', sans-serif;
+  --md-sys-typescale-headline-medium: 400 24px/32px 'Google Sans', 'Roboto', sans-serif;
+  --md-sys-typescale-headline-small: 400 22px/28px 'Google Sans', 'Roboto', sans-serif;
+  --md-sys-typescale-title-large: 500 20px/28px 'Google Sans', 'Roboto', sans-serif;
   --md-sys-typescale-title-medium: 500 16px/24px 'Roboto', sans-serif;
   --md-sys-typescale-title-small: 500 14px/20px 'Roboto', sans-serif;
   --md-sys-typescale-body-large: 400 16px/24px 'Roboto', sans-serif;
@@ -67,6 +77,8 @@
   --md-sys-color-on-secondary: #2d3134;
   --md-sys-color-secondary-container: #43474b;
   --md-sys-color-on-secondary-container: #e8eaed;
+  --md-sys-color-tertiary: #81c995;
+  --md-sys-color-on-tertiary: #003a1a;
   --md-sys-color-surface: #202124;
   --md-sys-color-surface-variant: #292a2d;
   --md-sys-color-surface-container: #2d2e30;
@@ -84,30 +96,38 @@
   --md-sys-color-outline-variant: #3c4043;
   --md-sys-color-shadow: rgba(0, 0, 0, 0.3);
   --md-sys-color-scrim: rgba(0, 0, 0, 0.6);
+  --md-sys-color-inverse-surface: #e3e2e6;
+  --md-sys-color-inverse-on-surface: #1a1c1e;
   
-  --md-sys-state-hover: rgba(255, 255, 255, 0.08);
-  --md-sys-state-focus: rgba(255, 255, 255, 0.12);
-  --md-sys-state-pressed: rgba(255, 255, 255, 0.12);
+  --md-sys-state-hover: rgba(138, 180, 248, 0.08);
+  --md-sys-state-focus: rgba(138, 180, 248, 0.12);
+  --md-sys-state-pressed: rgba(138, 180, 248, 0.16);
   --md-sys-primary-hover: #669df6;
   
   --calendar-icon-invert: 1;
   
+  --md-sys-elevation-0: none;
   --md-sys-elevation-1: 0 1px 3px 1px rgba(0, 0, 0, 0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --md-sys-elevation-2: 0 2px 6px 2px rgba(0, 0, 0, 0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --md-sys-elevation-3: 0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --md-sys-elevation-4: 0 6px 10px 4px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.3);
+  --md-sys-elevation-5: 0 8px 12px 6px rgba(0, 0, 0, 0.15), 0 4px 4px rgba(0, 0, 0, 0.3);
   
-  --md-sys-shape-corner-small: 8px;
-  --md-sys-shape-corner-medium: 12px;
-  --md-sys-shape-corner-large: 16px;
-  --md-sys-shape-corner-extra-large: 28px;
+  --md-sys-shape-corner-none: 0px;
+  --md-sys-shape-corner-extra-small: 4px;
+  --md-sys-shape-corner-small: 4px;
+  --md-sys-shape-corner-medium: 8px;
+  --md-sys-shape-corner-large: 8px;
+  --md-sys-shape-corner-extra-large: 24px;
+  --md-sys-shape-corner-full: 9999px;
   
   --md-sys-typescale-display-large: 400 57px/64px 'Google Sans', 'Roboto', sans-serif;
   --md-sys-typescale-display-medium: 400 45px/52px 'Google Sans', 'Roboto', sans-serif;
   --md-sys-typescale-display-small: 400 36px/44px 'Google Sans', 'Roboto', sans-serif;
   --md-sys-typescale-headline-large: 400 32px/40px 'Google Sans', 'Roboto', sans-serif;
-  --md-sys-typescale-headline-medium: 400 28px/36px 'Google Sans', 'Roboto', sans-serif;
-  --md-sys-typescale-headline-small: 400 24px/32px 'Google Sans', 'Roboto', sans-serif;
-  --md-sys-typescale-title-large: 500 22px/28px 'Roboto', sans-serif;
+  --md-sys-typescale-headline-medium: 400 24px/32px 'Google Sans', 'Roboto', sans-serif;
+  --md-sys-typescale-headline-small: 400 22px/28px 'Google Sans', 'Roboto', sans-serif;
+  --md-sys-typescale-title-large: 500 20px/28px 'Google Sans', 'Roboto', sans-serif;
   --md-sys-typescale-title-medium: 500 16px/24px 'Roboto', sans-serif;
   --md-sys-typescale-title-small: 500 14px/20px 'Roboto', sans-serif;
   --md-sys-typescale-body-large: 400 16px/24px 'Roboto', sans-serif;

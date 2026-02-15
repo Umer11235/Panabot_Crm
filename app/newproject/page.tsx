@@ -1,15 +1,14 @@
 "use client";
 
 import CreateProjectPage from "@/components/(Forms)/ProjectForm/ProjectForm";
+import styles from './newproject.module.css';
 
 export default function NewProjectPage() {
   return (
-    <div>
-      <h1 style={{
-        font: 'var(--md-sys-typescale-headline-medium)',
-        color: 'var(--md-sys-color-on-surface)',
-        marginBottom: '24px'
-      }}>Create New Project</h1>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h1 className={styles.title}>Create New Project</h1>
+      </div>
       <CreateProjectPage />
     </div>
   );

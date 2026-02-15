@@ -76,99 +76,10 @@
   border-color: var(--md-sys-color-primary);
 }
 
-.cardGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-  padding: 0 24px;
-}
-
-.card {
-  display: flex;
-  gap: 12px;
-  padding: 16px;
-  border: 2px solid var(--md-sys-color-outline-variant);
-  border-radius: var(--md-sys-shape-corner-medium);
-  cursor: pointer;
-  transition: all 0.2s;
-  background-color: var(--md-sys-color-surface);
-}
-
-.card:hover {
-  border-color: var(--md-sys-color-primary);
-  background-color: var(--md-sys-state-hover);
-}
-
-.card.selected {
-  border-color: var(--md-sys-color-primary);
-  background-color: var(--md-sys-color-primary-container);
-}
-
-.cardImage {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-
-.cardContent {
-  flex: 1;
-  min-width: 0;
-}
-
-.cardContent h3 {
-  font: var(--md-sys-typescale-title-small);
-  color: var(--md-sys-color-on-surface);
-  margin: 0 0 4px 0;
-  font-weight: 500;
-}
-
-.cardContent p {
-  font: var(--md-sys-typescale-body-small);
-  color: var(--md-sys-color-on-surface-variant);
-  margin: 0;
-}
-
-.email {
-  font-size: 12px !important;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 .selectedSection {
   padding: 16px 24px;
   background-color: var(--md-sys-color-surface-variant);
   border-bottom: 1px solid var(--md-sys-color-outline-variant);
-}
-
-.tabButtons {
-  display: flex;
-  gap: 8px;
-  padding: 16px 24px;
-  border-bottom: 1px solid var(--md-sys-color-outline-variant);
-}
-
-.tabBtn {
-  padding: 8px 16px;
-  border: none;
-  background-color: transparent;
-  color: var(--md-sys-color-on-surface-variant);
-  font: var(--md-sys-typescale-label-large);
-  font-weight: 500;
-  cursor: pointer;
-  border-radius: var(--md-sys-shape-corner-full);
-  transition: all 0.2s;
-}
-
-.tabBtn:hover {
-  background-color: var(--md-sys-state-hover);
-}
-
-.tabBtn.activeTab {
-  background-color: var(--md-sys-color-secondary-container);
-  color: var(--md-sys-color-on-secondary-container);
 }
 
 .selectedSection h3 {
@@ -233,97 +144,73 @@
   display: inline-block;
 }
 
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  padding: 0 24px;
+}
+
+.card {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border: 2px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: var(--md-sys-color-surface);
+}
+
+.card:hover {
+  border-color: var(--md-sys-color-primary);
+  background-color: var(--md-sys-state-hover);
+}
+
+.card.selected {
+  border-color: var(--md-sys-color-primary);
+  background-color: var(--md-sys-color-primary-container);
+}
+
+.cardImage {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.cardContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.cardContent h3 {
+  font: var(--md-sys-typescale-title-small);
+  color: var(--md-sys-color-on-surface);
+  margin: 0 0 4px 0;
+  font-weight: 500;
+}
+
+.cardContent p {
+  font: var(--md-sys-typescale-body-small);
+  color: var(--md-sys-color-on-surface-variant);
+  margin: 0;
+}
+
+.email {
+  font-size: 12px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .actions {
   display: flex;
   gap: 12px;
   padding: 16px 24px;
   border-top: 1px solid var(--md-sys-color-outline-variant);
   justify-content: flex-end;
-}
-
-.teamCard {
-  padding: 20px;
-  border: 2px solid var(--md-sys-color-outline-variant);
-  border-radius: var(--md-sys-shape-corner-large);
-  cursor: pointer;
-  transition: all 0.2s;
-  background-color: var(--md-sys-color-surface);
-}
-
-.teamCard:hover {
-  border-color: var(--md-sys-color-primary);
-  background-color: var(--md-sys-state-hover);
-}
-
-.teamCard.selected {
-  border-color: var(--md-sys-color-primary);
-  background-color: var(--md-sys-color-primary-container);
-}
-
-.teamCard h3 {
-  font: var(--md-sys-typescale-title-medium);
-  color: var(--md-sys-color-on-surface);
-  margin: 0 0 8px 0;
-}
-
-.department {
-  font: var(--md-sys-typescale-body-medium);
-  color: var(--md-sys-color-on-surface-variant);
-  margin: 0 0 4px 0;
-}
-
-.memberCount {
-  font: var(--md-sys-typescale-body-small);
-  color: var(--md-sys-color-primary);
-  margin: 0 0 12px 0;
-  font-weight: 500;
-}
-
-.memberList {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.memberName {
-  font: var(--md-sys-typescale-body-small);
-  color: var(--md-sys-color-on-surface-variant);
-}
-
-.teamMembers {
-  display: flex;
-  gap: 8px;
-  margin-top: 12px;
-}
-
-.teamMemberAvatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--md-sys-color-surface);
-}
-
-.workloadBar {
-  width: 100%;
-  height: 8px;
-  background-color: var(--md-sys-color-surface-variant);
-  border-radius: 999px;
-  overflow: hidden;
-  margin-top: 12px;
-}
-
-.workloadFill {
-  height: 100%;
-  border-radius: 999px;
-  transition: width 0.3s ease;
-}
-
-.workloadText {
-  font: var(--md-sys-typescale-body-small);
-  color: var(--md-sys-color-on-surface-variant);
-  margin: 4px 0 0 0;
-  font-weight: 500;
 }
 
 @media (max-width: 768px) {

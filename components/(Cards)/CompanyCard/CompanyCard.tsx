@@ -77,6 +77,7 @@ export default function CompanyCard({
               disabled={!!secondaryAction.disabled}
               loadingText="Loading..."
               type="button"
+              fullWidth={true}
             >
               {secondaryAction.label}
             </Button>

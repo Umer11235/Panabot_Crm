@@ -20,10 +20,10 @@ export default function ViewProjectPage() {
       <div className={styles.header}>
         <h1 className={styles.title}>Project Details</h1>
         <div className={styles.actions}>
-          <Button variant="primary" size="sm" onClick={() => router.push(`/projectlist/edit/${encodeURIComponent(project.id)}`)}>
+          <Button variant="outline" size="md" onClick={() => router.push(`/projectlist/edit/${encodeURIComponent(project.id)}`)}>
             Edit Project
           </Button>
-          <Button variant="outline" size="sm" onClick={() => router.push('/projectlist')}>
+          <Button variant="outline" size="md" onClick={() => router.push('/projectlist')}>
             Back to List
           </Button>
         </div>
@@ -92,7 +92,7 @@ export default function ViewProjectPage() {
         <div className={styles.section}>
           <div className={styles.sectionHeader}>
             <h3 className={styles.sectionTitle}>Client Information</h3>
-            <Button variant="outline" size="sm" onClick={() => router.push('/clients')}>
+            <Button variant="outline" size="md" onClick={() => router.push('/clients')}>
               View Details
             </Button>
           </div>

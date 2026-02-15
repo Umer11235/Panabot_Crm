@@ -3,15 +3,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  font: var(--md-sys-typescale-title-small);
+  gap: 6px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
   font-weight: 500;
-  letter-spacing: 0.1px;
+  letter-spacing: 0.25px;
   border: none;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
   outline: none;
+  text-transform: none;
 }
 
 .btn:focus-visible {
@@ -21,27 +22,28 @@
 
 /* Primary Button */
 .primary {
-  background-color: var(--md-sys-color-primary);
-  color: var(--md-sys-color-on-primary);
+  background-color: #373737;
+  color: #ffffff;
 }
 
 .primary:hover:not(:disabled) {
-  background-color: var(--md-sys-primary-hover);
+  background-color: #4a4a4a;
 }
 
 .primary:active:not(:disabled) {
-  background-color: var(--md-sys-primary-hover);
+  background-color: #4a4a4a;
 }
 
 /* Outline Button */
 .outline {
   background-color: transparent;
-  color: var(--md-sys-color-primary);
-  border: none;
+  color: var(--md-sys-color-on-surface);
+  border: 1px solid var(--md-sys-color-outline);
 }
 
 .outline:hover:not(:disabled) {
   background-color: var(--md-sys-state-hover);
+  border-color: var(--md-sys-color-on-surface-variant);
 }
 
 .outline:active:not(:disabled) {
@@ -64,24 +66,24 @@
 
 /* Sizes */
 .sm {
-  height: 32px;
-  padding: 0 20px;
+  height: 28px;
+  padding: 0 12px;
   font-size: 13px;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 .md {
-  height: 40px;
-  padding: 0 28px;
-  font-size: 14px;
-  border-radius: 8px;
+  height: 32px;
+  padding: 0 16px;
+  font-size: 13px;
+  border-radius: 4px;
 }
 
 .lg {
-  height: 48px;
+  height: 36px;
   padding: 0 20px;
-  font-size: 15px;
-  border-radius: 8px;
+  font-size: 14px;
+  border-radius: 4px;
 }
 
 /* Full Width */

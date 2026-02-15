@@ -46,8 +46,8 @@ export interface Milestone {
 export const milestonesData: Milestone[] = [
   {
     milestoneId: '#M-001',
-    projectId: '#PRJ-001',
-    projectName: 'Website Redesign',
+    projectId: '#951',
+    projectName: 'Hotel management system',
     title: 'Frontend Development',
     description: 'Complete frontend implementation with React and TypeScript',
     status: 'In Progress',
@@ -60,9 +60,9 @@ export const milestonesData: Milestone[] = [
     currency: 'USD',
     taxAmount: 500,
     platformFee: 250,
-    netAmount: 4250,
+    netAmount: 5750,
     amountReceived: 2000,
-    remainingAmount: 3000,
+    remainingAmount: 3750,
     deliverables: [
       {
         deliverableId: '#D-001',
@@ -97,8 +97,8 @@ export const milestonesData: Milestone[] = [
   },
   {
     milestoneId: '#M-002',
-    projectId: '#PRJ-001',
-    projectName: 'Website Redesign',
+    projectId: '#951',
+    projectName: 'Hotel management system',
     title: 'Backend API Development',
     description: 'RESTful API with authentication and database integration',
     status: 'Pending',
@@ -110,16 +110,16 @@ export const milestonesData: Milestone[] = [
     currency: 'USD',
     taxAmount: 700,
     platformFee: 350,
-    netAmount: 5950,
+    netAmount: 8050,
     amountReceived: 0,
-    remainingAmount: 7000,
+    remainingAmount: 8050,
     deliverables: [],
     payments: []
   },
   {
     milestoneId: '#M-003',
-    projectId: '#PRJ-002',
-    projectName: 'Mobile App',
+    projectId: '#547',
+    projectName: 'Product development',
     title: 'UI/UX Design',
     description: 'Complete app design with prototypes',
     status: 'Completed',
@@ -132,8 +132,8 @@ export const milestonesData: Milestone[] = [
     currency: 'USD',
     taxAmount: 300,
     platformFee: 150,
-    netAmount: 2550,
-    amountReceived: 3000,
+    netAmount: 3450,
+    amountReceived: 3450,
     remainingAmount: 0,
     deliverables: [
       {
@@ -159,7 +159,7 @@ export const milestonesData: Milestone[] = [
       {
         paymentId: '#P-002',
         milestoneId: '#M-003',
-        amount: 1500,
+        amount: 1725,
         paymentMethod: 'Bank',
         transactionId: 'bank_789',
         status: 'Paid',
@@ -169,7 +169,7 @@ export const milestonesData: Milestone[] = [
       {
         paymentId: '#P-003',
         milestoneId: '#M-003',
-        amount: 1500,
+        amount: 1725,
         paymentMethod: 'Bank',
         transactionId: 'bank_790',
         status: 'Paid',

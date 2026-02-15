@@ -1,4 +1,4 @@
-export const paginateData = (data: any[], page: number, pageSize: number) => {
+export const paginateData = <T,>(data: T[], page: number, pageSize: number) => {
   const startIndex = (page - 1) * pageSize;
   const endIndex = startIndex + pageSize;
   return data.slice(startIndex, endIndex);

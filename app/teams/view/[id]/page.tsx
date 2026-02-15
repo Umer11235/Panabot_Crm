@@ -20,7 +20,7 @@ export default function ViewTeamPage() {
       <div className={styles.header}>
         <h1 className={styles.title}>Team Details</h1>
         <div className={styles.actions}>
-          <Button variant="outline" size="sm" onClick={() => router.push('/teams')}>
+          <Button variant="outline" size="md" onClick={() => router.push('/teams')}>
             Back to List
           </Button>
         </div>
@@ -51,10 +51,6 @@ export default function ViewTeamPage() {
               <p>{team.projects}</p>
             </div>
             <div className={styles.field}>
-              <label>Progress</label>
-              <p>{team.progress}%</p>
-            </div>
-            <div className={styles.field}>
               <label>Created</label>
               <p>{team.createdAt}</p>
             </div>
@@ -71,11 +67,17 @@ export default function ViewTeamPage() {
 
         <div className={styles.section}>
           <h3 className={styles.sectionTitle}>Members</h3>
-          <div className={styles.grid}>
+          <div className={styles.teamGrid}>
             {team.members.map((m) => (
-              <div key={m.id} className={styles.field}>
-                <label>{m.name}</label>
-                <p>{m.name}</p>
+              <div key={m.id} className={styles.teamMember}>
+                <div className={styles.memberAvatar}>
+                  <img src="/images/users.jpg" alt={m.name} />
+                </div>
+                <div className={styles.memberInfo}>
+                  <p className={styles.memberName}>{m.name}</p>
+                  <p className={styles.memberRole}>{m.role || 'Team Member'}</p>
+                  <p className={styles.memberDept}>{m.department || 'Development'}</p>
+                </div>
               </div>
             ))}
           </div>

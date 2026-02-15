@@ -32,7 +32,7 @@ export const projectColumns: DataTableColumn<Project>[] = [
       };
       const style = colors[item.status] || colors['Pending'];
       return (
-        <span style={{ background: style.bg, color: style.text, padding: '4px 8px', borderRadius: '4px', fontSize: '11px', fontWeight: 600 }}>
+        <span style={{ background: style.bg, color: style.text, padding: '4px 8px', borderRadius: '4px', fontSize: '11px', fontWeight: 600, whiteSpace: 'nowrap' }}>
           {item.status}
         </span>
       );

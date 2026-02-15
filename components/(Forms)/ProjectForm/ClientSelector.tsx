@@ -68,10 +68,10 @@ export default function ClientSelector({ isOpen, onClose, onSelect, selected }: 
         </div>
 
         <div className={styles.actions}>
-          <Button variant="outline" size="lg" onClick={onClose}>
+          <Button variant="outline" size="md" onClick={onClose}>
             Cancel
           </Button>
-          <Button variant="primary" size="lg" onClick={handleConfirm}>
+          <Button variant="primary" size="md" onClick={handleConfirm}>
             Confirm
           </Button>
         </div>

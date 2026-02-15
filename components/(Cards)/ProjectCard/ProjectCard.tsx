@@ -31,7 +31,7 @@ export default function ProjectCard({
         <div className={styles.leader}>
           <div className={styles.avatarWrap}>
             {leaderAvatarSrc ? (
-              <Image className={styles.avatarImg} src={leaderAvatarSrc} alt={leaderName} />
+              <Image className={styles.avatarImg} src={leaderAvatarSrc} alt={leaderName} width={48} height={48} />
             ) : (
               <div className={styles.avatarFallback} aria-hidden="true" />
             )}
@@ -87,13 +87,14 @@ export default function ProjectCard({
 
         <div className={styles.cta}>
           <Button
-            variant="primary"
+            variant="outline"
             size="sm"
             onClick={onCtaClick}
             loading={ctaLoading}
             disabled={ctaDisabled}
             loadingText="Loading..."
             type="button"
+            fullWidth={true}
           >
             {ctaLabel}
           </Button>

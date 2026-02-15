@@ -1,31 +1,26 @@
 "use client";
 
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { teamsData } from '@/utils/data/teams.data';
 import Button from '@/components/(Inputs)/Button/Button';
 import MemberSelector from '@/components/MemberSelector/MemberSelector';
 import LeaderSelector from '@/components/LeaderSelector/LeaderSelector';
-import styles from './edit.module.css';
+import styles from './new.module.css';
 
-export default function EditTeamPage() {
-  const params = useParams();
+export default function NewTeamPage() {
   const router = useRouter();
-  const decodedId = decodeURIComponent(params.id as string);
-  const team = teamsData.find(t => t.id === decodedId);
-
   const [formData, setFormData] = useState({
-    name: team?.name || '',
-    leader: team?.leader || '',
-    leaderRole: team?.leaderRole || '',
-    projects: team?.projects || 0,
-    progress: team?.progress || 0,
-    status: team?.status || 'Active',
-    description: team?.description || ''
+    name: '',
+    leader: '',
+    leaderRole: '',
+    projects: 0,
+    progress: 0,
+    status: 'Active',
+    description: ''
   });
   const [showMemberModal, setShowMemberModal] = useState(false);
   const [showLeaderModal, setShowLeaderModal] = useState(false);
-  const [selectedMembers, setSelectedMembers] = useState<any>(team?.members || []);
+  const [selectedMembers, setSelectedMembers] = useState<any>([]);
   const [selectedLeader, setSelectedLeader] = useState<any>(null);
   const [statusOpen, setStatusOpen] = useState(false);
 
@@ -42,28 +37,24 @@ export default function EditTeamPage() {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [statusOpen]);
 
-  if (!team) {
-    return <div>Team not found</div>;
-  }
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Updated team:', formData, 'Members:', selectedMembers);
-    alert('Team updated successfully!');
+    console.log('Creating team:', formData, 'Members:', selectedMembers);
+    alert('Team created successfully!');
     router.push('/teams');
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1 className={styles.title}>Edit Team</h1>
+        <h1 className={styles.title}>Add New Team</h1>
       </div>
 
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.section}>
           <div className={styles.grid}>
             <div className={styles.field}>
-              <label>Team Name</label>
+              <label>Team Name *</label>
               <input
                 type="text"
                 placeholder="Enter team name"
@@ -73,9 +64,9 @@ export default function EditTeamPage() {
               />
             </div>
             <div className={styles.field}>
-              <label>Leader</label>
+              <label>Leader *</label>
               <div className={styles.selectBox} onClick={() => setShowLeaderModal(true)}>
-                {selectedLeader ? selectedLeader.name : formData.leader || 'Click to select leader'}
+                {selectedLeader ? selectedLeader.name : 'Click to select leader'}
               </div>
             </div>
             <div className={styles.field}>
@@ -132,7 +123,7 @@ export default function EditTeamPage() {
 
         <div className={styles.actions}>
           <Button variant="outline" type="submit" size="md">
-            Update Team
+            Create Team
           </Button>
           <Button variant="outline" type="button" size="md" onClick={() => router.push('/teams')}>
             Cancel

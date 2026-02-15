@@ -1,0 +1,86 @@
+.container {
+  /* No padding or border - matches create project */
+  background-color: transparent;
+  border: none;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+}
+
+.field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface);
+}
+
+.field input,
+.field select,
+.field textarea {
+  padding: 0 12px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  outline: none;
+  transition: all 0.2s ease;
+  height: 40px;
+  width: 100%;
+}
+
+.field input:hover,
+.field select:hover {
+  border-color: var(--md-sys-color-on-surface-variant);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: #ffd600;
+}
+
+.field input::placeholder,
+.field select::placeholder,
+.field textarea::placeholder {
+  color: var(--md-sys-color-on-surface-variant);
+  opacity: 0.6;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+@media (max-width: 640px) {
+  .row {
+    flex-direction: column;
+  }
+  
+  .field input,
+  .field select {
+    height: 36px;
+    font-size: 13px;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+}

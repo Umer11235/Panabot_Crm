@@ -1,17 +1,37 @@
 "use client";
 
 import DataTable from "@/components/DataTable/ProjectTable";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { projectsData } from "@/utils/data/projects.data";
 import { paginateData, handlePageChange } from "./functions";
 import { projectColumns } from "@/utils/columns";
+import ProjectCard from "@/components/(Cards)/ProjectCard/ProjectCard";
+import Button from "@/components/(Inputs)/Button/Button";
 import ConfirmModal from "@/components/Modal/ConfirmModal";
+import styles from "./projectlist.module.css";
 
 export default function ProjectListPage() {
   const [page, setPage] = useState(1);
   const [pageSize] = useState(10);
+  const [viewMode, setViewMode] = useState<'card' | 'table'>('card');
   const [deleteModal, setDeleteModal] = useState({ isOpen: false, item: null as any });
+  const [openMenuId, setOpenMenuId] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterStatus, setFilterStatus] = useState('all');
+  const [filterOpen, setFilterOpen] = useState(false);
   const paginatedData = paginateData(projectsData, page, pageSize);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest(`.${styles.dropdown}`) && !target.closest(`.${styles.filterDropdown}`)) {
+        setOpenMenuId(null);
+        setFilterOpen(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
 
   const handleDelete = (project: any) => {
     setDeleteModal({ isOpen: true, item: project });
@@ -24,26 +44,133 @@ export default function ProjectListPage() {
   };
 
   return (
-    <div>
-      <h1 style={{
-        font: 'var(--md-sys-typescale-headline-medium)',
-        color: 'var(--md-sys-color-on-surface)',
-        marginBottom: '24px'
-      }}>All Projects</h1>
-      <DataTable
-        title=""
-        data={paginatedData}
-        columns={projectColumns}
-        addButtonText="+ Add New Project"
-        onAdd={() => window.location.href = '/newproject'}
-        onView={(p) => window.location.href = `/projectlist/view/${encodeURIComponent(p.id)}`}
-        onEdit={(p) => window.location.href = `/projectlist/edit/${encodeURIComponent(p.id)}`}
-        onDelete={handleDelete}
-        currentPage={page}
-        pageSize={pageSize}
-        totalEntries={projectsData.length}
-        onPageChange={(newPage) => handlePageChange(newPage, setPage)}
-      />
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h1 className={styles.title}>All Projects</h1>
+        <div className={styles.actions}>
+          <div className={styles.viewToggle}>
+            <button 
+              className={`${styles.viewBtn} ${viewMode === 'card' ? styles.active : ''}`}
+              onClick={() => setViewMode('card')}
+            >
+              Card View
+            </button>
+            <button 
+              className={`${styles.viewBtn} ${viewMode === 'table' ? styles.active : ''}`}
+              onClick={() => setViewMode('table')}
+            >
+              Table View
+            </button>
+          </div>
+          <button className={styles.addBtn} onClick={() => window.location.href = '/newproject'}>
+            + Add New Project
+          </button>
+        </div>
+      </div>
+
+      <div className={styles.searchBar}>
+        <input
+          type="text"
+          placeholder="Search projects..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className={styles.searchInput}
+        />
+        <div className={styles.filterDropdown}>
+          <button
+            className={styles.filterBtn}
+            onClick={() => setFilterOpen(!filterOpen)}
+          >
+            {filterStatus === 'all' ? 'All Status' : filterStatus}
+          </button>
+          <div className={`${styles.filterMenu} ${filterOpen ? styles.show : ''}`}>
+            <button className={filterStatus === 'all' ? styles.active : ''} onClick={() => { setFilterStatus('all'); setFilterOpen(false); }}>All Status</button>
+            <button className={filterStatus === 'Completed' ? styles.active : ''} onClick={() => { setFilterStatus('Completed'); setFilterOpen(false); }}>Completed</button>
+            <button className={filterStatus === 'In Progress' ? styles.active : ''} onClick={() => { setFilterStatus('In Progress'); setFilterOpen(false); }}>In Progress</button>
+            <button className={filterStatus === 'Not Started' ? styles.active : ''} onClick={() => { setFilterStatus('Not Started'); setFilterOpen(false); }}>Not Started</button>
+          </div>
+        </div>
+      </div>
+      
+      {viewMode === 'card' ? (
+        <>
+          <div className={styles.grid}>
+            {paginatedData.map((project, index) => (
+              <ProjectCard
+                key={`${project.id}-${index}`}
+                leaderName={project.manager}
+                leaderRole="Project Manager"
+                leaderAvatarSrc="/images/users.jpg"
+                title={project.name}
+                members={project.team?.map((m: any) => ({ id: m.id, name: m.name, avatarSrc: '/images/users.jpg' })) || []}
+                progress={project.progress}
+                progressLabel="Team Members:"
+                ctaLabel="View Details"
+                onCtaClick={() => window.location.href = `/projectlist/view/${encodeURIComponent(project.id)}`}
+                menu={
+                  <div className={styles.dropdown}>
+                    <button 
+                      className={styles.menuBtn} 
+                      onClick={() => setOpenMenuId(openMenuId === project.id ? null : project.id)}
+                    >
+                      •••
+                    </button>
+                    <div className={`${styles.dropdownMenu} ${openMenuId === project.id ? styles.show : ''}`}>
+                      <button onClick={() => { setOpenMenuId(null); window.location.href = `/projectlist/view/${encodeURIComponent(project.id)}`; }}>View</button>
+                      <button onClick={() => { setOpenMenuId(null); window.location.href = `/projectlist/edit/${encodeURIComponent(project.id)}`; }}>Edit</button>
+                      <button onClick={() => { setOpenMenuId(null); window.location.href = `/milestones/view/${encodeURIComponent(project.id)}`; }}>View Milestones</button>
+                      <button onClick={() => { setOpenMenuId(null); handleDelete(project); }}>Delete</button>
+                    </div>
+                  </div>
+                }
+              />
+            ))}
+          </div>
+          <div className={styles.pagination}>
+            <p>Showing {(page - 1) * pageSize + 1} to {Math.min(page * pageSize, projectsData.length)} of {projectsData.length} entries</p>
+            <div className={styles.paginationBtns}>
+              <button
+                className={styles.paginationBtn}
+                disabled={page === 1}
+                onClick={() => handlePageChange(page - 1, setPage)}
+              >
+                ←
+              </button>
+              {[...Array(Math.ceil(projectsData.length / pageSize))].map((_, i) => (
+                <button
+                  key={i}
+                  className={`${styles.paginationBtn} ${page === i + 1 ? styles.active : ''}`}
+                  onClick={() => handlePageChange(i + 1, setPage)}
+                >
+                  {i + 1}
+                </button>
+              ))}
+              <button
+                className={styles.paginationBtn}
+                disabled={page === Math.ceil(projectsData.length / pageSize)}
+                onClick={() => handlePageChange(page + 1, setPage)}
+              >
+                →
+              </button>
+            </div>
+          </div>
+        </>
+      ) : (
+        <DataTable
+          title=""
+          data={paginatedData}
+          columns={projectColumns}
+          addButtonText=""
+          onView={(p) => window.location.href = `/projectlist/view/${encodeURIComponent(p.id)}`}
+          onEdit={(p) => window.location.href = `/projectlist/edit/${encodeURIComponent(p.id)}`}
+          onViewMilestones={(p) => window.location.href = `/milestones/view/${encodeURIComponent(p.id)}`}
+          onDelete={handleDelete}
+          currentPage={page}
+          pageSize={pageSize}
+          totalEntries={projectsData.length}
+          onPageChange={(newPage) => handlePageChange(newPage, setPage)}
+        />
+      )}
       
       <ConfirmModal
         isOpen={deleteModal.isOpen}

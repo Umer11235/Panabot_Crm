@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { projectsData } from '@/utils/data/projects.data';
 import styles from './edit.module.css';
@@ -9,6 +9,7 @@ import FileUpload from '@/components/FileUpload/FileUpload';
 import Button from '@/components/(Inputs)/Button/Button';
 import ClientSelector from '@/components/(Forms)/ProjectForm/ClientSelector';
 import TeamSelector from '@/components/(Forms)/ProjectForm/TeamSelector';
+import ManagerSelector from '@/components/(Forms)/ProjectForm/ManagerSelector';
 import MilestoneManager from '@/components/(Forms)/ProjectForm/MilestoneManager';
 
 export default function EditProjectPage() {
@@ -35,9 +36,23 @@ export default function EditProjectPage() {
   const [attachedFiles, setAttachedFiles] = useState<File[]>([]);
   const [showClientModal, setShowClientModal] = useState(false);
   const [showTeamModal, setShowTeamModal] = useState(false);
+  const [showManagerModal, setShowManagerModal] = useState(false);
   const [selectedClient, setSelectedClient] = useState<any>(null);
-  const [selectedTeam, setSelectedTeam] = useState<any[]>([]);
+  const [selectedTeam, setSelectedTeam] = useState<any>({ teams: [], additionalMembers: [] });
+  const [selectedManager, setSelectedManager] = useState<any>(null);
   const [milestones, setMilestones] = useState<any[]>([]);
+  const [priorityOpen, setPriorityOpen] = useState(false);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest(`.${styles.priorityDropdown}`)) {
+        setPriorityOpen(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
 
   if (!project) {
     return <div>Project not found</div>;
@@ -98,12 +113,23 @@ export default function EditProjectPage() {
               </div>
               <div className={styles.fieldGroup}>
                 <label>Priority Status</label>
-                <select name="priority" value={formData.priority} onChange={handleChange}>
-                  <option value="">Select</option>
-                  <option value="high">High</option>
-                  <option value="medium">Medium</option>
-                  <option value="low">Low</option>
-                </select>
+                <div className={styles.priorityDropdown}>
+                  <button
+                    type="button"
+                    className={styles.dropdownBtn}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setPriorityOpen(!priorityOpen);
+                    }}
+                  >
+                    {formData.priority ? formData.priority.charAt(0).toUpperCase() + formData.priority.slice(1) : 'Select'}
+                  </button>
+                  <div className={`${styles.dropdownMenu} ${priorityOpen ? styles.show : ''}`}>
+                    <button type="button" onClick={() => { setFormData(prev => ({ ...prev, priority: 'high' })); setPriorityOpen(false); }}>High</button>
+                    <button type="button" onClick={() => { setFormData(prev => ({ ...prev, priority: 'medium' })); setPriorityOpen(false); }}>Medium</button>
+                    <button type="button" onClick={() => { setFormData(prev => ({ ...prev, priority: 'low' })); setPriorityOpen(false); }}>Low</button>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -116,27 +142,30 @@ export default function EditProjectPage() {
               </div>
               <div className={styles.fieldGroup}>
                 <label>Project Manager</label>
-                <select name="manager" value={formData.manager} onChange={handleChange}>
-                  <option value="">Select Manager</option>
-                  <option value="john">John Doe</option>
-                  <option value="sarah">Sarah Johnson</option>
-                  <option value="michael">Michael Chen</option>
-                </select>
+                <div className={styles.selectBox} onClick={() => setShowManagerModal(true)}>
+                  {selectedManager ? selectedManager.name : 'Click to select manager'}
+                </div>
               </div>
             </div>
 
             <div className={styles.fullRow}>
-              <label>Assign Team Members</label>
+              <label>Assign Team & Members</label>
               <div className={styles.selectBox} onClick={() => setShowTeamModal(true)}>
-                {selectedTeam.length > 0 ? `${selectedTeam.length} members selected` : 'Click to select team members'}
+                {selectedTeam?.teams?.length > 0 || selectedTeam?.additionalMembers?.length > 0
+                  ? `${(selectedTeam.teams?.reduce((sum: number, t: any) => sum + t.memberCount, 0) || 0) + (selectedTeam.additionalMembers?.length || 0)} members selected`
+                  : 'Click to select team & members'}
               </div>
             </div>
 
+            <div className={styles.fullRow}>
+              <MilestoneManager milestones={milestones} onChange={setMilestones} />
+            </div>
+
             <div className={styles.actions}>
-              <Button variant="primary" type='submit' size='md'>
+              <Button variant="outline" type='submit' size='md'>
                 Update Project
               </Button>
-              <Button variant="danger" type='button' size='md' onClick={() => router.push('/projectlist')}>
+              <Button variant="outline" type='button' size='md' onClick={() => router.push('/projectlist')}>
                 Cancel
               </Button>
             </div>
@@ -173,6 +202,13 @@ export default function EditProjectPage() {
           onClose={() => setShowTeamModal(false)}
           onSelect={setSelectedTeam}
           selected={selectedTeam}
+        />
+
+        <ManagerSelector
+          isOpen={showManagerModal}
+          onClose={() => setShowManagerModal(false)}
+          onSelect={setSelectedManager}
+          selected={selectedManager}
         />
       </div>
     </div>

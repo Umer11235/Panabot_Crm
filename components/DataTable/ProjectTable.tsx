@@ -17,40 +17,24 @@ export default function DataTable<T extends { id: string | number }>({
   onEdit,
   onDelete,
   onView,
+  onViewMilestones,
 }: DataTableProps<T>) {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filterStatus, setFilterStatus] = useState('all');
-  
   const totalPages = Math.ceil(totalEntries / pageSize);
   const startEntry = (currentPage - 1) * pageSize + 1;
   const endEntry = Math.min(currentPage * pageSize, totalEntries);
 
   return (
     <div className={styles.container}>
-      <div className={styles.searchBar}>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className={styles.searchInput}
-        />
-        <select
-          value={filterStatus}
-          onChange={(e) => setFilterStatus(e.target.value)}
-          className={styles.filterSelect}
-        >
-          <option value="all">All Status</option>
-          <option value="active">Active</option>
-          <option value="completed">Completed</option>
-          <option value="pending">Pending</option>
-        </select>
-        {onAdd && (
-          <Button variant="primary" size="md" onClick={onAdd}>
-            {addButtonText}
-          </Button>
-        )}
-      </div>
+      {(addButtonText || onAdd) && (
+        <div className={styles.searchBar}>
+          <div style={{ flex: 1 }} />
+          {onAdd && (
+            <Button variant="primary" size="md" onClick={onAdd}>
+              {addButtonText}
+            </Button>
+          )}
+        </div>
+      )}
 
       <div className={styles.tableWrapper}>
         <table className={styles.table}>
@@ -70,7 +54,7 @@ export default function DataTable<T extends { id: string | number }>({
                     {col.render ? col.render(item) : (item as any)[col.key]}
                   </td>
                 ))}
-                {(onEdit || onDelete || onView) && (
+                {(onEdit || onDelete || onView || onViewMilestones) && (
                   <td className={styles.actions}>
                     <div className={styles.actionIcons}>
                       {onView && (
@@ -81,6 +65,11 @@ export default function DataTable<T extends { id: string | number }>({
                       {onEdit && (
                         <button onClick={() => onEdit(item)} className={styles.iconBtn} title="Edit">
                           ✏️
+                        </button>
+                      )}
+                      {onViewMilestones && (
+                        <button onClick={() => onViewMilestones(item)} className={styles.iconBtn} title="View Milestones">
+                          📋
                         </button>
                       )}
                       {onDelete && (
