@@ -14,7 +14,10 @@ export default function Column({ column, tasks, users, onAddTask, onEditTask, on
     id: column.id,
     data: { type: "column" },
   });
-  const style: React.CSSProperties = { transform: CSS.Transform.toString(transform), transition };
+  const style: React.CSSProperties = { 
+    transform: CSS.Transform.toString(transform), 
+    transition: transition || 'transform 200ms ease'
+  };
   return (
     <div ref={setNodeRef} style={style}  className={[styles.col, isDragging ? styles.dragging : ""].join(" ")} {...attributes}>
       <div className={styles.head}>
@@ -46,7 +49,7 @@ export default function Column({ column, tasks, users, onAddTask, onEditTask, on
             <div className={styles.emptyTitle}>No tasks yet</div>
             <div className={styles.emptySub}>Add a task to get started</div>
             <div className={styles.emptyBtn}>
-              <Button variant="primary" size="sm" onClick={onAddTask}>
+              <Button variant="outline" size="sm" fullWidth onClick={onAddTask}>
                 + Add Task
               </Button>
             </div>

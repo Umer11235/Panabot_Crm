@@ -182,7 +182,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .boardIcon {
@@ -192,7 +192,7 @@
 }
 
 .boardName {
-  font: var(--md-sys-typescale-title-large);
+  font: var(--md-sys-typescale-title-medium);
   color: var(--md-sys-color-on-surface);
   margin: 0;
   overflow: hidden;
@@ -204,7 +204,7 @@
 .boardDetails {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   padding: 16px 0;
   border-top: 1px solid var(--md-sys-color-outline-variant);
   border-bottom: 1px solid var(--md-sys-color-outline-variant);
@@ -215,13 +215,13 @@
   display: flex;
   align-items: baseline;
   gap: 8px;
-  font: var(--md-sys-typescale-body-small);
+  font: var(--md-sys-typescale-body-medium);
   margin: 0;
 }
 
 .detailIcon {
   color: var(--md-sys-color-on-surface-variant);
-  font-weight: 500;
+  font-weight: 400;
   flex-shrink: 0;
 }
 
@@ -233,6 +233,7 @@
 .cardFooter {
   display: flex;
   gap: 12px;
+  margin-top: 6px;
 }
 
 .created {
@@ -249,12 +250,13 @@
 .menuBtn {
   background: none;
   border: none;
-  font-size: 20px;
-  color: var(--md-sys-color-on-surface-variant);
   cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 6px 8px;
+  border-radius: var(--md-sys-shape-corner-medium);
   transition: background-color 0.2s ease;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 20px;
+  letter-spacing: 2px;
 }
 
 .menuBtn:hover {

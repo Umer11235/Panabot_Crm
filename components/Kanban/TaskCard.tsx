@@ -26,7 +26,6 @@ export default function TaskCard({ task, users, onClick, overlay = false }: Task
       {...(overlay ? {} : attributes)}
       {...(overlay ? {} : listeners)}
       onDoubleClick={onClick}
-      onClick={onClick}
       role="button"
       tabIndex={0}
     >
@@ -59,6 +58,11 @@ export default function TaskCard({ task, users, onClick, overlay = false }: Task
           Created {new Date(task.createdAt).toLocaleDateString(undefined, { month: "short", day: "numeric" })}
         </div>
       </div>
+      {task.imageUrl && (
+        <div className={styles.imageWrapper}>
+          <img src={task.imageUrl} alt={task.title} className={styles.taskImage} />
+        </div>
+      )}
       {task.description ? <div className={styles.desc}>{task.description}</div> : null}
     </div>
   );

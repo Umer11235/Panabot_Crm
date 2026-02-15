@@ -66,29 +66,28 @@
 }
 
 .plus {
-  font-size: 28px;
-  font-weight: 900;
+  font-size: 48px;
+  font-weight: 300;
   color: var(--md-sys-color-on-surface-variant);
+  line-height: 1;
 }
 
 .emptyTitle {
-  margin-top: 6px;
-  font: var(--md-sys-typescale-body-medium);
-  font-weight: 600;
-  color: var(--md-sys-color-on-surface-variant);
+  margin-top: 12px;
+  font: var(--md-sys-typescale-title-medium);
+  color: var(--md-sys-color-on-surface);
 }
 
 .emptySub {
-  font: var(--md-sys-typescale-body-small);
+  font: var(--md-sys-typescale-body-medium);
   color: var(--md-sys-color-on-surface-variant);
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
 .menuDot {
-  display: inline-block;
-  font-weight: 900;
-  color: var(--md-sys-color-on-surface);
-  transform: translateY(-1px);
+  display: inline-flex;
+  align-items: center;
+  color: var(--md-sys-color-on-surface-variant);
 }
 
 .gripBtn {

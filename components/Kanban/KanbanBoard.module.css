@@ -1,10 +1,13 @@
 .shell {
   width: 100%;
   overflow-x: auto;
+  padding-bottom: 20px;
 }
 
 .columns {
   display: flex;
   gap: 16px;
   min-height: 500px;
+  width: fit-content;
+  min-width: 100%;
 }

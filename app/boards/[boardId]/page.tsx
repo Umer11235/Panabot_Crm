@@ -1,5 +1,3 @@
-"use client";
-
 import BoardPage from "@/components/Kanban/BoardPage";
 import { use } from "react";
 
