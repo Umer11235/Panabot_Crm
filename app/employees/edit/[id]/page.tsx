@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams, useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { employeesData } from '@/utils/data/employees.data';
 import Button from '@/components/(Inputs)/Button/Button';
 import FileUpload from '@/components/FileUpload/FileUpload';
@@ -26,6 +26,28 @@ export default function EditEmployeePage() {
     status: employee?.status || '',
     salary: ''
   });
+  const [departmentOpen, setDepartmentOpen] = useState(false);
+  const [positionOpen, setPositionOpen] = useState(false);
+  const [statusOpen, setStatusOpen] = useState(false);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest(`.${styles.departmentDropdown}`)) {
+        setDepartmentOpen(false);
+      }
+      if (!target.closest(`.${styles.positionDropdown}`)) {
+        setPositionOpen(false);
+      }
+      if (!target.closest(`.${styles.statusDropdown}`)) {
+        setStatusOpen(false);
+      }
+    };
+    if (departmentOpen || positionOpen || statusOpen) {
+      document.addEventListener('click', handleClickOutside);
+    }
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [departmentOpen, positionOpen, statusOpen]);
 
   if (!employee) {
     return <div>Employee not found</div>;
@@ -44,24 +66,14 @@ export default function EditEmployeePage() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.pageWrapper}>
       <div className={styles.header}>
         <h1 className={styles.title}>Edit Employee</h1>
       </div>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.section}>
-          <h3 className={styles.sectionTitle}>Employee Image</h3>
-          <FileUpload
-            label=""
-            files={files}
-            setFiles={setFiles}
-            accept="image/*"
-          />
-        </div>
-        <div className={styles.section}>
-          <h3 className={styles.sectionTitle}>Employee Information</h3>
-          <div className={styles.grid}>
-            <div className={styles.field}>
+      <form onSubmit={handleSubmit} className={styles.formLayout}>
+        <div className={styles.leftSection}>
+          <div className={styles.row}>
+            <div className={styles.fieldGroup}>
               <label>First Name</label>
               <input
                 type="text"
@@ -72,7 +84,7 @@ export default function EditEmployeePage() {
                 required
               />
             </div>
-            <div className={styles.field}>
+            <div className={styles.fieldGroup}>
               <label>Last Name</label>
               <input
                 type="text"
@@ -83,7 +95,9 @@ export default function EditEmployeePage() {
                 required
               />
             </div>
-            <div className={styles.field}>
+          </div>
+          <div className={styles.row}>
+            <div className={styles.fieldGroup}>
               <label>Employee ID</label>
               <input
                 type="text"
@@ -94,7 +108,7 @@ export default function EditEmployeePage() {
                 required
               />
             </div>
-            <div className={styles.field}>
+            <div className={styles.fieldGroup}>
               <label>Email</label>
               <input
                 type="email"
@@ -105,7 +119,9 @@ export default function EditEmployeePage() {
                 required
               />
             </div>
-            <div className={styles.field}>
+          </div>
+          <div className={styles.row}>
+            <div className={styles.fieldGroup}>
               <label>Contact</label>
               <input
                 type="tel"
@@ -116,41 +132,49 @@ export default function EditEmployeePage() {
                 required
               />
             </div>
-            <div className={styles.field}>
+            <div className={styles.fieldGroup}>
               <label>Department</label>
-              <select
-                name="department"
-                value={formData.department}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select department</option>
-                <option value="Sales">Sales</option>
-                <option value="Marketing">Marketing</option>
-                <option value="IT">IT</option>
-                <option value="Finance">Finance</option>
-                <option value="HR">HR</option>
-                <option value="Operations">Operations</option>
-              </select>
+              <div className={styles.departmentDropdown}>
+                <button
+                  type="button"
+                  className={styles.dropdownBtn}
+                  onClick={() => setDepartmentOpen(!departmentOpen)}
+                >
+                  {formData.department || 'Select department'}
+                </button>
+                <div className={`${styles.dropdownMenu} ${departmentOpen ? styles.show : ''}`}>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, department: 'Sales' })); setDepartmentOpen(false); }}>Sales</button>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, department: 'Marketing' })); setDepartmentOpen(false); }}>Marketing</button>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, department: 'IT' })); setDepartmentOpen(false); }}>IT</button>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, department: 'Finance' })); setDepartmentOpen(false); }}>Finance</button>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, department: 'HR' })); setDepartmentOpen(false); }}>HR</button>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, department: 'Operations' })); setDepartmentOpen(false); }}>Operations</button>
+                </div>
+              </div>
             </div>
-            <div className={styles.field}>
+          </div>
+          <div className={styles.row}>
+            <div className={styles.fieldGroup}>
               <label>Position</label>
-              <select
-                name="position"
-                value={formData.position}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select position</option>
-                <option value="Manager">Manager</option>
-                <option value="Executive">Executive</option>
-                <option value="Developer">Developer</option>
-                <option value="Designer">Designer</option>
-                <option value="Analyst">Analyst</option>
-                <option value="Coordinator">Coordinator</option>
-              </select>
+              <div className={styles.positionDropdown}>
+                <button
+                  type="button"
+                  className={styles.dropdownBtn}
+                  onClick={() => setPositionOpen(!positionOpen)}
+                >
+                  {formData.position || 'Select position'}
+                </button>
+                <div className={`${styles.dropdownMenu} ${positionOpen ? styles.show : ''}`}>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, position: 'Manager' })); setPositionOpen(false); }}>Manager</button>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, position: 'Executive' })); setPositionOpen(false); }}>Executive</button>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, position: 'Developer' })); setPositionOpen(false); }}>Developer</button>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, position: 'Designer' })); setPositionOpen(false); }}>Designer</button>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, position: 'Analyst' })); setPositionOpen(false); }}>Analyst</button>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, position: 'Coordinator' })); setPositionOpen(false); }}>Coordinator</button>
+                </div>
+              </div>
             </div>
-            <div className={styles.field}>
+            <div className={styles.fieldGroup}>
               <label>Hire Date</label>
               <input
                 type="date"
@@ -160,22 +184,27 @@ export default function EditEmployeePage() {
                 required
               />
             </div>
-            <div className={styles.field}>
+          </div>
+          <div className={styles.row}>
+            <div className={styles.fieldGroup}>
               <label>Status</label>
-              <select
-                name="status"
-                value={formData.status}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select status</option>
-                <option value="Full Time">Full Time</option>
-                <option value="Part Time">Part Time</option>
-                <option value="Internship">Internship</option>
-                <option value="Remote">Remote</option>
-              </select>
+              <div className={styles.statusDropdown}>
+                <button
+                  type="button"
+                  className={styles.dropdownBtn}
+                  onClick={() => setStatusOpen(!statusOpen)}
+                >
+                  {formData.status || 'Select status'}
+                </button>
+                <div className={`${styles.dropdownMenu} ${statusOpen ? styles.show : ''}`}>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, status: 'Full Time' })); setStatusOpen(false); }}>Full Time</button>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, status: 'Part Time' })); setStatusOpen(false); }}>Part Time</button>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, status: 'Internship' })); setStatusOpen(false); }}>Internship</button>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, status: 'Remote' })); setStatusOpen(false); }}>Remote</button>
+                </div>
+              </div>
             </div>
-            <div className={styles.field}>
+            <div className={styles.fieldGroup}>
               <label>Salary</label>
               <input
                 type="number"
@@ -187,14 +216,24 @@ export default function EditEmployeePage() {
               />
             </div>
           </div>
+          <div className={styles.actions}>
+            <Button variant="outline" type="submit" size="md">
+              Update Employee
+            </Button>
+            <Button variant="outline" type="button" size="md" onClick={() => router.push('/employees')}>
+              Cancel
+            </Button>
+          </div>
         </div>
-        <div className={styles.actions}>
-          <Button variant="primary" type="submit" size="md">
-            Update Employee
-          </Button>
-          <Button variant="danger" type="button" size="md" onClick={() => router.push('/employees')}>
-            Cancel
-          </Button>
+        <div className={styles.rightSection}>
+          <FileUpload
+            name="photo"
+            label="Employee Photo"
+            multiple={false}
+            accept="image/*"
+            files={files}
+            setFiles={setFiles}
+          />
         </div>
       </form>
     </div>
