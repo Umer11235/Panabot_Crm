@@ -13,6 +13,118 @@
   margin: 0;
 }
 
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 200px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.searchInput:hover {
+  border-color: var(--md-sys-color-on-surface-variant);
+}
+
+.searchInput:focus {
+  border-color: #ffd600;
+}
+
+.filterDropdown {
+  position: relative;
+}
+
+.filterBtn {
+  height: 36px;
+  padding: 0 32px 0 12px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  cursor: pointer;
+  min-width: 120px;
+  transition: all 0.2s ease;
+  text-align: left;
+  position: relative;
+}
+
+.filterBtn:hover {
+  border-color: var(--md-sys-color-on-surface-variant);
+  background-color: var(--md-sys-state-hover);
+}
+
+.filterBtn::after {
+  content: '';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--md-sys-color-on-surface);
+}
+
+.filterMenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: 4px;
+  z-index: 10;
+  min-width: 140px;
+  padding: 4px 0;
+}
+
+.filterMenu.show {
+  display: block;
+}
+
+.filterMenu button {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  border: none;
+  background: none;
+  color: var(--md-sys-color-on-surface);
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+  transition: background-color 0.2s ease;
+  font-weight: 400;
+}
+
+.filterMenu button:hover {
+  background-color: var(--md-sys-state-hover);
+}
+
+.filterMenu button.active {
+  background-color: var(--md-sys-state-hover);
+  color: #1a73e8;
+  font-weight: 500;
+}
+
 .form {
   background-color: transparent;
   border: none;

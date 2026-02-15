@@ -1,54 +1,89 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background-color: var(--md-sys-color-scrim);
-  display: grid;
-  place-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
   z-index: 2000;
 }
 
 .modal {
   width: 100%;
-  max-width: 760px;
-  max-height: 90vh;
-  overflow: auto;
+  max-width: 480px;
   background-color: var(--md-sys-color-surface);
-  border-radius: var(--md-sys-shape-corner-extra-large);
-  border: 1px solid var(--md-sys-color-outline-variant);
-  padding: 24px;
+  border-radius: var(--md-sys-shape-corner-large);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .head {
   display: flex;
-  align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
-  padding-bottom: 16px;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .title {
   font: var(--md-sys-typescale-headline-small);
   color: var(--md-sys-color-on-surface);
+  margin: 0;
 }
-
-.sub {
-  margin-top: 4px;
-  font: var(--md-sys-typescale-body-medium);
-  color: var(--md-sys-color-on-surface-variant);
-}
-
-.close {
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: var(--md-sys-shape-corner-medium);
-  color: var(--md-sys-color-on-surface-variant);
-  transition: background-color 0.2s ease;
-}
-.close:hover { background-color: var(--md-sys-state-hover); }
 
 .body {
-  padding-top: 8px;
+  padding: 24px;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field:last-child {
+  margin-bottom: 0;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface);
+}
+
+.field input {
+  width: 100%;
+  padding: 0 12px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  outline: none;
+  height: 40px;
+  transition: all 0.2s ease;
+}
+
+.field input:hover {
+  border-color: var(--md-sys-color-on-surface-variant);
+}
+
+.field input:focus {
+  border-color: #ffd600;
+}
+
+.field input::placeholder {
+  color: var(--md-sys-color-on-surface-variant);
+  opacity: 0.6;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--md-sys-color-outline-variant);
 }

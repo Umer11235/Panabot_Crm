@@ -21,23 +21,21 @@ export default function BoardForm({
       }}
     >
       <div className={styles.field}>
-        <label className={styles.label}>
-          Board Name <span className={styles.req}>*</span>
-        </label>
+        <label className={styles.label}>Board name</label>
         <input
           className={styles.input}
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="e.g. My Project"
+          placeholder="e.g. Test Project"
           autoFocus
         />
       </div>
       <div className={styles.actions}>
-        <Button variant="primary" size="sm" fullWidth type="submit" disabled={!canSubmit}>
-          {submitLabel}
-        </Button>
-        <Button variant="outline" size="sm" fullWidth type="button" onClick={onCancel}>
+        <Button variant="outline" size="md" type="button" onClick={onCancel}>
           Cancel
+        </Button>
+        <Button variant="primary" size="md" type="submit" disabled={!canSubmit}>
+          {submitLabel}
         </Button>
       </div>
     </form>

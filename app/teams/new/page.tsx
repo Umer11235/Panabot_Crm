@@ -23,19 +23,21 @@ export default function NewTeamPage() {
   const [selectedMembers, setSelectedMembers] = useState<any>([]);
   const [selectedLeader, setSelectedLeader] = useState<any>(null);
   const [statusOpen, setStatusOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterStatus, setFilterStatus] = useState('all');
+  const [filterOpen, setFilterOpen] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (!target.closest(`.${styles.statusDropdown}`)) {
+      if (!target.closest(`.${styles.statusDropdown}`) && !target.closest(`.${styles.filterDropdown}`)) {
         setStatusOpen(false);
+        setFilterOpen(false);
       }
     };
-    if (statusOpen) {
-      document.addEventListener('click', handleClickOutside);
-    }
+    document.addEventListener('click', handleClickOutside);
     return () => document.removeEventListener('click', handleClickOutside);
-  }, [statusOpen]);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,6 +50,29 @@ export default function NewTeamPage() {
     <div className={styles.container}>
       <div className={styles.header}>
         <h1 className={styles.title}>Add New Team</h1>
+      </div>
+
+      <div className={styles.searchBar}>
+        <input
+          type="text"
+          placeholder="Search teams..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className={styles.searchInput}
+        />
+        <div className={styles.filterDropdown}>
+          <button
+            className={styles.filterBtn}
+            onClick={() => setFilterOpen(!filterOpen)}
+          >
+            {filterStatus === 'all' ? 'All Status' : filterStatus}
+          </button>
+          <div className={`${styles.filterMenu} ${filterOpen ? styles.show : ''}`}>
+            <button className={filterStatus === 'all' ? styles.active : ''} onClick={() => { setFilterStatus('all'); setFilterOpen(false); }}>All Status</button>
+            <button className={filterStatus === 'Active' ? styles.active : ''} onClick={() => { setFilterStatus('Active'); setFilterOpen(false); }}>Active</button>
+            <button className={filterStatus === 'Inactive' ? styles.active : ''} onClick={() => { setFilterStatus('Inactive'); setFilterOpen(false); }}>Inactive</button>
+          </div>
+        </div>
       </div>
 
       <form onSubmit={handleSubmit} className={styles.form}>

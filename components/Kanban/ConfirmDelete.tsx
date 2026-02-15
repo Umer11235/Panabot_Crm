@@ -4,17 +4,16 @@ import Button from "@/components/(Inputs)/Button/Button";
 import { ConfirmDeleteProps } from "@/utils/types/kanban-components.types";
 export default function ConfirmDelete({ title, message, confirmLabel = "Delete", onConfirm, onCancel }: ConfirmDeleteProps) {
   return (
-    <div className={styles.wrap}>
-      <div className={styles.title}>{title}</div>
-      <div className={styles.msg}>{message}</div>
+    <>
+      <p className={styles.msg}>{message}</p>
       <div className={styles.actions}>
-        <Button variant="outline" size="sm" onClick={onCancel}>
-          Cancel
-        </Button>
-        <Button variant="danger" size="sm" onClick={onConfirm}>
+        <Button variant="danger" size="md" onClick={onConfirm}>
           {confirmLabel}
         </Button>
+        <Button variant="outline" size="md" onClick={onCancel}>
+          Cancel
+        </Button>
       </div>
-    </div>
+    </>
   );
 }
