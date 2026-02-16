@@ -42,9 +42,7 @@ const SidebarV1 = () => {
           icon: 'team-users', 
           children: [
             { title: 'Employee List', path: '/employees' },
-            { title: 'Add Employee', path: '/employees/new' },
-            { title: 'Employee Leave', path: '/leaves' },
-            { title: 'Add Leave', path: '/leaves/new' },
+            { title: 'Employee Leaves', path: '/leaves' },
             { title: 'Attendance', path: '/attendance' },
             { title: 'Departments', path: '/departments' },
             { title: 'Holidays', path: '/holidays' },
