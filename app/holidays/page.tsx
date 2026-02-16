@@ -1,28 +1,30 @@
 'use client';
 import DataTable from "@/components/DataTable/ProjectTable";
-import Button from '@/components/(Inputs)/Button/Button';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { holidaysData } from "@/utils/data/holidays.data";
-import { handleDateChange, handleFormSubmit } from "./functions";
 import { holidayColumns } from "@/utils/columns";
-import Modal from '@/components/Modal/Modal';
 import ConfirmModal from '@/components/Modal/ConfirmModal';
+import styles from './holidays.module.css';
 
 export default function HolidaysPage() {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [page, setPage] = useState(1);
+  const [pageSize] = useState(10);
   const [deleteModal, setDeleteModal] = useState({ isOpen: false, item: null as any });
-  const [formData, setFormData] = useState({
-    holiday: '',
-    date: '',
-    day: '',
-    type: ''
-  });
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterStatus, setFilterStatus] = useState('all');
+  const [filterOpen, setFilterOpen] = useState(false);
 
-  const initialFormData = { holiday: '', date: '', day: '', type: '' };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    handleFormSubmit(e, formData, setModalOpen, setFormData, initialFormData, 'Holiday added successfully!');
-  };
+  // close filter dropdown when clicked outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest(`.${styles.filterDropdown}`)) {
+        setFilterOpen(false);
+      }
+    };
+    if (filterOpen) document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [filterOpen]);
 
   const handleDelete = (holiday: any) => {
     setDeleteModal({ isOpen: true, item: holiday });
@@ -35,128 +37,46 @@ export default function HolidaysPage() {
   };
 
   return (
-    <div>
-      <h1 style={{
-        font: 'var(--md-sys-typescale-headline-medium)',
-        color: 'var(--md-sys-color-on-surface)',
-        marginBottom: '24px'
-      }}>Holidays</h1>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h1 className={styles.title}>Holidays</h1>
+        <button className={styles.addBtn} onClick={() => window.location.href = '/holidays/new'}>+ Add Holiday</button>
+      </div>
+
+      <div className={styles.searchBar}>
+        <input
+          type="text"
+          placeholder="Search holidays..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className={styles.searchInput}
+        />
+
+        <div className={styles.filterDropdown}>
+          <button className={styles.filterBtn} onClick={() => setFilterOpen(!filterOpen)}>
+            {filterStatus === 'all' ? 'All Status' : filterStatus}
+          </button>
+          <div className={`${styles.filterMenu} ${filterOpen ? styles.show : ''}`}>
+            <button className={filterStatus === 'all' ? styles.active : ''} onClick={() => { setFilterStatus('all'); setFilterOpen(false); }}>All Status</button>
+            <button className={filterStatus === 'Active' ? styles.active : ''} onClick={() => { setFilterStatus('Active'); setFilterOpen(false); }}>Active</button>
+            <button className={filterStatus === 'Inactive' ? styles.active : ''} onClick={() => { setFilterStatus('Inactive'); setFilterOpen(false); }}>Inactive</button>
+          </div>
+        </div>
+      </div>
 
       <DataTable
         title=""
         data={holidaysData}
         columns={holidayColumns}
-        onAdd={() => setModalOpen(true)}
+        // onAdd={() => window.location.href = '/holidays/new'}
         onView={(holiday) => window.location.href = `/holidays/view/${encodeURIComponent(holiday.id)}`}
         onEdit={(holiday) => window.location.href = `/holidays/edit/${encodeURIComponent(holiday.id)}`}
         onDelete={handleDelete}
-        currentPage={1}
-        pageSize={10}
+        currentPage={page}
+        pageSize={pageSize}
         totalEntries={holidaysData.length}
-        onPageChange={() => {}}
+        onPageChange={(newPage) => setPage(newPage)}
       />
-
-      {modalOpen && (
-        <Modal
-          isOpen={modalOpen}
-          onClose={() => setModalOpen(false)}
-          title="Add Holiday"
-        >
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <label style={{ font: 'var(--md-sys-typescale-body-large)', fontWeight: 500, color: 'var(--md-sys-color-on-surface)' }}>Holiday Name</label>
-                <input
-                  type="text"
-                  placeholder="Enter holiday name"
-                  value={formData.holiday}
-                  onChange={(e) => setFormData({ ...formData, holiday: e.target.value })}
-                  required
-                  style={{
-                    height: '56px',
-                    padding: '0 16px',
-                    border: '1px solid var(--md-sys-color-outline)',
-                    borderRadius: 'var(--md-sys-shape-corner-small)',
-                    font: 'var(--md-sys-typescale-body-large)',
-                    outline: 'none',
-                    backgroundColor: 'var(--md-sys-color-surface)',
-                    color: 'var(--md-sys-color-on-surface)'
-                  }}
-                />
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <label style={{ font: 'var(--md-sys-typescale-body-large)', fontWeight: 500, color: 'var(--md-sys-color-on-surface)' }}>Date</label>
-                <input
-                  type="date"
-                  value={formData.date}
-                  onChange={(e) => handleDateChange(e.target.value, formData, setFormData)}
-                  required
-                  style={{
-                    height: '56px',
-                    padding: '0 16px',
-                    border: '1px solid var(--md-sys-color-outline)',
-                    borderRadius: 'var(--md-sys-shape-corner-small)',
-                    font: 'var(--md-sys-typescale-body-large)',
-                    outline: 'none',
-                    backgroundColor: 'var(--md-sys-color-surface)',
-                    color: 'var(--md-sys-color-on-surface)'
-                  }}
-                />
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <label style={{ font: 'var(--md-sys-typescale-body-large)', fontWeight: 500, color: 'var(--md-sys-color-on-surface)' }}>Day</label>
-                <input
-                  type="text"
-                  placeholder="Auto-filled"
-                  value={formData.day}
-                  readOnly
-                  style={{
-                    height: '56px',
-                    padding: '0 16px',
-                    border: '1px solid var(--md-sys-color-outline)',
-                    borderRadius: 'var(--md-sys-shape-corner-small)',
-                    font: 'var(--md-sys-typescale-body-large)',
-                    outline: 'none',
-                    backgroundColor: 'var(--md-sys-color-surface-variant)',
-                    color: 'var(--md-sys-color-on-surface-variant)',
-                    cursor: 'not-allowed'
-                  }}
-                />
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <label style={{ font: 'var(--md-sys-typescale-body-large)', fontWeight: 500, color: 'var(--md-sys-color-on-surface)' }}>Holiday Type</label>
-                <select
-                  value={formData.type}
-                  onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                  required
-                  style={{
-                    height: '56px',
-                    padding: '0 16px',
-                    border: '1px solid var(--md-sys-color-outline)',
-                    borderRadius: 'var(--md-sys-shape-corner-small)',
-                    font: 'var(--md-sys-typescale-body-large)',
-                    outline: 'none',
-                    backgroundColor: 'var(--md-sys-color-surface)',
-                    color: 'var(--md-sys-color-on-surface)'
-                  }}
-                >
-                  <option value="">Select</option>
-                  <option value="Public">Public</option>
-                  <option value="Religious">Religious</option>
-                  <option value="Public/National">Public/National</option>
-                  <option value="Optional">Optional</option>
-                </select>
-              </div>
-              <div style={{ display: 'flex', gap: '12px', marginTop: '8px' }}>
-                <Button variant="primary" type="submit" size="md">
-                  + Add Holiday
-                </Button>
-                <Button variant="danger" type="button" size="md" onClick={() => setModalOpen(false)}>
-                  Cancel
-                </Button>
-              </div>
-            </form>
-          </Modal>
-        )}
         
         <ConfirmModal
           isOpen={deleteModal.isOpen}

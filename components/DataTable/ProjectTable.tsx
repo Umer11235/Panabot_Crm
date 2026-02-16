@@ -25,7 +25,7 @@ export default function DataTable<T extends { id: string | number }>({
 
   return (
     <div className={styles.container}>
-      {(addButtonText || onAdd) && (
+      {( onAdd) && (
         <div className={styles.searchBar}>
           <div style={{ flex: 1 }} />
           {onAdd && (

@@ -54,6 +54,7 @@ const SidebarV1 = () => {
       label: 'ACCOUNT',
       items: [
         { title: 'My Account', icon: 'settings-gear', path: '/account' },
+        { title: 'Subscriptions', icon: 'file', path: '/subscriptions' }
       ]
     }
   ];
