@@ -20,10 +20,10 @@ export default function ViewLeavePage() {
       <div className={styles.header}>
         <h1 className={styles.title}>Leave Details</h1>
         <div className={styles.actions}>
-          <Button variant="primary" size="sm" onClick={() => router.push(`/leaves/edit/${encodeURIComponent(leave.id)}`)}>
+          <Button variant="outline" size="md" onClick={() => router.push(`/leaves/edit/${encodeURIComponent(leave.id)}`)}>
             Edit Leave
           </Button>
-          <Button variant="outline" size="sm" onClick={() => router.push('/leaves')}>
+          <Button variant="outline" size="md" onClick={() => router.push('/leaves')}>
             Back to List
           </Button>
         </div>

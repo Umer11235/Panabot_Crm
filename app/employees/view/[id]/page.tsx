@@ -20,10 +20,10 @@ export default function ViewEmployeePage() {
       <div className={styles.header}>
         <h1 className={styles.title}>Employee Details</h1>
         <div className={styles.actions}>
-          <Button variant="primary" size="sm" onClick={() => router.push(`/employees/edit/${encodeURIComponent(employee.id)}`)}>
+          <Button variant="outline" size="md" onClick={() => router.push(`/employees/edit/${encodeURIComponent(employee.id)}`)}>
             Edit Employee
           </Button>
-          <Button variant="outline" size="sm" onClick={() => router.push('/employees')}>
+          <Button variant="outline" size="md" onClick={() => router.push('/employees')}>
             Back to List
           </Button>
         </div>

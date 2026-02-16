@@ -1,84 +1,149 @@
 .container {
-  padding: 24px;
-  min-height: 100vh;
-  background-color: var(--md-sys-color-background);
+  /* No padding here - padding comes from parent layout */
 }
 
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 24px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.addBtn {
+  height: 36px;
+  padding: 0 20px;
+  background-color: #373737;
+  color: #ffffff;
+  border: none;
+  border-radius: 18px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addBtn:hover {
+  background-color: #4a4a4a;
 }
 
 .title {
   font: var(--md-sys-typescale-headline-medium);
   color: var(--md-sys-color-on-surface);
   margin: 0;
+  flex-shrink: 0;
 }
 
 .searchBar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 8px;
+  margin-bottom: 16px;
   flex-wrap: wrap;
 }
 
 .searchInput {
   flex: 1;
-  min-width: 250px;
-  height: 48px;
-  padding: 0 16px;
+  min-width: 200px;
+  height: 36px;
+  padding: 0 12px;
   border: 1px solid var(--md-sys-color-outline);
-  border-radius: var(--md-sys-shape-corner-small);
-  font: var(--md-sys-typescale-body-large);
-  outline: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
   background-color: var(--md-sys-color-surface);
   color: var(--md-sys-color-on-surface);
-  transition: border-color 0.2s ease;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.searchInput:hover {
+  border-color: var(--md-sys-color-on-surface-variant);
 }
 
 .searchInput:focus {
-  border-color: var(--md-sys-color-primary);
+  border-color: #ffd600;
 }
 
-.addButton {
-  background-color: var(--md-sys-color-primary);
-  color: var(--md-sys-color-on-primary);
-  padding: 0 24px;
-  border-radius: var(--md-sys-shape-corner-large);
-  font: var(--md-sys-typescale-title-small);
-  font-weight: 500;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background-color 0.2s ease;
-  border: none;
+.filterDropdown {
+  position: relative;
+}
+
+.filterBtn {
+  height: 36px;
+  padding: 0 32px 0 12px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
   cursor: pointer;
-  height: 48px;
-  display: inline-flex;
-  align-items: center;
+  min-width: 120px;
+  transition: all 0.2s ease;
+  text-align: left;
+  position: relative;
 }
 
-.addButton:hover {
-  background-color: var(--md-sys-primary-hover);
+.filterBtn:hover {
+  border-color: var(--md-sys-color-on-surface-variant);
+  background-color: var(--md-sys-state-hover);
 }
 
-@media (max-width: 640px) {
-  .container {
-    padding: 16px;
-  }
+.filterBtn::after {
+  content: '';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--md-sys-color-on-surface);
+}
 
-  .searchBar {
-    flex-direction: column;
-    align-items: stretch;
-  }
+.filterMenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: 4px;
+  z-index: 10;
+  min-width: 140px;
+  padding: 4px 0;
+}
 
-  .searchInput {
-    width: 100%;
-  }
+.filterMenu.show {
+  display: block;
+}
 
-  .addButton {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-  }
+.filterMenu button {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  border: none;
+  background: none;
+  color: var(--md-sys-color-on-surface);
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+  transition: background-color 0.2s ease;
+  font-weight: 400;
+}
+
+.filterMenu button:hover {
+  background-color: var(--md-sys-state-hover);
+}
+
+.filterMenu button.active {
+  background-color: var(--md-sys-state-hover);
+  color: #1a73e8;
+  font-weight: 500;
 }
