@@ -1,10 +1,9 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Button from '@/components/(Inputs)/Button/Button';
-import Modal from '@/components/Modal/Modal';
 import styles from './attendance.module.css';
 import { attendanceData, getIcon, getIconColor } from '@/utils/data/attendance.data';
-import { paginateData, calculateTotalPages, handleFormSubmit, handleInputChange } from './functions';
+import { paginateData, calculateTotalPages } from './functions';
 
 export default function AttendancePage() {
   const [page, setPage] = useState(1);
@@ -12,23 +11,13 @@ export default function AttendancePage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
   const [filterOpen, setFilterOpen] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
   const [detailModalOpen, setDetailModalOpen] = useState(false);
   const [selectedRecord, setSelectedRecord] = useState<any>(null);
-  const [formData, setFormData] = useState({
-    employee: '',
-    date: '',
-    status: ''
-  });
 
   const { paginatedData, startIndex, endIndex } = paginateData(attendanceData, page, pageSize);
   const totalPages = calculateTotalPages(attendanceData.length, pageSize);
 
-  const initialFormData = { employee: '', date: '', status: '' };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    handleFormSubmit(e, formData, setModalOpen, setFormData, initialFormData, 'Attendance added successfully!');
-  };
 
   const handleStatusClick = (employee: any, dayIndex: number) => {
     const record = employee.details[dayIndex];
@@ -60,7 +49,7 @@ export default function AttendancePage() {
     <div>
       <div className={styles.header}>
         <h1 className={styles.title}>Attendance Sheet</h1>
-        <button className={styles.addBtn} onClick={() => setModalOpen(true)}>+ Add Attendance</button>
+        <button className={styles.addBtn} onClick={() => window.location.href = '/attendance/new'}>+ Add Attendance</button>
       </div>
 
     <div className={styles.searchBar}>
@@ -185,133 +174,113 @@ export default function AttendancePage() {
           </div>
         </div>
 
-        {modalOpen && (
-          <div className={styles.modalOverlay} onClick={() => setModalOpen(false)}>
-            <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+
+
+        {/* Detail Modal for Check-in/Check-out */}
+        {detailModalOpen && (
+          <div className={styles.modalOverlay}>
+            <div className={styles.modal}>
               <div className={styles.modalHeader}>
-                <h2>Add Attendance</h2>
-                <Button variant="outline" size="sm" onClick={() => setModalOpen(false)}>
-                  ✕
-                </Button>
+                <h3>{`${selectedRecord?.employeeName} - Attendance Details`}</h3>
+                <button 
+                  className={styles.closeBtn}
+                  onClick={() => setDetailModalOpen(false)}
+                >
+                  ×
+                </button>
               </div>
-              <form onSubmit={handleSubmit} className={styles.modalForm}>
-                <div className={styles.field}>
-                  <label>Employee</label>
-                  <select
-                    value={formData.employee}
-                    onChange={(e) => handleInputChange(formData, setFormData, 'employee', e.target.value)}
-                    required
-                  >
-                    <option value="">Select employee</option>
-                    {attendanceData.map(emp => (
-                      <option key={emp.id} value={emp.name}>{emp.name}</option>
-                    ))}
-                  </select>
+              <div className={styles.modalBody}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+                    <div>
+                      <div style={{ 
+                        fontSize: '14px', 
+                        fontWeight: 500,
+                        color: 'var(--md-sys-color-on-surface)',
+                        marginBottom: '6px'
+                      }}>Date</div>
+                      <div style={{ 
+                        fontSize: '15px', 
+                        fontWeight: 400,
+                        color: 'var(--md-sys-color-on-surface)'
+                      }}>
+                        {selectedRecord?.date ? new Date(selectedRecord.date).toLocaleDateString('en-US', { 
+                          weekday: 'short', 
+                          month: 'short', 
+                          day: 'numeric' 
+                        }) : '-'}
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{ 
+                        fontSize: '14px', 
+                        fontWeight: 500,
+                        color: 'var(--md-sys-color-on-surface)',
+                        marginBottom: '6px'
+                      }}>Status</div>
+                      <div style={{ 
+                        fontSize: '15px', 
+                        fontWeight: 400,
+                        color: 'var(--md-sys-color-on-surface)'
+                      }}>
+                        {getStatusLabel(selectedRecord?.status)}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+                    <div>
+                      <div style={{ 
+                        fontSize: '14px', 
+                        fontWeight: 500,
+                        color: 'var(--md-sys-color-on-surface)',
+                        marginBottom: '6px'
+                      }}>Check In</div>
+                      <div style={{ 
+                        fontSize: '15px', 
+                        fontWeight: 400,
+                        color: 'var(--md-sys-color-on-surface)'
+                      }}>
+                        {selectedRecord?.checkIn || '-'}
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{ 
+                        fontSize: '14px', 
+                        fontWeight: 500,
+                        color: 'var(--md-sys-color-on-surface)',
+                        marginBottom: '6px'
+                      }}>Check Out</div>
+                      <div style={{ 
+                        fontSize: '15px', 
+                        fontWeight: 400,
+                        color: 'var(--md-sys-color-on-surface)'
+                      }}>
+                        {selectedRecord?.checkOut || '-'}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div style={{ 
+                      fontSize: '14px', 
+                      fontWeight: 500,
+                      color: 'var(--md-sys-color-on-surface)',
+                      marginBottom: '6px'
+                    }}>Hours Worked</div>
+                    <div style={{ 
+                      fontSize: '15px', 
+                      fontWeight: 400,
+                      color: 'var(--md-sys-color-on-surface)'
+                    }}>
+                      {selectedRecord?.hoursWorked > 0 ? `${selectedRecord.hoursWorked.toFixed(2)}h` : '-'}
+                    </div>
+                  </div>
                 </div>
-                <div className={styles.field}>
-                  <label>Date</label>
-                  <input
-                    type="date"
-                    value={formData.date}
-                    onChange={(e) => handleInputChange(formData, setFormData, 'date', e.target.value)}
-                    required
-                  />
-                </div>
-                <div className={styles.field}>
-                  <label>Status</label>
-                  <select
-                    value={formData.status}
-                    onChange={(e) => handleInputChange(formData, setFormData, 'status', e.target.value)}
-                    required
-                  >
-                    <option value="">Select status</option>
-                    <option value="Present">Present</option>
-                    <option value="Absent">Absent</option>
-                    <option value="Half Day">Half Day</option>
-                  </select>
-                </div>
-                <div className={styles.modalActions}>
-                  <Button variant="primary" type="submit" size="md">
-                    + Add Attendance
-                  </Button>
-                  <Button variant="danger" type="button" size="md" onClick={() => setModalOpen(false)}>
-                    Cancel
-                  </Button>
-                </div>
-              </form>
+              </div>
             </div>
           </div>
         )}
-
-        {/* Detail Modal for Check-in/Check-out */}
-        <Modal
-          isOpen={detailModalOpen}
-          onClose={() => setDetailModalOpen(false)}
-          title={`${selectedRecord?.employeeName} - Attendance Details`}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-              <div style={{ 
-                padding: '12px', 
-                backgroundColor: 'var(--md-sys-color-surface-dim)',
-                borderRadius: '8px'
-              }}>
-                <div style={{ fontSize: '12px', color: 'var(--md-sys-color-on-surface-variant)' }}>Date</div>
-                <div style={{ fontSize: '16px', fontWeight: 600, marginTop: '4px' }}>
-                  {selectedRecord?.date ? new Date(selectedRecord.date).toLocaleDateString('en-US', { 
-                    weekday: 'short', 
-                    month: 'short', 
-                    day: 'numeric' 
-                  }) : '-'}
-                </div>
-              </div>
-              <div style={{ 
-                padding: '12px', 
-                backgroundColor: 'var(--md-sys-color-surface-dim)',
-                borderRadius: '8px'
-              }}>
-                <div style={{ fontSize: '12px', color: 'var(--md-sys-color-on-surface-variant)' }}>Status</div>
-                <div style={{ fontSize: '16px', fontWeight: 600, marginTop: '4px', color: selectedRecord?.status === 'close' ? '#ef4444' : selectedRecord?.status === 'unknown_med' ? '#f59e0b' : '#10b981' }}>
-                  {getStatusLabel(selectedRecord?.status)}
-                </div>
-              </div>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-              <div style={{ 
-                padding: '12px', 
-                backgroundColor: 'var(--md-sys-color-surface-dim)',
-                borderRadius: '8px'
-              }}>
-                <div style={{ fontSize: '12px', color: 'var(--md-sys-color-on-surface-variant)' }}>Check In</div>
-                <div style={{ fontSize: '16px', fontWeight: 600, marginTop: '4px', color: selectedRecord?.checkIn === '-' ? '#9ca3af' : 'var(--md-sys-color-on-surface)' }}>
-                  {selectedRecord?.checkIn || '-'}
-                </div>
-              </div>
-              <div style={{ 
-                padding: '12px', 
-                backgroundColor: 'var(--md-sys-color-surface-dim)',
-                borderRadius: '8px'
-              }}>
-                <div style={{ fontSize: '12px', color: 'var(--md-sys-color-on-surface-variant)' }}>Check Out</div>
-                <div style={{ fontSize: '16px', fontWeight: 600, marginTop: '4px', color: selectedRecord?.checkOut === '-' ? '#9ca3af' : 'var(--md-sys-color-on-surface)' }}>
-                  {selectedRecord?.checkOut || '-'}
-                </div>
-              </div>
-            </div>
-
-            <div style={{ 
-              padding: '12px', 
-              backgroundColor: 'var(--md-sys-color-surface-dim)',
-              borderRadius: '8px'
-            }}>
-              <div style={{ fontSize: '12px', color: 'var(--md-sys-color-on-surface-variant)' }}>Hours Worked</div>
-              <div style={{ fontSize: '16px', fontWeight: 600, marginTop: '4px' }}>
-                {selectedRecord?.hoursWorked > 0 ? `${selectedRecord.hoursWorked.toFixed(2)}h` : '-'}
-              </div>
-            </div>
-          </div>
-        </Modal>
       </div>
     </div>
   );

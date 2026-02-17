@@ -13,18 +13,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen items-center font-sans" style={{ backgroundColor: 'var(--md-sys-color-background)', padding: '24px' }}>
-      <DataTable
-        title="All Projects"
-        data={paginatedData}
-        columns={projectColumns}
-        onAdd={() => alert('Add New Clicked')}
-        onDelete={(p) => alert('Deleting ' + p.id)}
-        onView={(p) => alert('Viewing ' + p.id)}
-        currentPage={page}
-        pageSize={pageSize}
-        totalEntries={projectsData.length}
-        onPageChange={(newPage) => handlePageChange(newPage, setPage)}
-      />
+  
     </div>
   );
 }

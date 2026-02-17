@@ -1,7 +1,9 @@
 'use client';
 import { useParams, useRouter } from 'next/navigation';
 import Button from '@/components/(Inputs)/Button/Button';
-import { attendanceDetailsData, getStatusColor, getStatusLabel } from '@/utils/data/attendanceDetails';
+import DataTable from '@/components/DataTable/ProjectTable';
+import { attendanceDetailsData } from '@/utils/data/attendanceDetails';
+import { attendanceRecordColumns } from '@/utils/columns';
 import styles from './attendance.module.css';
 
 export default function AttendanceViewPage() {
@@ -30,15 +32,11 @@ export default function AttendanceViewPage() {
   const totalHours = employee.records.reduce((sum, r) => sum + r.hoursWorked, 0);
   const avgHours = (totalHours / presentDays).toFixed(2);
 
-  const getStatusBadgeClass = (status: string) => {
-    switch(status) {
-      case 'present': return styles.statusPresent;
-      case 'absent': return styles.statusAbsent;
-      case 'medical': return styles.statusMedical;
-      case 'leave': return styles.statusLeave;
-      default: return '';
-    }
-  };
+  // Add id to records for DataTable
+  const recordsWithId = employee.records.map((record, idx) => ({
+    ...record,
+    id: idx
+  }));
 
   const getInitials = (name: string) => {
     return name.split(' ').map(n => n[0]).join('');
@@ -58,9 +56,7 @@ export default function AttendanceViewPage() {
               <span>Month: February 2024</span>
             </div>
           </div>
-          <Button variant="outline" size="sm" onClick={() => router.push('/attendance')}>
-            Back
-          </Button>
+  
         </div>
 
         {/* Statistics */}
@@ -70,16 +66,16 @@ export default function AttendanceViewPage() {
             <div className={styles.statValue}>{totalDays}</div>
           </div>
           <div className={styles.statCard}>
-            <div className={styles.statLabel} style={{ color: '#10b981' }}>Present</div>
-            <div className={styles.statValue} style={{ color: '#10b981' }}>{presentDays}</div>
+            <div className={styles.statLabel}>Present</div>
+            <div className={styles.statValue}>{presentDays}</div>
           </div>
           <div className={styles.statCard}>
-            <div className={styles.statLabel} style={{ color: '#ef4444' }}>Absent</div>
-            <div className={styles.statValue} style={{ color: '#ef4444' }}>{absentDays}</div>
+            <div className={styles.statLabel}>Absent</div>
+            <div className={styles.statValue}>{absentDays}</div>
           </div>
           <div className={styles.statCard}>
-            <div className={styles.statLabel} style={{ color: '#f59e0b' }}>Medical Leave</div>
-            <div className={styles.statValue} style={{ color: '#f59e0b' }}>{medicalDays}</div>
+            <div className={styles.statLabel}>Medical Leave</div>
+            <div className={styles.statValue}>{medicalDays}</div>
           </div>
           <div className={styles.statCard}>
             <div className={styles.statLabel}>Total Hours</div>
@@ -92,65 +88,26 @@ export default function AttendanceViewPage() {
         </div>
       </div>
 
-      {/* Attendance Table */}
-      <div className={styles.tableSection}>
-        <h2 className={styles.sectionTitle}>Monthly Attendance Record</h2>
-        <div className={styles.tableWrapper}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Status</th>
-                <th>Check In</th>
-                <th>Check Out</th>
-                <th>Hours Worked</th>
-              </tr>
-            </thead>
-            <tbody>
-              {employee.records.map((record, idx) => (
-                <tr key={idx}>
-                  <td className={styles.dateCell}>
-                    {new Date(record.date).toLocaleDateString('en-US', { 
-                      weekday: 'short',
-                      month: 'short',
-                      day: 'numeric'
-                    })}
-                  </td>
-                  <td className={styles.statusCell}>
-                    <span 
-                      className={`${styles.statusBadge} ${getStatusBadgeClass(record.status)}`}
-                    >
-                      {getStatusLabel(record.status)}
-                    </span>
-                  </td>
-                  <td className={styles.timeCell}>
-                    <span className={record.checkIn === '-' ? styles.timeCellDisabled : ''}>
-                      {record.checkIn}
-                    </span>
-                  </td>
-                  <td className={styles.timeCell}>
-                    <span className={record.checkOut === '-' ? styles.timeCellDisabled : ''}>
-                      {record.checkOut}
-                    </span>
-                  </td>
-                  <td className={styles.hoursCell}>
-                    {record.hoursWorked > 0 ? `${record.hoursWorked.toFixed(2)}h` : '-'}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+      {/* Monthly Attendance Record Table */}
+      <DataTable
+        title="Monthly Attendance Record"
+        data={recordsWithId}
+        columns={attendanceRecordColumns}
+        addButtonText=""
+        currentPage={1}
+        pageSize={recordsWithId.length}
+        totalEntries={recordsWithId.length}
+        onPageChange={() => {}}
+      />
 
-        <div className={styles.actions}>
-          <Button 
-            variant="outline" 
-            size="md" 
-            onClick={() => router.push('/attendance')}
-          >
-            Back to Attendance
-          </Button>
-        </div>
+      <div className={styles.actions}>
+        <Button 
+          variant="outline" 
+          size="md" 
+          onClick={() => router.push('/attendance')}
+        >
+          Back to Attendance
+        </Button>
       </div>
     </div>
   );

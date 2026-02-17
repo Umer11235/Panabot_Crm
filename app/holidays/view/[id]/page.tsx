@@ -20,10 +20,10 @@ export default function ViewHolidayPage() {
       <div className={styles.header}>
         <h1 className={styles.title}>Holiday Details</h1>
         <div className={styles.actions}>
-          <Button variant="primary" size="sm" onClick={() => router.push(`/holidays/edit/${encodeURIComponent(holiday.id)}`)}>
+          <Button variant="outline" size="md" onClick={() => router.push(`/holidays/edit/${encodeURIComponent(holiday.id)}`)}>
             Edit Holiday
           </Button>
-          <Button variant="outline" size="sm" onClick={() => router.push('/holidays')}>
+          <Button variant="outline" size="md" onClick={() => router.push('/holidays')}>
             Back to List
           </Button>
         </div>

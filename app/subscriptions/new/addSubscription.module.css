@@ -82,6 +82,11 @@
   width: 100%;
 }
 
+.paymentModeDropdown {
+  position: relative;
+  width: 100%;
+}
+
 .dropdownBtn {
   width: 100%;
   height: 40px;

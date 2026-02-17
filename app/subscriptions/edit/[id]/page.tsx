@@ -22,6 +22,7 @@ export default function EditSubscriptionPage() {
     cost: subscription?.cost.toString() || '',
     status: subscription?.status || ''
   });
+  const [paymentModeOpen, setPaymentModeOpen] = useState(false);
   const [statusOpen, setStatusOpen] = useState(false);
 
   useEffect(() => {
@@ -30,12 +31,15 @@ export default function EditSubscriptionPage() {
       if (!target.closest(`.${styles.statusDropdown}`)) {
         setStatusOpen(false);
       }
+      if (!target.closest(`.${styles.paymentModeDropdown}`)) {
+        setPaymentModeOpen(false);
+      }
     };
-    if (statusOpen) {
+    if (statusOpen || paymentModeOpen) {
       document.addEventListener('click', handleClickOutside);
     }
     return () => document.removeEventListener('click', handleClickOutside);
-  }, [statusOpen]);
+  }, [statusOpen, paymentModeOpen]);
 
   if (!subscription) {
     return <div>Subscription not found</div>;
@@ -120,19 +124,22 @@ export default function EditSubscriptionPage() {
             </div>
             <div className={styles.fieldGroup}>
               <label>Payment Mode</label>
-              <select
-                name="paymentMode"
-                value={formData.paymentMode}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select payment mode</option>
-                <option value="Cash">Cash</option>
-                <option value="Card">Card</option>
-                <option value="Online">Online</option>
-                <option value="Cheque">Cheque</option>
-                <option value="Bank Transfer">Bank Transfer</option>
-              </select>
+              <div className={styles.paymentModeDropdown}>
+                <button
+                  type="button"
+                  className={styles.dropdownBtn}
+                  onClick={() => setPaymentModeOpen(!paymentModeOpen)}
+                >
+                  {formData.paymentMode || 'Select payment mode'}
+                </button>
+                <div className={`${styles.dropdownMenu} ${paymentModeOpen ? styles.show : ''}`}>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, paymentMode: 'Cash' })); setPaymentModeOpen(false); }}>Cash</button>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, paymentMode: 'Card' })); setPaymentModeOpen(false); }}>Card</button>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, paymentMode: 'Online' })); setPaymentModeOpen(false); }}>Online</button>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, paymentMode: 'Cheque' })); setPaymentModeOpen(false); }}>Cheque</button>
+                  <button type="button" onClick={() => { setFormData(prev => ({ ...prev, paymentMode: 'Bank Transfer' })); setPaymentModeOpen(false); }}>Bank Transfer</button>
+                </div>
+              </div>
             </div>
           </div>
           <div className={styles.row}>

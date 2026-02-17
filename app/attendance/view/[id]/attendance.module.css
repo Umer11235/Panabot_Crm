@@ -13,7 +13,7 @@
 .headerTop {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 25px;
   margin-bottom: 16px;
 }
 
@@ -21,11 +21,11 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-color: var(--md-sys-color-primary-container);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--md-sys-color-on-primary-container);
   font-weight: 600;
   font-size: 18px;
 }
@@ -35,7 +35,8 @@
 }
 
 .employeeName {
-  font: var(--md-sys-typescale-headline-small);
+  font-size: 20px;
+  font-weight: 400;
   color: var(--md-sys-color-on-surface);
   margin: 0;
 }
@@ -43,8 +44,9 @@
 .employeeDetails {
   display: flex;
   gap: 24px;
-  margin-top: 8px;
-  font-size: 14px;
+  /* margin-top: 8px; */
+  font-size: 13px;
+  font-weight: 400;
   color: var(--md-sys-color-on-surface-variant);
 }
 
@@ -56,122 +58,32 @@
 }
 
 .statCard {
-  background-color: var(--md-sys-color-surface-dim);
+  background-color: transparent;
   padding: 12px 16px;
-  border-radius: var(--md-sys-shape-corner-small);
+  border-radius: 0;
   text-align: center;
+      border: solid 1px #f8f3f3;
+    border-radius: 3px;
 }
 
 .statLabel {
   font-size: 12px;
+  font-weight: 500;
   color: var(--md-sys-color-on-surface-variant);
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .statValue {
-  font: var(--md-sys-typescale-title-medium);
-  color: var(--md-sys-color-primary);
-}
-
-.tableSection {
-  background-color: var(--md-sys-color-surface);
-  border-radius: var(--md-sys-shape-corner-large);
-  border: 1px solid var(--md-sys-color-outline-variant);
-  overflow: hidden;
-}
-
-.sectionTitle {
-  font: var(--md-sys-typescale-title-medium);
+  font-size: 20px;
+  font-weight: 400;
   color: var(--md-sys-color-on-surface);
-  padding: 20px 24px;
-  margin: 0;
-  border-bottom: 1px solid var(--md-sys-color-outline-variant);
-}
-
-.tableWrapper {
-  overflow-x: auto;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-
-.table th {
-  background-color: var(--md-sys-color-surface-dim);
-  padding: 12px 16px;
-  text-align: left;
-  font-weight: 600;
-  color: var(--md-sys-color-on-surface);
-  border-bottom: 1px solid var(--md-sys-color-outline-variant);
-}
-
-.table td {
-  padding: 16px;
-  border-bottom: 1px solid var(--md-sys-color-outline-variant);
-  color: var(--md-sys-color-on-surface);
-}
-
-.table tbody tr:hover {
-  background-color: var(--md-sys-state-hover);
-}
-
-.dateCell {
-  font-weight: 500;
-  min-width: 100px;
-}
-
-.statusCell {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.statusBadge {
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 500;
-  color: white;
-}
-
-.statusPresent {
-  background-color: #10b981;
-}
-
-.statusAbsent {
-  background-color: #ef4444;
-}
-
-.statusMedical {
-  background-color: #f59e0b;
-}
-
-.statusLeave {
-  background-color: #3b82f6;
-}
-
-.timeCell {
-  text-align: center;
-  min-width: 80px;
-}
-
-.timeCellDisabled {
-  color: var(--md-sys-color-on-surface-variant);
-  font-style: italic;
-}
-
-.hoursCell {
-  text-align: center;
-  font-weight: 500;
-  min-width: 80px;
 }
 
 .actions {
   display: flex;
   gap: 12px;
   padding: 20px 24px;
+  margin-top: 24px;
   border-top: 1px solid var(--md-sys-color-outline-variant);
 }
 
@@ -189,24 +101,10 @@
   .stats {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .table {
-    font-size: 12px;
-  }
-
-  .table th,
-  .table td {
-    padding: 8px 12px;
-  }
 }
 
 @media (max-width: 640px) {
-  .tableWrapper {
-    font-size: 11px;
-  }
-
-  .header,
-  .tableSection {
+  .header {
     padding: 16px;
   }
 

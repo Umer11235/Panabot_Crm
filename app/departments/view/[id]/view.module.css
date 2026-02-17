@@ -1,19 +1,17 @@
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+  /* No padding - parent layout provides padding */
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32px;
-  flex-wrap: wrap;
-  gap: 16px;
+  margin-bottom: 24px;
 }
 
 .title {
-  font: var(--md-sys-typescale-headline-medium);
+  font-size: 24px;
+  font-weight: 400;
   color: var(--md-sys-color-on-surface);
   margin: 0;
 }
@@ -24,42 +22,50 @@
 }
 
 .content {
-  background-color: var(--md-sys-color-surface);
-  border-radius: 12px;
-  border: 1px solid var(--md-sys-color-outline-variant);
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .section {
-  padding: 24px;
+  background-color: var(--md-sys-color-surface);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .sectionTitle {
-  font: var(--md-sys-typescale-title-medium);
+  font-size: 16px;
+  font-weight: 500;
   color: var(--md-sys-color-on-surface);
-  margin: 0 0 20px 0;
+  margin: 0 0 16px 0;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  row-gap: 20px;
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  /* gap: 8px; */
 }
 
 .field label {
-  font: var(--md-sys-typescale-body-medium);
+  display: block;
+  font: var(--md-sys-typescale-body-small);
   color: var(--md-sys-color-on-surface-variant);
+  margin-bottom: 8px;
 }
 
 .field p {
   font: var(--md-sys-typescale-body-large);
   color: var(--md-sys-color-on-surface);
+  font-size: 15px;
+  line-height: 1.5;
   margin: 0;
 }
 

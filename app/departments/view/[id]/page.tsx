@@ -20,10 +20,10 @@ export default function ViewDepartmentPage() {
       <div className={styles.header}>
         <h1 className={styles.title}>Department Details</h1>
         <div className={styles.actions}>
-          <Button variant="primary" size="sm" onClick={() => router.push(`/departments/edit/${encodeURIComponent(department.id)}`)}>
+          <Button variant="outline" size="md" onClick={() => router.push(`/departments/edit/${encodeURIComponent(department.id)}`)}>
             Edit Department
           </Button>
-          <Button variant="outline" size="sm" onClick={() => router.push('/departments')}>
+          <Button variant="outline" size="md" onClick={() => router.push('/departments')}>
             Back to List
           </Button>
         </div>
