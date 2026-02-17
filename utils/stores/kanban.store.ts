@@ -109,6 +109,7 @@ export function useKanbanStore() {
         description?: string;
         priority: Priority;
         assigneeId?: Id;
+        imageUrl?: string;
       }
     ) => {
       const taskId = "t_" + uid();

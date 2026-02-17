@@ -1,5 +1,5 @@
 import { DataTableColumn } from "@/utils/types/datatable.types";
-import { Project } from "@/utils/types/project.types";
+import { Project } from "../types/project.types";
 
 export const projectColumns: DataTableColumn<Project>[] = [
   { header: 'ID', key: 'id' },

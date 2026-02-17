@@ -1,5 +1,6 @@
 import { DataTableColumn } from "@/utils/types/datatable.types";
-import { Holiday } from "@/utils/types/holiday.types";
+import { Holiday } from "../types/holiday.types";
+
 
 export const holidayColumns: DataTableColumn<Holiday>[] = [
   { header: '# Number', key: 'id' },

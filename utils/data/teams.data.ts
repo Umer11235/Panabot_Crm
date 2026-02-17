@@ -5,9 +5,9 @@ export const teamsData = [
     leader: 'Robert Stewart',
     leaderRole: 'Team Leader',
     members: [
-      { id: 'EMP-001', name: 'Marcia Baker', avatarSrc: '/avatars/a.png' },
-      { id: 'EMP-002', name: 'Carolyn Barnes', avatarSrc: '/avatars/b.png' },
-      { id: 'EMP-003', name: 'Donna Miller', avatarSrc: '/avatars/c.png' },
+      { id: 'EMP-001', name: 'Marcia Baker', avatarSrc: '/avatars/a.png' ,role: 'Senior Dev',  department: 'Engineering'   },
+      { id: 'EMP-002', name: 'Carolyn Barnes', avatarSrc: '/avatars/b.png',role: 'Senior Dev',  department: 'Engineering'  },
+      { id: 'EMP-003', name: 'Donna Miller', avatarSrc: '/avatars/c.png',role: 'Senior Dev',  department: 'Engineering'  },
       { id: 'EMP-004', name: 'Barbara Cross', avatarSrc: '/avatars/d.png' },
     ],
     projects: 3,

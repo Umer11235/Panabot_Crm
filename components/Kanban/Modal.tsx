@@ -2,7 +2,7 @@
 import styles from "./Modal.module.css";
 import Button from "@/components/(Inputs)/Button/Button";
 import { ModalProps } from "@/utils/types/kanban-components.types";
-export default function Modal({ open, title, subtitle, onClose, children, showActions, onConfirm, confirmText = "Confirm", confirmVariant = "primary" }: ModalProps) {
+export default function Modal({ open, title, subtitle, onClose, children, showActions, onConfirm, confirmText = "Confirm", confirmVariant = "primary" ,imageUrl}: ModalProps) {
   if (!open) return null;
   return (
     <div className={styles.modalOverlay} role="dialog" aria-modal="true">
