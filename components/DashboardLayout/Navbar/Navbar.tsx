@@ -9,7 +9,14 @@ import Icon from '@/utils/Icons';
 import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
 import Image from 'next/image';
 import userAvatar from '@/public/images/users.jpg';
-const Navbar = () => {
+
+interface NavbarProps {
+  isMobileSidebarOpen?: boolean;
+  onMobileSidebarToggle?: () => void;
+  onCloseMobileSidebar?: () => void;
+}
+
+const Navbar = ({ isMobileSidebarOpen = false, onMobileSidebarToggle, onCloseMobileSidebar }: NavbarProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
   const pathname = usePathname();
@@ -21,13 +28,12 @@ const Navbar = () => {
   const closeMenu = () => {
     setIsMobileMenuOpen(false);
     setOpenSubMenu(null);
+    onCloseMobileSidebar?.();
   };
 
   return (
     <>
-      {isMobileMenuOpen && (
-        <div className={styles.overlay} onClick={closeMenu} />
-      )}
+      {isMobileMenuOpen && <div className={styles.overlay} onClick={closeMenu} />}
       <nav className={styles.navbar}>
         <div className={styles.container}>
           <div className={styles.leftSection}>
@@ -69,7 +75,10 @@ const Navbar = () => {
               <button className={styles.iconBtn}><Icon name="messages-alert" size={18} /></button>
               <button className={styles.iconBtn}><Icon name="chat-double" size={18} /></button>
             </div>
-            <button className={styles.mobileToggle} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            <button className={styles.mobileSidebarToggle} onClick={onMobileSidebarToggle} aria-label="Toggle sidebar">
+              {isMobileSidebarOpen ? <IoClose size={24} /> : <Icon name="menu-list" size={20} />}
+            </button>
+            <button className={styles.mobileToggle} onClick={() => setIsMobileMenuOpen((prev) => !prev)} aria-label="Toggle navbar menu">
               {isMobileMenuOpen ? <IoClose size={24} /> : <Icon name="menu-list" size={20} />}
             </button>
             <Image src={userAvatar} alt="User" className={styles.userAvatar} width={40} height={40} />

@@ -212,3 +212,39 @@
 .subItem:hover .bulletDot {
   background-color: var(--md-sys-color-on-surface-variant);
 }
+
+.mobileOverlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .toggleBtn {
+    display: none;
+  }
+
+  .mobileOverlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: var(--md-sys-color-scrim);
+    z-index: 120;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 130;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.expanded,
+  .sidebar.collapsed {
+    width: 280px;
+  }
+
+  .mobileOpen {
+    transform: translateX(0);
+  }
+}
