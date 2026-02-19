@@ -46,7 +46,7 @@
   gap: 16px;
   padding: 20px 0px;
   border-bottom: 1px solid var(--md-sys-color-outline-variant);
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 .searchInput {
@@ -301,7 +301,7 @@
 
 @media (max-width: 768px) {
   .searchBar {
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: stretch;
   }
 
