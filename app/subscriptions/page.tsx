@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import DataTable from '@/components/DataTable/ProjectTable';
 import { subscriptionsData } from '@/utils/data/subscriptions.data';
 import { subscriptionColumns } from '@/utils/columns';
-import Button from '@/components/(Inputs)/Button/Button';
 import ConfirmModal from '@/components/Modal/ConfirmModal';
 import styles from './subscriptions.module.css';
 
@@ -55,24 +54,16 @@ export default function SubscriptionsListPage() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className={styles.searchInput}
         />
-
-
-
-               <div className={styles.actions}>
-          <div className={styles.filterDropdown}>
-            <button className={styles.filterBtn} onClick={() => setFilterOpen(!filterOpen)}>
-              {filterStatus === 'all' ? 'All Status' : filterStatus}
-            </button>
-            <div className={`${styles.filterMenu} ${filterOpen ? styles.show : ''}`}>
-              <button className={filterStatus === 'all' ? styles.active : ''} onClick={() => { setFilterStatus('all'); setFilterOpen(false); }}>All Status</button>
-              <button className={filterStatus === 'Active' ? styles.active : ''} onClick={() => { setFilterStatus('Active'); setFilterOpen(false); }}>Active</button>
-              <button className={filterStatus === 'Pending' ? styles.active : ''} onClick={() => { setFilterStatus('Pending'); setFilterOpen(false); }}>Pending</button>
-              <button className={filterStatus === 'Expired' ? styles.active : ''} onClick={() => { setFilterStatus('Expired'); setFilterOpen(false); }}>Expired</button>
-            </div>
+        <div className={styles.filterDropdown}>
+          <button className={styles.filterBtn} onClick={() => setFilterOpen(!filterOpen)}>
+            {filterStatus === 'all' ? 'All Status' : filterStatus}
+          </button>
+          <div className={`${styles.filterMenu} ${filterOpen ? styles.show : ''}`}>
+            <button className={filterStatus === 'all' ? styles.active : ''} onClick={() => { setFilterStatus('all'); setFilterOpen(false); }}>All Status</button>
+            <button className={filterStatus === 'Active' ? styles.active : ''} onClick={() => { setFilterStatus('Active'); setFilterOpen(false); }}>Active</button>
+            <button className={filterStatus === 'Pending' ? styles.active : ''} onClick={() => { setFilterStatus('Pending'); setFilterOpen(false); }}>Pending</button>
+            <button className={filterStatus === 'Expired' ? styles.active : ''} onClick={() => { setFilterStatus('Expired'); setFilterOpen(false); }}>Expired</button>
           </div>
-          {/* <div style={{ display: 'flex', gap: 12 }}>
-            <Button variant="outline" size="sm" onClick={() => window.location.href = '/subscriptions/new'}>+ Add Subscription</Button>
-          </div> */}
         </div>
       </div>
 

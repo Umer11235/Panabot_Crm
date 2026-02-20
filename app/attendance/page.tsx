@@ -1,6 +1,5 @@
 'use client';
 import { useState, useEffect } from 'react';
-import Button from '@/components/(Inputs)/Button/Button';
 import styles from './attendance.module.css';
 import { attendanceData, getIcon, getIconColor } from '@/utils/data/attendance.data';
 import { paginateData, calculateTotalPages } from './functions';
