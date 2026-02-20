@@ -315,3 +315,15 @@
 .dropdownMenu button:last-child {
   color: #d93025;
 }
+
+
+
+@media (max-width: 540px) {
+ .viewBtn {
+
+  padding: 0 14px;
+ }
+ .addBtn{
+      padding: 0 17px;
+ }
+}
