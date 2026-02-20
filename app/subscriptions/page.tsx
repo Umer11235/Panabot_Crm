@@ -5,6 +5,8 @@ import DataTable from '@/components/DataTable/ProjectTable';
 import { subscriptionsData } from '@/utils/data/subscriptions.data';
 import { subscriptionColumns } from '@/utils/columns';
 import ConfirmModal from '@/components/Modal/ConfirmModal';
+import ListPageHeader from '@/components/ListPage/ListPageHeader';
+import SearchFilterBar from '@/components/ListPage/SearchFilterBar';
 import styles from './subscriptions.module.css';
 
 export default function SubscriptionsListPage() {
@@ -40,32 +42,41 @@ export default function SubscriptionsListPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>Subscriptions</h1>
-         <button className={styles.addBtn} onClick={() => window.location.href = '/subscriptions/new'}>+ Add Subscription</button>
+      <ListPageHeader
+        title="Subscriptions"
+        classes={{ header: styles.header, title: styles.title, addBtn: styles.addBtn }}
+        addButtonText="+ Add Subscription"
+        onAdd={() => window.location.href = '/subscriptions/new'}
+      />
 
-      </div>
-
-      <div className={styles.searchBar}>
-        <input
-          type="text"
-          placeholder="Search subscriptions..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className={styles.searchInput}
-        />
-        <div className={styles.filterDropdown}>
-          <button className={styles.filterBtn} onClick={() => setFilterOpen(!filterOpen)}>
-            {filterStatus === 'all' ? 'All Status' : filterStatus}
-          </button>
-          <div className={`${styles.filterMenu} ${filterOpen ? styles.show : ''}`}>
-            <button className={filterStatus === 'all' ? styles.active : ''} onClick={() => { setFilterStatus('all'); setFilterOpen(false); }}>All Status</button>
-            <button className={filterStatus === 'Active' ? styles.active : ''} onClick={() => { setFilterStatus('Active'); setFilterOpen(false); }}>Active</button>
-            <button className={filterStatus === 'Pending' ? styles.active : ''} onClick={() => { setFilterStatus('Pending'); setFilterOpen(false); }}>Pending</button>
-            <button className={filterStatus === 'Expired' ? styles.active : ''} onClick={() => { setFilterStatus('Expired'); setFilterOpen(false); }}>Expired</button>
-          </div>
-        </div>
-      </div>
+      <SearchFilterBar
+        classes={{
+          searchBar: styles.searchBar,
+          searchInput: styles.searchInput,
+          filterDropdown: styles.filterDropdown,
+          filterBtn: styles.filterBtn,
+          filterMenu: styles.filterMenu,
+          show: styles.show,
+          active: styles.active,
+        }}
+        searchPlaceholder="Search subscriptions..."
+        searchTerm={searchTerm}
+        onSearchChange={setSearchTerm}
+        filterLabel={filterStatus === 'all' ? 'All Status' : filterStatus}
+        filterOpen={filterOpen}
+        onToggleFilter={() => setFilterOpen(!filterOpen)}
+        filterValue={filterStatus}
+        filterOptions={[
+          { value: 'all', label: 'All Status' },
+          { value: 'Active', label: 'Active' },
+          { value: 'Pending', label: 'Pending' },
+          { value: 'Expired', label: 'Expired' },
+        ]}
+        onSelectFilter={(value) => {
+          setFilterStatus(value);
+          setFilterOpen(false);
+        }}
+      />
 
       <DataTable
         title=""

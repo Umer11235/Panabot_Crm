@@ -3,8 +3,9 @@
 import { useState, useEffect } from 'react';
 import ProjectCard from "@/components/(Cards)/ProjectCard/ProjectCard";
 import DataTable from "@/components/DataTable/ProjectTable";
-import Button from '@/components/(Inputs)/Button/Button';
 import ConfirmModal from '@/components/Modal/ConfirmModal';
+import ListPageHeader from '@/components/ListPage/ListPageHeader';
+import SearchFilterBar from '@/components/ListPage/SearchFilterBar';
 import userimg from '../../public/images/users.jpg';
 import { teamsData } from '@/utils/data/teams.data';
 import { teamColumns } from '@/utils/columns/team.columns';
@@ -46,51 +47,59 @@ export default function TeamsPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>All Teams</h1>
-        <div className={styles.actions}>
-          <div className={styles.viewToggle}>
-            <button 
-              className={`${styles.viewBtn} ${viewMode === 'card' ? styles.active : ''}`}
-              onClick={() => setViewMode('card')}
-            >
-              Card View
-            </button>
-            <button 
-              className={`${styles.viewBtn} ${viewMode === 'table' ? styles.active : ''}`}
-              onClick={() => setViewMode('table')}
-            >
-              Table View
+      <ListPageHeader
+        title="All Teams"
+        classes={{ header: styles.header, title: styles.title }}
+        rightContent={
+          <div className={styles.actions}>
+            <div className={styles.viewToggle}>
+              <button
+                className={`${styles.viewBtn} ${viewMode === 'card' ? styles.active : ''}`}
+                onClick={() => setViewMode('card')}
+              >
+                Card View
+              </button>
+              <button
+                className={`${styles.viewBtn} ${viewMode === 'table' ? styles.active : ''}`}
+                onClick={() => setViewMode('table')}
+              >
+                Table View
+              </button>
+            </div>
+            <button className={styles.addBtn} onClick={() => window.location.href = '/teams/new'}>
+              + Add New Team
             </button>
           </div>
-          <button className={styles.addBtn} onClick={() => window.location.href = '/teams/new'}>
-            + Add New Team
-          </button>
-        </div>
-      </div>
+        }
+      />
 
-      <div className={styles.searchBar}>
-        <input
-          type="text"
-          placeholder="Search teams..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className={styles.searchInput}
-        />
-        <div className={styles.filterDropdown}>
-          <button
-            className={styles.filterBtn}
-            onClick={() => setFilterOpen(!filterOpen)}
-          >
-            {filterStatus === 'all' ? 'All Status' : filterStatus}
-          </button>
-          <div className={`${styles.filterMenu} ${filterOpen ? styles.show : ''}`}>
-            <button className={filterStatus === 'all' ? styles.active : ''} onClick={() => { setFilterStatus('all'); setFilterOpen(false); }}>All Status</button>
-            <button className={filterStatus === 'Active' ? styles.active : ''} onClick={() => { setFilterStatus('Active'); setFilterOpen(false); }}>Active</button>
-            <button className={filterStatus === 'Inactive' ? styles.active : ''} onClick={() => { setFilterStatus('Inactive'); setFilterOpen(false); }}>Inactive</button>
-          </div>
-        </div>
-      </div>
+      <SearchFilterBar
+        classes={{
+          searchBar: styles.searchBar,
+          searchInput: styles.searchInput,
+          filterDropdown: styles.filterDropdown,
+          filterBtn: styles.filterBtn,
+          filterMenu: styles.filterMenu,
+          show: styles.show,
+          active: styles.active,
+        }}
+        searchPlaceholder="Search teams..."
+        searchTerm={searchTerm}
+        onSearchChange={setSearchTerm}
+        filterLabel={filterStatus === 'all' ? 'All Status' : filterStatus}
+        filterOpen={filterOpen}
+        onToggleFilter={() => setFilterOpen(!filterOpen)}
+        filterValue={filterStatus}
+        filterOptions={[
+          { value: 'all', label: 'All Status' },
+          { value: 'Active', label: 'Active' },
+          { value: 'Inactive', label: 'Inactive' },
+        ]}
+        onSelectFilter={(value) => {
+          setFilterStatus(value);
+          setFilterOpen(false);
+        }}
+      />
 
       {viewMode === 'card' ? (
         <>

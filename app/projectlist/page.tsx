@@ -1,13 +1,14 @@
 "use client";
 
 import DataTable from "@/components/DataTable/ProjectTable";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { projectsData } from "@/utils/data/projects.data";
 import { paginateData, handlePageChange } from "./functions";
 import { projectColumns } from "@/utils/columns";
 import ProjectCard from "@/components/(Cards)/ProjectCard/ProjectCard";
-import Button from "@/components/(Inputs)/Button/Button";
 import ConfirmModal from "@/components/Modal/ConfirmModal";
+import ListPageHeader from "@/components/ListPage/ListPageHeader";
+import SearchFilterBar from "@/components/ListPage/SearchFilterBar";
 import styles from "./projectlist.module.css";
 
 export default function ProjectListPage() {
@@ -45,52 +46,60 @@ export default function ProjectListPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>All Projects</h1>
-        <div className={styles.actions}>
-          <div className={styles.viewToggle}>
-            <button 
-              className={`${styles.viewBtn} ${viewMode === 'card' ? styles.active : ''}`}
-              onClick={() => setViewMode('card')}
-            >
-              Card View
-            </button>
-            <button 
-              className={`${styles.viewBtn} ${viewMode === 'table' ? styles.active : ''}`}
-              onClick={() => setViewMode('table')}
-            >
-              Table View
+      <ListPageHeader
+        title="All Projects"
+        classes={{ header: styles.header, title: styles.title }}
+        rightContent={
+          <div className={styles.actions}>
+            <div className={styles.viewToggle}>
+              <button
+                className={`${styles.viewBtn} ${viewMode === 'card' ? styles.active : ''}`}
+                onClick={() => setViewMode('card')}
+              >
+                Card View
+              </button>
+              <button
+                className={`${styles.viewBtn} ${viewMode === 'table' ? styles.active : ''}`}
+                onClick={() => setViewMode('table')}
+              >
+                Table View
+              </button>
+            </div>
+            <button className={styles.addBtn} onClick={() => window.location.href = '/newproject'}>
+              + Add New Project
             </button>
           </div>
-          <button className={styles.addBtn} onClick={() => window.location.href = '/newproject'}>
-            + Add New Project
-          </button>
-        </div>
-      </div>
+        }
+      />
 
-      <div className={styles.searchBar}>
-        <input
-          type="text"
-          placeholder="Search projects..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className={styles.searchInput}
-        />
-        <div className={styles.filterDropdown}>
-          <button
-            className={styles.filterBtn}
-            onClick={() => setFilterOpen(!filterOpen)}
-          >
-            {filterStatus === 'all' ? 'All Status' : filterStatus}
-          </button>
-          <div className={`${styles.filterMenu} ${filterOpen ? styles.show : ''}`}>
-            <button className={filterStatus === 'all' ? styles.active : ''} onClick={() => { setFilterStatus('all'); setFilterOpen(false); }}>All Status</button>
-            <button className={filterStatus === 'Completed' ? styles.active : ''} onClick={() => { setFilterStatus('Completed'); setFilterOpen(false); }}>Completed</button>
-            <button className={filterStatus === 'In Progress' ? styles.active : ''} onClick={() => { setFilterStatus('In Progress'); setFilterOpen(false); }}>In Progress</button>
-            <button className={filterStatus === 'Not Started' ? styles.active : ''} onClick={() => { setFilterStatus('Not Started'); setFilterOpen(false); }}>Not Started</button>
-          </div>
-        </div>
-      </div>
+      <SearchFilterBar
+        classes={{
+          searchBar: styles.searchBar,
+          searchInput: styles.searchInput,
+          filterDropdown: styles.filterDropdown,
+          filterBtn: styles.filterBtn,
+          filterMenu: styles.filterMenu,
+          show: styles.show,
+          active: styles.active,
+        }}
+        searchPlaceholder="Search projects..."
+        searchTerm={searchTerm}
+        onSearchChange={setSearchTerm}
+        filterLabel={filterStatus === 'all' ? 'All Status' : filterStatus}
+        filterOpen={filterOpen}
+        onToggleFilter={() => setFilterOpen(!filterOpen)}
+        filterValue={filterStatus}
+        filterOptions={[
+          { value: 'all', label: 'All Status' },
+          { value: 'Completed', label: 'Completed' },
+          { value: 'In Progress', label: 'In Progress' },
+          { value: 'Not Started', label: 'Not Started' },
+        ]}
+        onSelectFilter={(value) => {
+          setFilterStatus(value);
+          setFilterOpen(false);
+        }}
+      />
       
       {viewMode === 'card' ? (
         <>

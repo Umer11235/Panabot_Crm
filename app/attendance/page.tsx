@@ -1,5 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
+import ListPageHeader from '@/components/ListPage/ListPageHeader';
+import SearchFilterBar from '@/components/ListPage/SearchFilterBar';
 import styles from './attendance.module.css';
 import { attendanceData, getIcon, getIconColor } from '@/utils/data/attendance.data';
 import { paginateData, calculateTotalPages } from './functions';
@@ -46,36 +48,41 @@ export default function AttendancePage() {
 
   return (
     <div>
-      <div className={styles.header}>
-        <h1 className={styles.title}>Attendance Sheet</h1>
-        <button className={styles.addBtn} onClick={() => window.location.href = '/attendance/new'}>+ Add Attendance</button>
-      </div>
+      <ListPageHeader
+        title="Attendance Sheet"
+        classes={{ header: styles.header, title: styles.title, addBtn: styles.addBtn }}
+        addButtonText="+ Add Attendance"
+        onAdd={() => window.location.href = '/attendance/new'}
+      />
 
-    <div className={styles.searchBar}>
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className={styles.searchInput}
-          />
-
-          <div className={styles.filterDropdown}>
-            <button className={styles.filterBtn} onClick={() => setFilterOpen(!filterOpen)}>
-              {filterStatus === 'all' ? 'All Status' : filterStatus}
-            </button>
-            <div className={`${styles.filterMenu} ${filterOpen ? styles.show : ''}`}>
-              <button className={filterStatus === 'all' ? styles.active : ''} onClick={() => { setFilterStatus('all'); setFilterOpen(false); }}>All Status</button>
-              <button className={filterStatus === 'active' ? styles.active : ''} onClick={() => { setFilterStatus('active'); setFilterOpen(false); }}>Active</button>
-              <button className={filterStatus === 'completed' ? styles.active : ''} onClick={() => { setFilterStatus('completed'); setFilterOpen(false); }}>Completed</button>
-              <button className={filterStatus === 'pending' ? styles.active : ''} onClick={() => { setFilterStatus('pending'); setFilterOpen(false); }}>Pending</button>
-            </div>
-          </div>
-
-          {/* <Button variant="primary" size="sm" onClick={() => setModalOpen(true)}>
-            + Add Attendance
-          </Button> */}
-        </div>
+      <SearchFilterBar
+        classes={{
+          searchBar: styles.searchBar,
+          searchInput: styles.searchInput,
+          filterDropdown: styles.filterDropdown,
+          filterBtn: styles.filterBtn,
+          filterMenu: styles.filterMenu,
+          show: styles.show,
+          active: styles.active,
+        }}
+        searchPlaceholder="Search..."
+        searchTerm={searchTerm}
+        onSearchChange={setSearchTerm}
+        filterLabel={filterStatus === 'all' ? 'All Status' : filterStatus}
+        filterOpen={filterOpen}
+        onToggleFilter={() => setFilterOpen(!filterOpen)}
+        filterValue={filterStatus}
+        filterOptions={[
+          { value: 'all', label: 'All Status' },
+          { value: 'active', label: 'Active' },
+          { value: 'completed', label: 'Completed' },
+          { value: 'pending', label: 'Pending' },
+        ]}
+        onSelectFilter={(value) => {
+          setFilterStatus(value);
+          setFilterOpen(false);
+        }}
+      />
 
       <div className={styles.container}>
     

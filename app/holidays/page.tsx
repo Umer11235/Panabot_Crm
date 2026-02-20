@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { holidaysData } from "@/utils/data/holidays.data";
 import { holidayColumns } from "@/utils/columns";
 import ConfirmModal from '@/components/Modal/ConfirmModal';
+import ListPageHeader from "@/components/ListPage/ListPageHeader";
+import SearchFilterBar from "@/components/ListPage/SearchFilterBar";
 import styles from './holidays.module.css';
 
 export default function HolidaysPage() {
@@ -38,31 +40,40 @@ export default function HolidaysPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>Holidays</h1>
-        <button className={styles.addBtn} onClick={() => window.location.href = '/holidays/new'}>+ Add Holiday</button>
-      </div>
+      <ListPageHeader
+        title="Holidays"
+        classes={{ header: styles.header, title: styles.title, addBtn: styles.addBtn }}
+        addButtonText="+ Add Holiday"
+        onAdd={() => window.location.href = '/holidays/new'}
+      />
 
-      <div className={styles.searchBar}>
-        <input
-          type="text"
-          placeholder="Search holidays..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className={styles.searchInput}
-        />
-
-        <div className={styles.filterDropdown}>
-          <button className={styles.filterBtn} onClick={() => setFilterOpen(!filterOpen)}>
-            {filterStatus === 'all' ? 'All Status' : filterStatus}
-          </button>
-          <div className={`${styles.filterMenu} ${filterOpen ? styles.show : ''}`}>
-            <button className={filterStatus === 'all' ? styles.active : ''} onClick={() => { setFilterStatus('all'); setFilterOpen(false); }}>All Status</button>
-            <button className={filterStatus === 'Active' ? styles.active : ''} onClick={() => { setFilterStatus('Active'); setFilterOpen(false); }}>Active</button>
-            <button className={filterStatus === 'Inactive' ? styles.active : ''} onClick={() => { setFilterStatus('Inactive'); setFilterOpen(false); }}>Inactive</button>
-          </div>
-        </div>
-      </div>
+      <SearchFilterBar
+        classes={{
+          searchBar: styles.searchBar,
+          searchInput: styles.searchInput,
+          filterDropdown: styles.filterDropdown,
+          filterBtn: styles.filterBtn,
+          filterMenu: styles.filterMenu,
+          show: styles.show,
+          active: styles.active,
+        }}
+        searchPlaceholder="Search holidays..."
+        searchTerm={searchTerm}
+        onSearchChange={setSearchTerm}
+        filterLabel={filterStatus === 'all' ? 'All Status' : filterStatus}
+        filterOpen={filterOpen}
+        onToggleFilter={() => setFilterOpen(!filterOpen)}
+        filterValue={filterStatus}
+        filterOptions={[
+          { value: 'all', label: 'All Status' },
+          { value: 'Active', label: 'Active' },
+          { value: 'Inactive', label: 'Inactive' },
+        ]}
+        onSelectFilter={(value) => {
+          setFilterStatus(value);
+          setFilterOpen(false);
+        }}
+      />
 
       <DataTable
         title=""

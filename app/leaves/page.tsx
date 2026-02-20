@@ -5,6 +5,8 @@ import { leavesData } from "@/utils/data/leaves.data";
 import { paginateData, handlePageChange } from "./functions";
 import { leaveColumns } from "@/utils/columns";
 import ConfirmModal from "@/components/Modal/ConfirmModal";
+import ListPageHeader from "@/components/ListPage/ListPageHeader";
+import SearchFilterBar from "@/components/ListPage/SearchFilterBar";
 import styles from './leaves.module.css';
 
 export default function LeavesPage() {
@@ -48,34 +50,41 @@ export default function LeavesPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>Employee Leave</h1>
-        <button className={styles.addBtn} onClick={() => window.location.href = '/leaves/new'}>+ Add New Leave</button>
-      </div>
+      <ListPageHeader
+        title="Employee Leave"
+        classes={{ header: styles.header, title: styles.title, addBtn: styles.addBtn }}
+        addButtonText="+ Add New Leave"
+        onAdd={() => window.location.href = '/leaves/new'}
+      />
 
-      <div className={styles.searchBar}>
-        <input
-          type="text"
-          placeholder="Search leaves..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className={styles.searchInput}
-        />
-        <div className={styles.filterDropdown}>
-          <button
-            className={styles.filterBtn}
-            onClick={() => setFilterOpen(!filterOpen)}
-          >
-            {filterStatus === 'all' ? 'All Status' : filterStatus}
-          </button>
-          <div className={`${styles.filterMenu} ${filterOpen ? styles.show : ''}`}>
-            <button className={filterStatus === 'all' ? styles.active : ''} onClick={() => { setFilterStatus('all'); setFilterOpen(false); }}>All Status</button>
-            <button className={filterStatus === 'Approved' ? styles.active : ''} onClick={() => { setFilterStatus('Approved'); setFilterOpen(false); }}>Approved</button>
-            <button className={filterStatus === 'Pending' ? styles.active : ''} onClick={() => { setFilterStatus('Pending'); setFilterOpen(false); }}>Pending</button>
-            <button className={filterStatus === 'Denied' ? styles.active : ''} onClick={() => { setFilterStatus('Denied'); setFilterOpen(false); }}>Denied</button>
-          </div>
-        </div>
-      </div>
+      <SearchFilterBar
+        classes={{
+          searchBar: styles.searchBar,
+          searchInput: styles.searchInput,
+          filterDropdown: styles.filterDropdown,
+          filterBtn: styles.filterBtn,
+          filterMenu: styles.filterMenu,
+          show: styles.show,
+          active: styles.active,
+        }}
+        searchPlaceholder="Search leaves..."
+        searchTerm={searchTerm}
+        onSearchChange={setSearchTerm}
+        filterLabel={filterStatus === 'all' ? 'All Status' : filterStatus}
+        filterOpen={filterOpen}
+        onToggleFilter={() => setFilterOpen(!filterOpen)}
+        filterValue={filterStatus}
+        filterOptions={[
+          { value: 'all', label: 'All Status' },
+          { value: 'Approved', label: 'Approved' },
+          { value: 'Pending', label: 'Pending' },
+          { value: 'Denied', label: 'Denied' },
+        ]}
+        onSelectFilter={(value) => {
+          setFilterStatus(value);
+          setFilterOpen(false);
+        }}
+      />
 
       <DataTable
         title=""
