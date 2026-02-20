@@ -5,7 +5,7 @@ import Navbar from './Navbar/Navbar';
 export default function DashboardLayout({ children }: { children?: React.ReactNode }) {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-y-hidden overflow-x-visible">
       <Sidebar
         isMobileOpen={isMobileSidebarOpen}
         onCloseMobile={() => setIsMobileSidebarOpen(false)}

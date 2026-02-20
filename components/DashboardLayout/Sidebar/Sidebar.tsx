@@ -17,7 +17,7 @@ const SidebarV1 = ({ isMobileOpen = false, onCloseMobile }: SidebarProps) => {
   const [hovered, setHovered] = useState(false);
   const [openGroups, setOpenGroups] = useState<string[]>(['Dashboards']);
   const pathname = usePathname();
-  const isExpanded = isLocked || hovered;
+  const isExpanded = isMobileOpen || isLocked || hovered;
   const toggleGroup = (title: string) => {
     setOpenGroups(prev => 
       prev.includes(title) ? prev.filter(i => i !== title) : [...prev, title]

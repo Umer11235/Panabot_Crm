@@ -5,6 +5,7 @@
   transition: width 0.3s ease;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .expanded {
@@ -15,12 +16,22 @@
   width: 80px;
 }
 
+.collapsed .logo {
+  opacity: 1;
+  width: 22px;
+  max-width: 22px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+}
+
 .header {
   padding: 20px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
+  z-index: 120;
   border-bottom: 1px solid var(--md-sys-color-outline-variant);
   height: 64px;
 }
@@ -45,7 +56,9 @@
   color: var(--md-sys-color-on-surface-variant);
   position: absolute;
   right: -16px;
-  z-index: 10;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
   transition: background-color 0.2s ease;
 }
 
