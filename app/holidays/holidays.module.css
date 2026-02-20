@@ -217,7 +217,7 @@
 
 @media (max-width: 640px) {
   .container {
-    padding: 16px;
+    /* padding: 16px; */
   }
 
   .title {
